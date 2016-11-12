@@ -14,10 +14,10 @@ import javax.swing.ImageIcon;
 public class Login {
 
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField usernameField;
 	Profil mojprofil = new Profil();
 	LoginError greska = new LoginError();
-	private JTextField textField_1;
+	private JTextField passwordBox;
 
 	/**
 	 * Launch the application.
@@ -52,24 +52,24 @@ public class Login {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblUname = new JLabel("Username");
-		lblUname.setBounds(10, 132, 77, 14);
-		frame.getContentPane().add(lblUname);
+		JLabel unameText = new JLabel("Username");
+		unameText.setBounds(10, 132, 77, 14);
+		frame.getContentPane().add(unameText);
 		
-		JLabel lblPw = new JLabel("Password");
-		lblPw.setBounds(10, 157, 77, 14);
-		frame.getContentPane().add(lblPw);
+		JLabel pwText = new JLabel("Password");
+		pwText.setBounds(10, 157, 77, 14);
+		frame.getContentPane().add(pwText);
 		
-		textField = new JTextField();
-		textField.setBounds(96, 129, 223, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		usernameField = new JTextField();
+		usernameField.setBounds(96, 129, 223, 20);
+		frame.getContentPane().add(usernameField);
+		usernameField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Login");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton loginButton = new JButton("Login");
+		loginButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (textField.getText().equals("admin")){
-					if (textField_1.getText().equals("admin")){
+				if (usernameField.getText().equals("admin")){
+					if (passwordBox.getText().equals("admin")){
 						mojprofil.OtvoriProfil();
 					}else{
 						greska.PrikaziError();
@@ -77,26 +77,26 @@ public class Login {
 				}
 			}
 		});
-		btnNewButton.setBounds(10, 207, 150, 29);
-		frame.getContentPane().add(btnNewButton);
+		loginButton.setBounds(10, 207, 150, 29);
+		frame.getContentPane().add(loginButton);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(96, 154, 223, 20);
-		frame.getContentPane().add(textField_1);
+		passwordBox = new JTextField();
+		passwordBox.setColumns(10);
+		passwordBox.setBounds(96, 154, 223, 20);
+		frame.getContentPane().add(passwordBox);
 		
-		JButton btnExit = new JButton("Exit");
-		btnExit.addMouseListener(new MouseAdapter() {
+		JButton exitButton = new JButton("Exit");
+		exitButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				System.exit(0);
 			}
 		});
-		btnExit.setBounds(171, 207, 150, 29);
-		frame.getContentPane().add(btnExit);
+		exitButton.setBounds(171, 207, 150, 29);
+		frame.getContentPane().add(exitButton);
 		
-		JLabel label = new JLabel("New label");
-		label.setIcon(new ImageIcon(Login.class.getResource("/images/nesto.png")));
-		label.setBounds(0, 0, 331, 118);
-		frame.getContentPane().add(label);
+		JLabel logo = new JLabel("New label");
+		logo.setIcon(new ImageIcon(Login.class.getResource("/images/nesto.png")));
+		logo.setBounds(0, 0, 331, 118);
+		frame.getContentPane().add(logo);
 	}
 }
