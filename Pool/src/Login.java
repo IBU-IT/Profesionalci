@@ -86,6 +86,11 @@ public class Login {
 		frame.getContentPane().add(textField_1);
 		
 		JButton btnExit = new JButton("Exit");
+		btnExit.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
 		btnExit.setBounds(171, 207, 150, 29);
 		frame.getContentPane().add(btnExit);
 		
