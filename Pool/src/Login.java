@@ -2,23 +2,22 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
-import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 
 public class Login {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField textField_1;
 	Profil mojprofil = new Profil();
 	LoginError greska = new LoginError();
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -49,27 +48,22 @@ public class Login {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 335, 276);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblUname = new JLabel("Username");
-		lblUname.setBounds(10, 90, 77, 14);
+		lblUname.setBounds(10, 132, 77, 14);
 		frame.getContentPane().add(lblUname);
 		
 		JLabel lblPw = new JLabel("Password");
-		lblPw.setBounds(10, 115, 77, 14);
+		lblPw.setBounds(10, 157, 77, 14);
 		frame.getContentPane().add(lblPw);
 		
 		textField = new JTextField();
-		textField.setBounds(96, 87, 89, 20);
+		textField.setBounds(96, 129, 223, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(97, 112, 89, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -83,7 +77,21 @@ public class Login {
 				}
 			}
 		});
-		btnNewButton.setBounds(72, 166, 89, 23);
+		btnNewButton.setBounds(10, 207, 150, 29);
 		frame.getContentPane().add(btnNewButton);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(96, 154, 223, 20);
+		frame.getContentPane().add(textField_1);
+		
+		JButton btnExit = new JButton("Exit");
+		btnExit.setBounds(171, 207, 150, 29);
+		frame.getContentPane().add(btnExit);
+		
+		JLabel label = new JLabel("New label");
+		label.setIcon(new ImageIcon(Login.class.getResource("/images/nesto.png")));
+		label.setBounds(0, 0, 331, 118);
+		frame.getContentPane().add(label);
 	}
 }
