@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -16,11 +17,13 @@ public class Login {
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
+	Profil mojprofil = new Profil();
+	LoginError greska = new LoginError();
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -73,9 +76,9 @@ public class Login {
 			public void mouseClicked(MouseEvent e) {
 				if (textField.getText().equals("admin")){
 					if (textField_1.getText().equals("admin")){
-						JOptionPane.showMessageDialog(null, "Logovan Si");
+						mojprofil.OtvoriProfil();
 					}else{
-						JOptionPane.showMessageDialog(null, "Netaèni podatci");
+						greska.PrikaziError();
 					}
 				}
 			}
