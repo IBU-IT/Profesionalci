@@ -53,6 +53,13 @@ public class LogovanAdmin {
 		frmAdminPanel.getContentPane().add(btnDodajKorisnika);
 		
 		JButton btnObriiKorisnika = new JButton("Obri\u0161i Korisnika");
+		btnObriiKorisnika.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				RemoveUser brisi = new RemoveUser();
+				brisi.TestnoBrisanje();
+			}
+		});
 		btnObriiKorisnika.setBounds(231, 147, 163, 23);
 		frmAdminPanel.getContentPane().add(btnObriiKorisnika);
 		

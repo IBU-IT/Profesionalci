@@ -1,5 +1,3 @@
-package remove;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -7,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class RemoveUser {
 
-	public static void main(String[] args) {
+	public void TestnoBrisanje() {
 		//Jos nije povezano s bazom pa za primjer koristimo arraylist
 		ArrayList<String> users = new ArrayList<String>();
 		users.add("Kiso");

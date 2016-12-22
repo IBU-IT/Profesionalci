@@ -65,6 +65,7 @@ public class Login {
 		usernameField.setColumns(10);
 		
 		JButton loginButton = new JButton("Login");
+		
 		loginButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (usernameField.getText().equals("user") && passwordBox.getText().equals("user")){
