@@ -13,10 +13,8 @@ import javax.swing.ImageIcon;
 
 public class Login {
 
-	private JFrame frame;
+	private JFrame frmPoolSystem;
 	private JTextField usernameField;
-	Profil mojprofil = new Profil();
-	LoginError greska = new LoginError();
 	private JTextField passwordBox;
 
 	/**
@@ -27,7 +25,7 @@ public class Login {
 			public void run() {
 				try {
 					Login window = new Login();
-					window.frame.setVisible(true);
+					window.frmPoolSystem.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,44 +44,51 @@ public class Login {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 335, 276);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmPoolSystem = new JFrame();
+		frmPoolSystem.setTitle("Pool System - Login");
+		frmPoolSystem.setResizable(false);
+		frmPoolSystem.setBounds(100, 100, 335, 276);
+		frmPoolSystem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmPoolSystem.getContentPane().setLayout(null);
 		
 		JLabel unameText = new JLabel("Username");
 		unameText.setBounds(10, 132, 77, 14);
-		frame.getContentPane().add(unameText);
+		frmPoolSystem.getContentPane().add(unameText);
 		
 		JLabel pwText = new JLabel("Password");
 		pwText.setBounds(10, 157, 77, 14);
-		frame.getContentPane().add(pwText);
+		frmPoolSystem.getContentPane().add(pwText);
 		
 		usernameField = new JTextField();
 		usernameField.setBounds(96, 129, 223, 20);
-		frame.getContentPane().add(usernameField);
+		frmPoolSystem.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
 		
 		JButton loginButton = new JButton("Login");
 		loginButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (usernameField.getText().equals("admin")){
-					if (passwordBox.getText().equals("admin")){
-						mojprofil.OtvoriProfil();
+				if (usernameField.getText().equals("user") && passwordBox.getText().equals("user")){
+						LogovanKorisnik logovan = new LogovanKorisnik();
+						logovan.LogovanProfil();
+						frmPoolSystem.dispose();
+					}else if(usernameField.getText().equals("admin") && passwordBox.getText().equals("admin")){
+						LogovanAdmin lAdmin = new LogovanAdmin();
+						lAdmin.Admin();
+						frmPoolSystem.dispose();
 					}else{
+						LoginError greska = new LoginError();
 						greska.PrikaziError();
 					}
 				}
 			}
-		});
+		);
 		loginButton.setBounds(10, 207, 150, 29);
-		frame.getContentPane().add(loginButton);
+		frmPoolSystem.getContentPane().add(loginButton);
 		
 		passwordBox = new JTextField();
 		passwordBox.setColumns(10);
 		passwordBox.setBounds(96, 154, 223, 20);
-		frame.getContentPane().add(passwordBox);
+		frmPoolSystem.getContentPane().add(passwordBox);
 		
 		JButton exitButton = new JButton("Exit");
 		exitButton.addMouseListener(new MouseAdapter() {
@@ -92,11 +97,11 @@ public class Login {
 			}
 		});
 		exitButton.setBounds(171, 207, 150, 29);
-		frame.getContentPane().add(exitButton);
+		frmPoolSystem.getContentPane().add(exitButton);
 		
 		JLabel logo = new JLabel("New label");
 		logo.setIcon(new ImageIcon(Login.class.getResource("/images/nesto.png")));
 		logo.setBounds(0, 0, 331, 118);
-		frame.getContentPane().add(logo);
+		frmPoolSystem.getContentPane().add(logo);
 	}
 }
