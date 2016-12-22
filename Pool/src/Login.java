@@ -92,6 +92,7 @@ public class Login {
 		
 		JButton exitButton = new JButton("Exit");
 		exitButton.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.exit(0);
 			}
