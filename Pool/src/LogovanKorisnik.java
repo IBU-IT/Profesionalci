@@ -66,6 +66,13 @@ public class LogovanKorisnik {
 		frmUserPanel.getContentPane().add(btnAnketeNaKojim);
 		
 		JButton btnPrijaviGreku = new JButton("Prijavi Gre\u0161ku");
+		btnPrijaviGreku.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				PrijaviGresku greska = new PrijaviGresku();
+				greska.greska();
+			}
+		});
 		btnPrijaviGreku.setBounds(232, 37, 137, 23);
 		frmUserPanel.getContentPane().add(btnPrijaviGreku);
 		
