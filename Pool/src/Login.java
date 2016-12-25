@@ -167,7 +167,7 @@ public class Login {
 		frmPoolSystem.getContentPane().add(logo);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(97, 154, 222, 20);
+		passwordField.setBounds(96, 154, 223, 20);
 		frmPoolSystem.getContentPane().add(passwordField);
 		
 		
