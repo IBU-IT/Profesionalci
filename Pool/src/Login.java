@@ -161,15 +161,16 @@ public class Login {
 		loginButton.setBounds(10, 207, 150, 29);
 		frmPoolSystem.getContentPane().add(loginButton);
 
-		JButton exitButton = new JButton("Exit");
-		exitButton.addMouseListener(new MouseAdapter() {
+		JButton registerButton = new JButton("Registruj Se");
+		registerButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
+				RegistracijaKorisnika r = new RegistracijaKorisnika();
+				r.RegistracijaIzLogina();
 			}
 		});
-		exitButton.setBounds(171, 207, 150, 29);
-		frmPoolSystem.getContentPane().add(exitButton);
+		registerButton.setBounds(171, 207, 150, 29);
+		frmPoolSystem.getContentPane().add(registerButton);
 
 		JLabel logo = new JLabel("New label");
 		logo.setIcon(new ImageIcon(Login.class.getResource("/images/nesto.png")));
