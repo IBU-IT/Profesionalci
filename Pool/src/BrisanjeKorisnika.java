@@ -20,6 +20,7 @@ public class BrisanjeKorisnika {
 	/**
 	 * Launch the application.
 	 */
+	//asd
 	public void ObrisiK() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
