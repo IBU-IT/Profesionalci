@@ -46,7 +46,7 @@ public class DodajKorisnika {
 		frmDodajNovogKorisnika = new JFrame();
 		frmDodajNovogKorisnika.setTitle("Dodaj Novog Korisnika");
 		frmDodajNovogKorisnika.setBounds(100, 100, 450, 300);
-		frmDodajNovogKorisnika.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmDodajNovogKorisnika.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmDodajNovogKorisnika.getContentPane().setLayout(null);
 		
 		JLabel lblUsername = new JLabel("Username:");
