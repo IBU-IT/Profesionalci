@@ -23,11 +23,10 @@ public class DodajKorisnika {
 	static final String PASS = "123456";
 
 	private JFrame frmDodajNovogKorisnika;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField usernameField;
+	private JTextField passwordField;
+	private JTextField imeField;
+	private JTextField prezimeField;
 
 	/**
 	 * Launch the application.
@@ -90,30 +89,25 @@ public class DodajKorisnika {
 		lblIfAdmin.setBounds(10, 161, 153, 14);
 		frmDodajNovogKorisnika.getContentPane().add(lblIfAdmin);
 		
-		textField = new JTextField();
-		textField.setBounds(91, 8, 102, 20);
-		frmDodajNovogKorisnika.getContentPane().add(textField);
-		textField.setColumns(10);
+		usernameField = new JTextField();
+		usernameField.setBounds(91, 8, 102, 20);
+		frmDodajNovogKorisnika.getContentPane().add(usernameField);
+		usernameField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(91, 33, 102, 20);
-		frmDodajNovogKorisnika.getContentPane().add(textField_1);
+		passwordField = new JTextField();
+		passwordField.setColumns(10);
+		passwordField.setBounds(91, 33, 102, 20);
+		frmDodajNovogKorisnika.getContentPane().add(passwordField);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(91, 58, 102, 20);
-		frmDodajNovogKorisnika.getContentPane().add(textField_2);
+		imeField = new JTextField();
+		imeField.setColumns(10);
+		imeField.setBounds(91, 58, 102, 20);
+		frmDodajNovogKorisnika.getContentPane().add(imeField);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(91, 83, 102, 20);
-		frmDodajNovogKorisnika.getContentPane().add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(91, 108, 102, 20);
-		frmDodajNovogKorisnika.getContentPane().add(textField_4);
+		prezimeField = new JTextField();
+		prezimeField.setColumns(10);
+		prezimeField.setBounds(91, 83, 102, 20);
+		frmDodajNovogKorisnika.getContentPane().add(prezimeField);
 		
 		JRadioButton rdbtnMusko = new JRadioButton("Musko");
 		rdbtnMusko.setBounds(91, 133, 84, 20);
@@ -131,8 +125,17 @@ public class DodajKorisnika {
 		btnDodajNovogKorisnika.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			if(textField.getText().equals("")){
-				JOptionPane.showMessageDialog(null, "Ne moze biti prazno polje !!!");
+			if(usernameField.getText().equals("")){
+				JOptionPane.showMessageDialog(null, "Username mora biti unesen");
+			}
+			if(passwordField.getText().equals("")){
+				JOptionPane.showMessageDialog(null, "Password mora biti unesen");
+			}
+			if(imeField.getText().equals("")){
+				JOptionPane.showMessageDialog(null, "Ime mora biti uneseno");
+			}
+			if(prezimeField.getText().equals("")){
+				JOptionPane.showMessageDialog(null, "Prezime mora biti uneseno");
 			}
 			}
 		});
