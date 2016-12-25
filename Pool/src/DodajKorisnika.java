@@ -1,5 +1,6 @@
 import java.awt.EventQueue;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -10,6 +11,9 @@ import javax.swing.JButton;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JToggleButton;
+import javax.swing.JSpinner;
 
 
 public class DodajKorisnika {
@@ -117,6 +121,10 @@ public class DodajKorisnika {
 		rdbtnensko.setBounds(177, 135, 102, 17);
 		frmDodajNovogKorisnika.getContentPane().add(rdbtnensko);
 		
+		ButtonGroup group = new ButtonGroup();
+	    group.add(rdbtnMusko);
+	    group.add(rdbtnensko);
+		
 		JCheckBox chckbxAdmin = new JCheckBox("");
 		chckbxAdmin.setBounds(169, 161, 97, 14);
 		frmDodajNovogKorisnika.getContentPane().add(chckbxAdmin);
@@ -141,5 +149,9 @@ public class DodajKorisnika {
 		});
 		btnDodajNovogKorisnika.setBounds(21, 212, 220, 23);
 		frmDodajNovogKorisnika.getContentPane().add(btnDodajNovogKorisnika);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setBounds(91, 108, 46, 20);
+		frmDodajNovogKorisnika.getContentPane().add(spinner);
 	}
 }
