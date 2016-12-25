@@ -26,7 +26,7 @@ public class Login {
 
 	private JFrame frmPoolSystem;
 	private JTextField usernameField;
-	private JTextField passwordBox;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -91,7 +91,7 @@ public class Login {
 					// Napravi statement i izvrsi query
 					stmt = conn.createStatement();
 					String sql;
-					sql = ("SELECT id, username, password, first_name, last_name, age, gender, user_role FROM Users WHERE username='"+usernameField.getText()+"' AND password='"+passwordBox.getText()+"'");
+					sql = ("SELECT id, username, password, first_name, last_name, age, gender, user_role FROM Users WHERE username='"+usernameField.getText()+"' AND password='"+passwordField.getText()+"'");
 					ResultSet rs = stmt.executeQuery(sql);
 
 					// Provjeri da li su uname i pw tacni tj. da li query daje rezultat
@@ -148,11 +148,6 @@ public class Login {
 		loginButton.setBounds(10, 207, 150, 29);
 		frmPoolSystem.getContentPane().add(loginButton);
 
-		passwordBox = new JTextField();
-		passwordBox.setColumns(10);
-		passwordBox.setBounds(96, 154, 223, 20);
-		frmPoolSystem.getContentPane().add(passwordBox);
-
 		JButton exitButton = new JButton("Exit");
 		exitButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -167,5 +162,11 @@ public class Login {
 		logo.setIcon(new ImageIcon(Login.class.getResource("/images/nesto.png")));
 		logo.setBounds(0, 0, 331, 118);
 		frmPoolSystem.getContentPane().add(logo);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(97, 154, 222, 20);
+		frmPoolSystem.getContentPane().add(passwordField);
+		
+		
 	}
 }
