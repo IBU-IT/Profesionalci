@@ -63,8 +63,8 @@ public class LogovanAdmin {
 		btnObriiKorisnika.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				RemoveUser brisi = new RemoveUser();
-				brisi.TestnoBrisanje();
+				BrisanjeKorisnika brisi = new BrisanjeKorisnika();
+				brisi.ObrisiK();
 			}
 		});
 		btnObriiKorisnika.setBounds(231, 147, 163, 23);
