@@ -26,7 +26,7 @@ import javax.swing.JRadioButton;
 
 
 
-public class Register {
+public class RegistracijaKorisnika {
 
 	private JFrame frame;
 	/*private final Action action = new SwingAction();*/
@@ -47,7 +47,7 @@ public class Register {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Register window = new Register();
+					RegistracijaKorisnika window = new RegistracijaKorisnika();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +59,7 @@ public class Register {
 	/**
 	 * Create the application.
 	 */
-	public Register() {
+	public RegistracijaKorisnika() {
 		initialize();
 	}
 
