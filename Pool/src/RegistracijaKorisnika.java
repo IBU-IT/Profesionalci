@@ -2,20 +2,25 @@ import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+
 import java.awt.Image;
 import java.awt.Label;
 import java.io.File;
 import java.io.IOException;
 import java.awt.EventQueue;
 import java.awt.Font;
+
 import javax.swing.JTextField;
 import javax.swing.JList;
 import javax.swing.JSpinner;
@@ -69,7 +74,7 @@ public class RegistracijaKorisnika {
 		frmRegistrujSe = new JFrame();
 		frmRegistrujSe.setTitle("Registruj Se");
 		frmRegistrujSe.setBounds(100, 100, 256, 266);
-		frmRegistrujSe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmRegistrujSe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmRegistrujSe.getContentPane().setLayout(null);
 		
 		JLabel lblName = new JLabel("Name");
@@ -128,28 +133,27 @@ public class RegistracijaKorisnika {
 		lblGendre.setBounds(10, 140, 67, 14);
 		frmRegistrujSe.getContentPane().add(lblGendre);
 		
-		final JRadioButton Male = new JRadioButton("Male");
+		JRadioButton Male = new JRadioButton("Male");
 		Male.setFont(new Font("Arial", Font.PLAIN, 11));
 		Male.setBounds(76, 141, 51, 23);
 		frmRegistrujSe.getContentPane().add(Male);
 		
-		final JRadioButton Female = new JRadioButton("Female");
+		JRadioButton Female = new JRadioButton("Female");
 		Female.setFont(new Font("Arial", Font.PLAIN, 11));
 		Female.setBounds(157, 140, 109, 23);
 		frmRegistrujSe.getContentPane().add(Female);
 		
+		ButtonGroup grupa = new ButtonGroup();
+	    grupa.add(Male);
+	    grupa.add(Female);
 		
-		
-		JButton Done = new JButton("Registruj Se");
-		Done.setFont(new Font("Arial", Font.PLAIN, 13));
-		Done.setBounds(10, 171, 219, 44);
-		frmRegistrujSe.getContentPane().add(Done);
-		Done.addActionListener(new ActionListener() {
+		JButton RegistrujSe = new JButton("Registruj Se");
+		RegistrujSe.setFont(new Font("Arial", Font.PLAIN, 13));
+		RegistrujSe.setBounds(10, 171, 219, 44);
+		frmRegistrujSe.getContentPane().add(RegistrujSe);
+		RegistrujSe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!Male.isSelected()&&!Female.isSelected()){
-					 JOptionPane.showMessageDialog(null, "Choose a gender!!!", "Error",
-		                     JOptionPane.ERROR_MESSAGE);
-				}
+				
 		if(passwordField.getPassword().toString() == null || passwordField.getPassword().length == 0 || passwordField.getPassword().toString().isEmpty()){
 			JOptionPane.showMessageDialog(null, "Password field is empty!!!", "Error",
                     JOptionPane.ERROR_MESSAGE);
