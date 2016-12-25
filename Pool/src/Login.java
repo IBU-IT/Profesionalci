@@ -68,20 +68,20 @@ public class Login {
 		frmPoolSystem = new JFrame();
 		frmPoolSystem.setTitle("Pool System - Login");
 		frmPoolSystem.setResizable(false);
-		frmPoolSystem.setBounds(100, 100, 479, 437);
+		frmPoolSystem.setBounds(100, 100, 479, 333);
 		frmPoolSystem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPoolSystem.getContentPane().setLayout(null);
 
-		JLabel unameText = new JLabel("Username");
-		unameText.setBounds(10, 242, 77, 14);
+		JLabel unameText = new JLabel("Username:");
+		unameText.setBounds(10, 182, 77, 14);
 		frmPoolSystem.getContentPane().add(unameText);
 
-		JLabel pwText = new JLabel("Password");
-		pwText.setBounds(10, 278, 77, 14);
+		JLabel pwText = new JLabel("Password:");
+		pwText.setBounds(10, 218, 77, 14);
 		frmPoolSystem.getContentPane().add(pwText);
 
 		usernameField = new JTextField();
-		usernameField.setBounds(96, 239, 223, 20);
+		usernameField.setBounds(96, 179, 367, 20);
 		frmPoolSystem.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
 
@@ -166,7 +166,7 @@ public class Login {
 				}// zavrsi glavni try try
 			}
 		});
-		loginButton.setBounds(22, 326, 200, 29);
+		loginButton.setBounds(21, 260, 200, 29);
 		frmPoolSystem.getContentPane().add(loginButton);
 
 		JButton registerButton = new JButton("Registruj Se");
@@ -177,22 +177,17 @@ public class Login {
 				r.RegistracijaIzLogina();
 			}
 		});
-		registerButton.setBounds(249, 326, 200, 29);
+		registerButton.setBounds(248, 260, 200, 29);
 		frmPoolSystem.getContentPane().add(registerButton);
 
 		JLabel logo = new JLabel("");
 		logo.setIcon(new ImageIcon(Login.class.getResource("/images/logo.png")));
-		logo.setBounds(21, 24, 547, 118);
+		logo.setBounds(21, 24, 423, 118);
 		frmPoolSystem.getContentPane().add(logo);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(97, 275, 223, 20);
+		passwordField.setBounds(97, 215, 366, 20);
 		frmPoolSystem.getContentPane().add(passwordField);
-		
-		JLabel lblNewLabel = new JLabel("FASTER   SIMPLER   CHEAPER");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(41, 143, 389, 71);
-		frmPoolSystem.getContentPane().add(lblNewLabel);
 		
 		
 	}
