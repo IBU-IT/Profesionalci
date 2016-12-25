@@ -11,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
-public class LogovanAdmin {
+public class LogovanAdmin extends Login {
 
 	private JFrame frmAdminPanel;
 
@@ -109,5 +109,17 @@ public class LogovanAdmin {
 		JButton btnZakljuajAnketu = new JButton("Zaklju\u010Daj Anketu");
 		btnZakljuajAnketu.setBounds(231, 45, 163, 23);
 		frmAdminPanel.getContentPane().add(btnZakljuajAnketu);
+		
+		JLabel prikaziUsername = new JLabel(username);
+		prikaziUsername.setBounds(92, 11, 117, 23);
+		frmAdminPanel.getContentPane().add(prikaziUsername);
+		
+		JLabel prikaziIme = new JLabel(first_name);
+		prikaziIme.setBounds(92, 38, 117, 23);
+		frmAdminPanel.getContentPane().add(prikaziIme);
+		
+		JLabel prikaziPrezime = new JLabel(last_name);
+		prikaziPrezime.setBounds(92, 67, 117, 23);
+		frmAdminPanel.getContentPane().add(prikaziPrezime);
 	}
 }

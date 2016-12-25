@@ -16,6 +16,10 @@ import java.sql.*;
 import javax.swing.JPasswordField;
 
 public class Login {
+	
+	public static String username = "";
+	public static String first_name = "";
+	public static String last_name = "";
 
 	// Definisi JDBC driver name i URL baze
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -104,10 +108,10 @@ public class Login {
 					// Povuci podatke
 					// ZA PRIMJER KORISTIMO ID KAO USER_ROLE (1-admin, 2-user)
 					int id = rs.getInt("id");
-					String username = rs.getString("username");
+					username = rs.getString("username");
 					String password = rs.getString("password");
-					String first_name = rs.getString("first_name");
-					String last_name = rs.getString("last_name");
+					first_name = rs.getString("first_name");
+					last_name = rs.getString("last_name");
 					int age = rs.getInt("age");
 					int gender = rs.getInt("gender");
 					
