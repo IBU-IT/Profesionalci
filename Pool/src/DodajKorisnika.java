@@ -2,12 +2,25 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
+import javax.swing.JButton;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class DodajKorisnika {
+	
+	// Definisi JDBC driver name i URL baze
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
+
+	// Db podaci
+	static final String USER = "root";
+	static final String PASS = "123456";
 
 	private JFrame frmDodajNovogKorisnika;
 	private JTextField textField;
@@ -46,7 +59,7 @@ public class DodajKorisnika {
 		frmDodajNovogKorisnika = new JFrame();
 		frmDodajNovogKorisnika.setTitle("Dodaj Novog Korisnika");
 		frmDodajNovogKorisnika.setBounds(100, 100, 450, 300);
-		frmDodajNovogKorisnika.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmDodajNovogKorisnika.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmDodajNovogKorisnika.getContentPane().setLayout(null);
 		
 		JLabel lblUsername = new JLabel("Username:");
@@ -113,5 +126,17 @@ public class DodajKorisnika {
 		JCheckBox chckbxAdmin = new JCheckBox("");
 		chckbxAdmin.setBounds(169, 161, 97, 14);
 		frmDodajNovogKorisnika.getContentPane().add(chckbxAdmin);
+		
+		JButton btnDodajNovogKorisnika = new JButton("Dodaj Novog Korisnika");
+		btnDodajNovogKorisnika.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			if(textField.getText().equals("")){
+				JOptionPane.showMessageDialog(null, "Ne moze biti prazno polje !!!");
+			}
+			}
+		});
+		btnDodajNovogKorisnika.setBounds(21, 212, 220, 23);
+		frmDodajNovogKorisnika.getContentPane().add(btnDodajNovogKorisnika);
 	}
 }

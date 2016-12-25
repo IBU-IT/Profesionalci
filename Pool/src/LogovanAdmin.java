@@ -12,14 +12,6 @@ import java.awt.event.MouseEvent;
 
 
 public class LogovanAdmin {
-	
-	// Definisi JDBC driver name i URL baze
-		static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-		static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-		// Db podaci
-		static final String USER = "root";
-		static final String PASS = "123456";
 
 	private JFrame frmAdminPanel;
 
