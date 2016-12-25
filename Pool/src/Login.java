@@ -117,7 +117,9 @@ public class Login {
 						lAdmin.Admin();
 						frmPoolSystem.dispose();
 					}else{
-						JOptionPane.showMessageDialog(null, "Samo admin radi trenutno. Atif radi na tome dalje.");
+						LogovanKorisnik IKorisnik = new LogovanKorisnik();
+						IKorisnik.LogovanProfil();
+						frmPoolSystem.dispose();
 					}
 
 					// Zatvori resultset, statement i db konekciju i ispisi greske ako postoje 
