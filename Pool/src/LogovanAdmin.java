@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class LogovanAdmin extends Login {
@@ -44,7 +46,7 @@ public class LogovanAdmin extends Login {
 	private void initialize() {
 		frmAdminPanel = new JFrame();
 		frmAdminPanel.setTitle("Admin Panel");
-		frmAdminPanel.setBounds(100, 100, 420, 300);
+		frmAdminPanel.setBounds(100, 100, 450, 329);
 		frmAdminPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAdminPanel.getContentPane().setLayout(null);
 		
@@ -56,7 +58,7 @@ public class LogovanAdmin extends Login {
 				a.DodajK();
 			}
 		});
-		btnDodajKorisnika.setBounds(231, 113, 163, 23);
+		btnDodajKorisnika.setBounds(231, 148, 163, 23);
 		frmAdminPanel.getContentPane().add(btnDodajKorisnika);
 		
 		JButton btnObriiKorisnika = new JButton("Obri\u0161i Korisnika");
@@ -67,7 +69,7 @@ public class LogovanAdmin extends Login {
 				brisi.ObrisiK();
 			}
 		});
-		btnObriiKorisnika.setBounds(231, 147, 163, 23);
+		btnObriiKorisnika.setBounds(231, 182, 163, 23);
 		frmAdminPanel.getContentPane().add(btnObriiKorisnika);
 		
 		JButton btnDodajAnketu = new JButton("Dodaj Anketu");
@@ -80,7 +82,7 @@ public class LogovanAdmin extends Login {
 		
 		JButton btnPregeldStatistike = new JButton("PREGELD STATISTIKE");
 		btnPregeldStatistike.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnPregeldStatistike.setBounds(231, 187, 163, 63);
+		btnPregeldStatistike.setBounds(231, 216, 163, 63);
 		frmAdminPanel.getContentPane().add(btnPregeldStatistike);
 		
 		JLabel lblPrijavljeniKao = new JLabel("Prijavljen kao:");
@@ -103,7 +105,7 @@ public class LogovanAdmin extends Login {
 			}
 		});
 		btnOdjaviSe.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnOdjaviSe.setBounds(10, 187, 163, 63);
+		btnOdjaviSe.setBounds(10, 216, 163, 63);
 		frmAdminPanel.getContentPane().add(btnOdjaviSe);
 		
 		JButton btnZakljuajAnketu = new JButton("Zaklju\u010Daj Anketu");
@@ -137,5 +139,13 @@ public class LogovanAdmin extends Login {
 		JLabel prikaziGodine = new JLabel(age_is);
 		prikaziGodine.setBounds(105, 113, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziGodine);
+		
+		JButton btnNewButton = new JButton("Otkljucaj Anketu");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(231, 114, 163, 23);
+		frmAdminPanel.getContentPane().add(btnNewButton);
 	}
 }
