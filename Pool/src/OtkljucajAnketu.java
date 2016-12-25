@@ -1,6 +1,11 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JTextArea;
 
 
 public class OtkljucajAnketu {
@@ -35,8 +40,29 @@ public class OtkljucajAnketu {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setTitle("Otkljucaj anketu");
+		frame.setBounds(100, 100, 526, 372);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblOtkljucajAnketu = new JLabel("OTKLJUCAJ ANKETU");
+		lblOtkljucajAnketu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblOtkljucajAnketu.setBounds(148, 11, 216, 47);
+		frame.getContentPane().add(lblOtkljucajAnketu);
+		
+		JButton btnOtkljucaj = new JButton("OTKLJUCAJ");
+		btnOtkljucaj.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnOtkljucaj.setBounds(39, 246, 188, 39);
+		frame.getContentPane().add(btnOtkljucaj);
+		
+		JButton btnOdaberiDrugu = new JButton("ODABERI DRUGU");
+		btnOdaberiDrugu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnOdaberiDrugu.setBounds(237, 246, 205, 39);
+		frame.getContentPane().add(btnOdaberiDrugu);
+		
+		JTextArea OtkljucajAnketu = new JTextArea();
+		
+		OtkljucajAnketu.setBounds(39, 66, 400, 161);
+		frame.getContentPane().add(OtkljucajAnketu);
 	}
-
 }
