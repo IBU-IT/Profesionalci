@@ -91,7 +91,7 @@ public class Login {
 					// Napravi statement i izvrsi query
 					stmt = conn.createStatement();
 					String sql;
-					sql = ("SELECT id, username, password FROM Users WHERE username='"+usernameField.getText()+"' AND password='"+passwordBox.getText()+"'");
+					sql = ("SELECT id, username, password, first_name, last_name, age, gender, user_role FROM Users WHERE username='"+usernameField.getText()+"' AND password='"+passwordBox.getText()+"'");
 					ResultSet rs = stmt.executeQuery(sql);
 
 					// Provjeri da li su uname i pw tacni tj. da li query daje rezultat
@@ -104,9 +104,14 @@ public class Login {
 					int id = rs.getInt("id");
 					String username = rs.getString("username");
 					String password = rs.getString("password");
+					String first_name = rs.getString("first_name");
+					String last_name = rs.getString("last_name");
+					int age = rs.getInt("age");
+					int gender = rs.getInt("gender");
+					int user_role = rs.getInt("user_role");
 					
 					//Provjera ID-a (kasnije ce biti provjera User_Role
-					if (id == 1) {
+					if (user_role == 1) {
 						// OTVORI ADMINA
 						LogovanAdmin lAdmin = new LogovanAdmin();
 						lAdmin.Admin();
