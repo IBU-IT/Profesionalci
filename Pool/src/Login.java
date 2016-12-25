@@ -112,7 +112,7 @@ public class Login {
 						lAdmin.Admin();
 						frmPoolSystem.dispose();
 					}else{
-						JOptionPane.showMessageDialog(null, "MoSa Admin");
+						JOptionPane.showMessageDialog(null, "Samo admin radi trenutno. Atif radi na tome dalje.");
 					}
 
 					// Zatvori resultset, statement i db konekciju i ispisi greske ako postoje 
