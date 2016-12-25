@@ -117,6 +117,7 @@ public class Login {
 						lAdmin.Admin();
 						frmPoolSystem.dispose();
 					}else{
+						// OTVORI USERA
 						LogovanKorisnik IKorisnik = new LogovanKorisnik();
 						IKorisnik.LogovanProfil();
 						frmPoolSystem.dispose();
