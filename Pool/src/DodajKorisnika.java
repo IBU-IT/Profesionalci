@@ -19,7 +19,7 @@ public class DodajKorisnika {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void DodajK() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
