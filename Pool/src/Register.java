@@ -1,6 +1,3 @@
-
-
-
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -45,7 +42,8 @@ public class Register {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	//Nije jos zavrseno biti ce dodano na login da se korisnik u Login panelu moze registrovat
+	public void RegistracijaIzLogina() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -169,12 +167,12 @@ public class Register {
 		lblGendre.setBounds(200, 159, 67, 14);
 		frame.getContentPane().add(lblGendre);
 		
-		JRadioButton Male = new JRadioButton("Male");
+		final JRadioButton Male = new JRadioButton("Male");
 		Male.setFont(new Font("Arial", Font.PLAIN, 11));
 		Male.setBounds(266, 160, 51, 23);
 		frame.getContentPane().add(Male);
 		
-		JRadioButton Female = new JRadioButton("Female");
+		final JRadioButton Female = new JRadioButton("Female");
 		Female.setFont(new Font("Arial", Font.PLAIN, 11));
 		Female.setBounds(335, 160, 109, 23);
 		frame.getContentPane().add(Female);
