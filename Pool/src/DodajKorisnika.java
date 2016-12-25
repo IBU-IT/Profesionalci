@@ -2,9 +2,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
+import javax.swing.JButton;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class DodajKorisnika {
@@ -121,5 +126,17 @@ public class DodajKorisnika {
 		JCheckBox chckbxAdmin = new JCheckBox("");
 		chckbxAdmin.setBounds(169, 161, 97, 14);
 		frmDodajNovogKorisnika.getContentPane().add(chckbxAdmin);
+		
+		JButton btnDodajNovogKorisnika = new JButton("Dodaj Novog Korisnika");
+		btnDodajNovogKorisnika.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			if(textField.getText().equals("")){
+				JOptionPane.showMessageDialog(null, "Ne moze biti prazno polje !!!");
+			}
+			}
+		});
+		btnDodajNovogKorisnika.setBounds(21, 212, 220, 23);
+		frmDodajNovogKorisnika.getContentPane().add(btnDodajNovogKorisnika);
 	}
 }
