@@ -61,7 +61,7 @@ public class DodajKorisnika {
 	private void initialize() {
 		frmDodajNovogKorisnika = new JFrame();
 		frmDodajNovogKorisnika.setTitle("Dodaj Novog Korisnika");
-		frmDodajNovogKorisnika.setBounds(100, 100, 450, 300);
+		frmDodajNovogKorisnika.setBounds(100, 100, 262, 278);
 		frmDodajNovogKorisnika.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmDodajNovogKorisnika.getContentPane().setLayout(null);
 		
@@ -94,23 +94,23 @@ public class DodajKorisnika {
 		frmDodajNovogKorisnika.getContentPane().add(lblIfAdmin);
 		
 		usernameField = new JTextField();
-		usernameField.setBounds(91, 8, 102, 20);
+		usernameField.setBounds(91, 8, 145, 20);
 		frmDodajNovogKorisnika.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
 		
 		passwordField = new JTextField();
 		passwordField.setColumns(10);
-		passwordField.setBounds(91, 33, 102, 20);
+		passwordField.setBounds(91, 33, 145, 20);
 		frmDodajNovogKorisnika.getContentPane().add(passwordField);
 		
 		imeField = new JTextField();
 		imeField.setColumns(10);
-		imeField.setBounds(91, 58, 102, 20);
+		imeField.setBounds(91, 58, 145, 20);
 		frmDodajNovogKorisnika.getContentPane().add(imeField);
 		
 		prezimeField = new JTextField();
 		prezimeField.setColumns(10);
-		prezimeField.setBounds(91, 83, 102, 20);
+		prezimeField.setBounds(91, 83, 145, 20);
 		frmDodajNovogKorisnika.getContentPane().add(prezimeField);
 		
 		JRadioButton rdbtnMusko = new JRadioButton("Musko");
@@ -126,7 +126,7 @@ public class DodajKorisnika {
 	    group.add(rdbtnensko);
 		
 		JCheckBox chckbxAdmin = new JCheckBox("");
-		chckbxAdmin.setBounds(169, 161, 97, 14);
+		chckbxAdmin.setBounds(135, 161, 28, 14);
 		frmDodajNovogKorisnika.getContentPane().add(chckbxAdmin);
 		
 		JButton btnDodajNovogKorisnika = new JButton("Dodaj Novog Korisnika");
@@ -147,7 +147,7 @@ public class DodajKorisnika {
 			}
 			}
 		});
-		btnDodajNovogKorisnika.setBounds(21, 212, 220, 23);
+		btnDodajNovogKorisnika.setBounds(10, 186, 226, 43);
 		frmDodajNovogKorisnika.getContentPane().add(btnDodajNovogKorisnika);
 		
 		JSpinner spinner = new JSpinner();
