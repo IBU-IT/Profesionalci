@@ -17,6 +17,7 @@ import javax.swing.JPasswordField;
 
 public class Login {
 	
+	public static int id;
 	public static String username = "";
 	public static String first_name = "";
 	public static String last_name = "";
@@ -110,9 +111,8 @@ public class Login {
 
 					// Povuci podatke
 					// ZA PRIMJER KORISTIMO ID KAO USER_ROLE (1-admin, 2-user)
-					int id = rs.getInt("id");
+					id = rs.getInt("id");
 					username = rs.getString("username");
-					String password = rs.getString("password");
 					first_name = rs.getString("first_name");
 					last_name = rs.getString("last_name");
 					int age = rs.getInt("age");
