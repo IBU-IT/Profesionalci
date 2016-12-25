@@ -20,6 +20,9 @@ public class Login {
 	public static String username = "";
 	public static String first_name = "";
 	public static String last_name = "";
+	public static String gender_is = "";
+	public static int gender;
+	public static String age_is;
 
 	// Definisi JDBC driver name i URL baze
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -113,9 +116,9 @@ public class Login {
 					first_name = rs.getString("first_name");
 					last_name = rs.getString("last_name");
 					int age = rs.getInt("age");
-					int gender = rs.getInt("gender");
+					age_is = String.valueOf(age);
+					gender = rs.getInt("gender");
 					
-					String gender_is = "";
 					if (gender == 1){
 						gender_is = "Musko";
 					}else{

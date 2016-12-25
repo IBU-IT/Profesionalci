@@ -111,15 +111,31 @@ public class LogovanAdmin extends Login {
 		frmAdminPanel.getContentPane().add(btnZakljuajAnketu);
 		
 		JLabel prikaziUsername = new JLabel(username);
-		prikaziUsername.setBounds(92, 11, 117, 23);
+		prikaziUsername.setBounds(105, 11, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziUsername);
 		
 		JLabel prikaziIme = new JLabel(first_name);
-		prikaziIme.setBounds(92, 38, 117, 23);
+		prikaziIme.setBounds(105, 38, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziIme);
 		
 		JLabel prikaziPrezime = new JLabel(last_name);
-		prikaziPrezime.setBounds(92, 67, 117, 23);
+		prikaziPrezime.setBounds(105, 65, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziPrezime);
+		
+		JLabel lblSpol = new JLabel("Spol:");
+		lblSpol.setBounds(10, 91, 85, 23);
+		frmAdminPanel.getContentPane().add(lblSpol);
+		
+		JLabel lblGodina = new JLabel("Godina:");
+		lblGodina.setBounds(10, 113, 85, 23);
+		frmAdminPanel.getContentPane().add(lblGodina);
+		
+		JLabel prikaziSpol = new JLabel(gender_is);
+		prikaziSpol.setBounds(105, 91, 104, 23);
+		frmAdminPanel.getContentPane().add(prikaziSpol);
+		
+		JLabel prikaziGodine = new JLabel(age_is);
+		prikaziGodine.setBounds(105, 113, 104, 23);
+		frmAdminPanel.getContentPane().add(prikaziGodine);
 	}
 }
