@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
 import java.sql.*;
+
 import javax.swing.JPasswordField;
 
 public class Login {
@@ -78,6 +79,7 @@ public class Login {
 		JButton loginButton = new JButton("Login");
 
 		loginButton.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("deprecation")
 			public void mouseClicked(MouseEvent e) {
 				Connection conn = null;
 				Statement stmt = null;
@@ -108,6 +110,14 @@ public class Login {
 					String last_name = rs.getString("last_name");
 					int age = rs.getInt("age");
 					int gender = rs.getInt("gender");
+					
+					String gender_is = "";
+					if (gender == 1){
+						gender_is = "Musko";
+					}else{
+						gender_is = "Zensko";
+					}
+					
 					int user_role = rs.getInt("user_role");
 					
 					//Provjera ID-a (kasnije ce biti provjera User_Role
