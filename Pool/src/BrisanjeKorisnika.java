@@ -47,7 +47,7 @@ public class BrisanjeKorisnika {
 		frame = new JFrame();
 		frame.setTitle("Brisanje Korisnika");
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		textField = new JTextField();
@@ -64,7 +64,7 @@ public class BrisanjeKorisnika {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnBriiKorisnika.setBounds(143, 163, 200, 50);
+		btnBriiKorisnika.setBounds(143, 153, 200, 50);
 		frame.getContentPane().add(btnBriiKorisnika);
 		
 		lblBrisanjeKorisnika = new JLabel("BRISANJE KORISNIKA");
