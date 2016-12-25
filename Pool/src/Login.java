@@ -68,7 +68,7 @@ public class Login {
 		frmPoolSystem = new JFrame();
 		frmPoolSystem.setTitle("Pool System - Login");
 		frmPoolSystem.setResizable(false);
-		frmPoolSystem.setBounds(100, 100, 479, 333);
+		frmPoolSystem.setBounds(100, 100, 479, 335);
 		frmPoolSystem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPoolSystem.getContentPane().setLayout(null);
 
