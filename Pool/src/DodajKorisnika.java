@@ -73,8 +73,8 @@ public class DodajKorisnika {
 		lblSpol.setBounds(10, 136, 46, 14);
 		frmDodajNovogKorisnika.getContentPane().add(lblSpol);
 		
-		JLabel lblIfAdmin = new JLabel("If Admin:");
-		lblIfAdmin.setBounds(10, 161, 75, 14);
+		JLabel lblIfAdmin = new JLabel("Da li je administrator?");
+		lblIfAdmin.setBounds(10, 161, 153, 14);
 		frmDodajNovogKorisnika.getContentPane().add(lblIfAdmin);
 		
 		textField = new JTextField();
@@ -89,17 +89,17 @@ public class DodajKorisnika {
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(91, 61, 102, 20);
+		textField_2.setBounds(91, 58, 102, 20);
 		frmDodajNovogKorisnika.getContentPane().add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(91, 86, 102, 20);
+		textField_3.setBounds(91, 83, 102, 20);
 		frmDodajNovogKorisnika.getContentPane().add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(91, 111, 102, 20);
+		textField_4.setBounds(91, 108, 102, 20);
 		frmDodajNovogKorisnika.getContentPane().add(textField_4);
 		
 		JRadioButton rdbtnMusko = new JRadioButton("Musko");
@@ -111,7 +111,7 @@ public class DodajKorisnika {
 		frmDodajNovogKorisnika.getContentPane().add(rdbtnensko);
 		
 		JCheckBox chckbxAdmin = new JCheckBox("");
-		chckbxAdmin.setBounds(91, 161, 97, 23);
+		chckbxAdmin.setBounds(169, 161, 97, 14);
 		frmDodajNovogKorisnika.getContentPane().add(chckbxAdmin);
 	}
 }
