@@ -113,11 +113,11 @@ public class DodajKorisnika {
 		prezimeField.setBounds(91, 83, 145, 20);
 		frmDodajNovogKorisnika.getContentPane().add(prezimeField);
 		
-		JRadioButton rdbtnMusko = new JRadioButton("Musko");
+		final JRadioButton rdbtnMusko = new JRadioButton("Musko");
 		rdbtnMusko.setBounds(91, 133, 84, 20);
 		frmDodajNovogKorisnika.getContentPane().add(rdbtnMusko);
 		
-		JRadioButton rdbtnensko = new JRadioButton("\u017Densko");
+		final JRadioButton rdbtnensko = new JRadioButton("\u017Densko");
 		rdbtnensko.setBounds(177, 135, 102, 17);
 		frmDodajNovogKorisnika.getContentPane().add(rdbtnensko);
 		
@@ -125,9 +125,14 @@ public class DodajKorisnika {
 	    group.add(rdbtnMusko);
 	    group.add(rdbtnensko);
 		
-		JCheckBox chckbxAdmin = new JCheckBox("");
+		final JCheckBox chckbxAdmin = new JCheckBox("");
 		chckbxAdmin.setBounds(135, 161, 28, 14);
 		frmDodajNovogKorisnika.getContentPane().add(chckbxAdmin);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setBounds(91, 108, 46, 20);
+		frmDodajNovogKorisnika.getContentPane().add(spinner);
+		final int godine = (Integer) spinner.getValue();
 		
 		JButton btnDodajNovogKorisnika = new JButton("Dodaj Novog Korisnika");
 		btnDodajNovogKorisnika.addMouseListener(new MouseAdapter() {
@@ -145,13 +150,32 @@ public class DodajKorisnika {
 			if(prezimeField.getText().equals("")){
 				JOptionPane.showMessageDialog(null, "Prezime mora biti uneseno");
 			}
+			if(godine < 0){
+				JOptionPane.showMessageDialog(null, "Godine moraju biti unesene i ne mogu biti negativna vrijednost");
+			}
+			int spol = 0;
+		    if(rdbtnMusko.isSelected()){
+	            spol=1;
+	        }
+	        else if(rdbtnensko.isSelected()){
+	        	spol=2;
+	        }
+			if(spol == 0){
+				JOptionPane.showMessageDialog(null, "Spol korisnika nije definisan.");
+			}
+			int admin = 0;
+			//boolean checked = chckbxAdmin.isSelected();
+			if(chckbxAdmin.isSelected() == true) {
+			  admin = 1;
+			}else{
+				admin = 0;
+			}
+			JOptionPane.showMessageDialog(null, "Admin je: "+admin);
+			
 			}
 		});
 		btnDodajNovogKorisnika.setBounds(10, 186, 226, 43);
 		frmDodajNovogKorisnika.getContentPane().add(btnDodajNovogKorisnika);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(91, 108, 46, 20);
-		frmDodajNovogKorisnika.getContentPane().add(spinner);
 	}
 }
