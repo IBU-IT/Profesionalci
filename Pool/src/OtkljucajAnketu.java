@@ -53,13 +53,13 @@ public class OtkljucajAnketu {
 		JButton btnOtkljucaj = new JButton("OTKLJUCAJ");
 		btnOtkljucaj.setBackground(SystemColor.activeCaption);
 		btnOtkljucaj.setFont(new Font("Gadugi", Font.BOLD, 16));
-		btnOtkljucaj.setBounds(260, 278, 200, 36);
+		btnOtkljucaj.setBounds(50, 278, 200, 36);
 		frame.getContentPane().add(btnOtkljucaj);
 		
 		JButton btnOdaberiDrugu = new JButton("ODABERI DRUGU");
 		btnOdaberiDrugu.setBackground(SystemColor.activeCaption);
 		btnOdaberiDrugu.setFont(new Font("Gadugi", Font.BOLD, 16));
-		btnOdaberiDrugu.setBounds(50, 278, 200, 36);
+		btnOdaberiDrugu.setBounds(260, 278, 200, 36);
 		frame.getContentPane().add(btnOdaberiDrugu);
 		
 		JTextArea OtkljucajAnketu = new JTextArea();
