@@ -127,7 +127,7 @@ public class Login {
 					
 					//Provjera User_Role (admin 1, sve ostalo user)
 					if (user_role == 1) {
-						// OTVORI ADMINA
+						// OTVORI ADMIN
 						LogovanAdmin lAdmin = new LogovanAdmin();
 						lAdmin.Admin();
 						frmPoolSystem.dispose();
