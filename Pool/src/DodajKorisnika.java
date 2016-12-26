@@ -13,6 +13,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JSpinner;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 
 public class DodajKorisnika {
@@ -66,59 +70,72 @@ public class DodajKorisnika {
 		frmDodajNovogKorisnika.getContentPane().setLayout(null);
 		
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(10, 11, 75, 14);
+		lblUsername.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		lblUsername.setBounds(10, 68, 75, 14);
 		frmDodajNovogKorisnika.getContentPane().add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(10, 36, 75, 14);
+		lblPassword.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		lblPassword.setBounds(10, 93, 75, 14);
 		frmDodajNovogKorisnika.getContentPane().add(lblPassword);
 		
 		JLabel lblIme = new JLabel("Ime:");
-		lblIme.setBounds(10, 61, 75, 14);
+		lblIme.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		lblIme.setBounds(10, 118, 75, 14);
 		frmDodajNovogKorisnika.getContentPane().add(lblIme);
 		
 		JLabel lblPrezime = new JLabel("Prezime:");
-		lblPrezime.setBounds(10, 86, 75, 14);
+		lblPrezime.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		lblPrezime.setBounds(10, 143, 75, 14);
 		frmDodajNovogKorisnika.getContentPane().add(lblPrezime);
 		
 		JLabel lblGodine = new JLabel("Godine:");
-		lblGodine.setBounds(10, 111, 75, 14);
+		lblGodine.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		lblGodine.setBounds(10, 168, 75, 14);
 		frmDodajNovogKorisnika.getContentPane().add(lblGodine);
 		
 		JLabel lblSpol = new JLabel("Spol:");
-		lblSpol.setBounds(10, 136, 46, 14);
+		lblSpol.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		lblSpol.setBounds(10, 193, 46, 26);
 		frmDodajNovogKorisnika.getContentPane().add(lblSpol);
 		
 		JLabel lblIfAdmin = new JLabel("Da li je administrator?");
-		lblIfAdmin.setBounds(10, 161, 153, 14);
+		lblIfAdmin.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		lblIfAdmin.setBounds(10, 230, 153, 14);
 		frmDodajNovogKorisnika.getContentPane().add(lblIfAdmin);
 		
 		usernameField = new JTextField();
-		usernameField.setBounds(91, 8, 145, 20);
+		usernameField.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		usernameField.setBounds(93, 62, 170, 20);
 		frmDodajNovogKorisnika.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
 		
 		passwordField = new JTextField();
+		passwordField.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		passwordField.setColumns(10);
-		passwordField.setBounds(91, 33, 145, 20);
+		passwordField.setBounds(93, 87, 170, 20);
 		frmDodajNovogKorisnika.getContentPane().add(passwordField);
 		
 		imeField = new JTextField();
+		imeField.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		imeField.setColumns(10);
-		imeField.setBounds(91, 58, 145, 20);
+		imeField.setBounds(93, 112, 170, 20);
 		frmDodajNovogKorisnika.getContentPane().add(imeField);
 		
 		prezimeField = new JTextField();
+		prezimeField.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		prezimeField.setColumns(10);
-		prezimeField.setBounds(91, 83, 145, 20);
+		prezimeField.setBounds(93, 137, 170, 20);
 		frmDodajNovogKorisnika.getContentPane().add(prezimeField);
 		
 		final JRadioButton rdbtnMusko = new JRadioButton("Musko");
-		rdbtnMusko.setBounds(91, 133, 84, 20);
+		rdbtnMusko.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		rdbtnMusko.setBounds(93, 197, 84, 20);
 		frmDodajNovogKorisnika.getContentPane().add(rdbtnMusko);
 		
 		final JRadioButton rdbtnensko = new JRadioButton("\u017Densko");
-		rdbtnensko.setBounds(177, 135, 102, 17);
+		rdbtnensko.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		rdbtnensko.setBounds(179, 199, 102, 17);
 		frmDodajNovogKorisnika.getContentPane().add(rdbtnensko);
 		
 		ButtonGroup group = new ButtonGroup();
@@ -126,15 +143,22 @@ public class DodajKorisnika {
 	    group.add(rdbtnensko);
 		
 		final JCheckBox chckbxAdmin = new JCheckBox("");
-		chckbxAdmin.setBounds(135, 161, 28, 14);
+		chckbxAdmin.setBounds(159, 230, 28, 14);
 		frmDodajNovogKorisnika.getContentPane().add(chckbxAdmin);
 		
 		JSpinner spinner = new JSpinner();
-		spinner.setBounds(91, 108, 46, 20);
+		spinner.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		spinner.setBounds(93, 162, 46, 20);
 		frmDodajNovogKorisnika.getContentPane().add(spinner);
 		final int godine = (Integer) spinner.getValue();
 		
 		JButton btnDodajNovogKorisnika = new JButton("Dodaj Novog Korisnika");
+		btnDodajNovogKorisnika.setBackground(SystemColor.activeCaption);
+		btnDodajNovogKorisnika.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnDodajNovogKorisnika.setFont(new Font("Gadugi", Font.BOLD, 16));
 		btnDodajNovogKorisnika.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -174,8 +198,13 @@ public class DodajKorisnika {
 			
 			}
 		});
-		btnDodajNovogKorisnika.setBounds(10, 186, 226, 43);
+		btnDodajNovogKorisnika.setBounds(64, 302, 359, 43);
 		frmDodajNovogKorisnika.getContentPane().add(btnDodajNovogKorisnika);
+		
+		JLabel lblIspuniteSvaPolja = new JLabel("ISPUNITE SVA POLJA");
+		lblIspuniteSvaPolja.setFont(new Font("Gadugi", Font.PLAIN, 18));
+		lblIspuniteSvaPolja.setBounds(165, 11, 200, 50);
+		frmDodajNovogKorisnika.getContentPane().add(lblIspuniteSvaPolja);
 		
 	}
 }
