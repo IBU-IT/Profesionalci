@@ -6,6 +6,10 @@ import javax.swing.JButton;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class LogovanKorisnik extends Login {
@@ -42,30 +46,43 @@ public class LogovanKorisnik extends Login {
 		frmUserPanel = new JFrame();
 		frmUserPanel.setTitle("User Panel");
 		frmUserPanel.setBounds(100, 100, 520, 410);
-		frmUserPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmUserPanel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmUserPanel.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Prijavljen Kao:");
-		lblNewLabel.setBounds(10, 10, 85, 23);
+		JLabel lblNewLabel = new JLabel("Prijavljen kao:");
+		lblNewLabel.setFont(new Font("Gadugi", Font.BOLD, 14));
+		lblNewLabel.setBounds(10, 57, 103, 23);
 		frmUserPanel.getContentPane().add(lblNewLabel);
 		
 		JLabel lblIme = new JLabel("Ime:");
-		lblIme.setBounds(10, 37, 85, 23);
+		lblIme.setFont(new Font("Gadugi", Font.BOLD, 14));
+		lblIme.setBounds(10, 87, 85, 23);
 		frmUserPanel.getContentPane().add(lblIme);
 		
 		JLabel lblPrezime = new JLabel("Prezime:");
-		lblPrezime.setBounds(10, 71, 85, 18);
+		lblPrezime.setFont(new Font("Gadugi", Font.BOLD, 14));
+		lblPrezime.setBounds(10, 118, 85, 18);
 		frmUserPanel.getContentPane().add(lblPrezime);
 		
 		JButton btnGlasajNaAnketi = new JButton("Glasaj na Anketi");
-		btnGlasajNaAnketi.setBounds(232, 5, 137, 23);
+		btnGlasajNaAnketi.setBackground(SystemColor.activeCaption);
+		btnGlasajNaAnketi.setFont(new Font("Gadugi", Font.BOLD, 14));
+		btnGlasajNaAnketi.setBounds(53, 203, 183, 30);
 		frmUserPanel.getContentPane().add(btnGlasajNaAnketi);
 		
-		JButton btnAnketeNaKojim = new JButton("<html><body><center><p>Ankete na kojim<br>si glasao</p></center></body></html>");
-		btnAnketeNaKojim.setBounds(232, 69, 137, 53);
+		JButton btnAnketeNaKojim = new JButton("<html><body><center><p>Ankete na kojim si glasao</p></center></body></html>");
+		btnAnketeNaKojim.setBackground(SystemColor.activeCaption);
+		btnAnketeNaKojim.setFont(new Font("Gadugi", Font.BOLD, 14));
+		btnAnketeNaKojim.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAnketeNaKojim.setBounds(123, 257, 278, 30);
 		frmUserPanel.getContentPane().add(btnAnketeNaKojim);
 		
 		JButton btnPrijaviGreku = new JButton("Prijavi Gre\u0161ku");
+		btnPrijaviGreku.setBackground(SystemColor.activeCaption);
+		btnPrijaviGreku.setFont(new Font("Gadugi", Font.BOLD, 14));
 		btnPrijaviGreku.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -73,30 +90,34 @@ public class LogovanKorisnik extends Login {
 				greska.greska();
 			}
 		});
-		btnPrijaviGreku.setBounds(232, 37, 137, 23);
+		btnPrijaviGreku.setBounds(256, 203, 183, 30);
 		frmUserPanel.getContentPane().add(btnPrijaviGreku);
 		
 		JButton btnodjaviSe = new JButton("<html><body><center><p>ODJAVI SE</p></center></body></html>");
+		btnodjaviSe.setBackground(SystemColor.activeCaption);
+		btnodjaviSe.setFont(new Font("Gadugi", Font.BOLD, 16));
 		btnodjaviSe.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.exit(0);
 			}
 		});
-		btnodjaviSe.setBounds(10, 133, 359, 28);
+		btnodjaviSe.setBounds(53, 307, 386, 31);
 		frmUserPanel.getContentPane().add(btnodjaviSe);
 		
 		Login drugi = new Login();
 		JLabel privaljnenKaoTekst = new JLabel("<html><font color='red'>"+drugi.getUsername()+"</font></html>");
-		privaljnenKaoTekst.setBounds(105, 12, 113, 19);
+		privaljnenKaoTekst.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		privaljnenKaoTekst.setBounds(123, 61, 113, 19);
 		frmUserPanel.getContentPane().add(privaljnenKaoTekst);
 		
 		JLabel prijavljenIme = new JLabel("<html><font color='red'>"+drugi.getFirstName()+"</font></html>");
-		prijavljenIme.setBounds(105, 41, 113, 19);
+		prijavljenIme.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		prijavljenIme.setBounds(123, 91, 113, 19);
 		frmUserPanel.getContentPane().add(prijavljenIme);
 		
 		JLabel prijavljenPrezime = new JLabel("<html><font color='red'>"+drugi.getLastName()+"</font></html>");
-		prijavljenPrezime.setBounds(105, 70, 113, 19);
+		prijavljenPrezime.setBounds(123, 117, 113, 19);
 		frmUserPanel.getContentPane().add(prijavljenPrezime);
 	}
 }

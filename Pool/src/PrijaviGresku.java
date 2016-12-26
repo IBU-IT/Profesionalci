@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 
 import javax.swing.JTextArea;
+import java.awt.SystemColor;
 
 
 public class PrijaviGresku {
@@ -53,6 +54,7 @@ public class PrijaviGresku {
 		frmPrijaviGresku.getContentPane().add(lblOpiiteProblemKoji);
 		
 		JButton btnPrijaviGreku = new JButton("PRIJAVITE GRE\u0160KU");
+		btnPrijaviGreku.setBackground(SystemColor.activeCaption);
 		btnPrijaviGreku.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnPrijaviGreku.setBounds(43, 295, 414, 46);
 		frmPrijaviGresku.getContentPane().add(btnPrijaviGreku);
