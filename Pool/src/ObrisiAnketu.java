@@ -13,7 +13,7 @@ public class ObrisiAnketu {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void ObrisiA() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -43,9 +43,9 @@ public class ObrisiAnketu {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnObrii = new JButton("OBRI\u0160I ");
-		btnObrii.setBounds(144, 264, 213, 59);
-		frame.getContentPane().add(btnObrii);
+		JButton btnObrisiAnketu = new JButton("OBRI\u0160I ");
+		btnObrisiAnketu.setBounds(144, 264, 213, 59);
+		frame.getContentPane().add(btnObrisiAnketu);
 		
 		JLabel lblBrisanjeAnkete = new JLabel("BRISANJE ANKETE");
 		lblBrisanjeAnkete.setFont(new Font("Tahoma", Font.PLAIN, 20));
