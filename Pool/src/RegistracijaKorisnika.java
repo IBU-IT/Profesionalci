@@ -1,3 +1,4 @@
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -5,28 +6,13 @@ import javax.swing.JLabel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import javax.imageio.ImageIO;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.ButtonGroup;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-
 import java.awt.Image;
-import java.awt.Label;
-import java.io.File;
-import java.io.IOException;
 import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JTextField;
-import javax.swing.JList;
 import javax.swing.JSpinner;
 import javax.swing.JPasswordField;
-import javax.swing.SwingConstants;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JRadioButton;
 
 
