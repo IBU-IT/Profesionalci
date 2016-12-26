@@ -21,9 +21,13 @@ public class Login {
 	private static String username = "";
 	private static String first_name = "";
 	private static String last_name = "";
-	private static String gender_is = "";
-	private static int gender;
+	private static int age;
 	private static String age_is;
+	private static int gender;
+	private static String gender_is = "";
+	private static int user_role;
+	
+	
 
 	// Definisi JDBC driver name i URL baze
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -114,10 +118,10 @@ public class Login {
 					setUsername(rs.getString("username"));
 					setFirstName(rs.getString("first_name"));
 					setLastName(rs.getString("last_name"));
-					int age = rs.getInt("age");
+					setAge(rs.getInt("age"));
 					setAgeIs(String.valueOf(age));
 					setGender(rs.getInt("gender"));
-					int user_role = rs.getInt("user_role");
+					setUserRole(rs.getInt("user_role"));
 					
 					if (getGender() == 1){
 						setGenderIs("Musko");
@@ -126,7 +130,7 @@ public class Login {
 					}
 					
 					//Provjera User_Role (admin 1, sve ostalo user)
-					if (user_role == 1) {
+					if (getUserRole() == 1) {
 						// OTVORI ADMIN
 						LogovanAdmin lAdmin = new LogovanAdmin();
 						lAdmin.Admin();
@@ -238,11 +242,27 @@ public class Login {
 		Login.gender_is = gender_is;
 	}
 	
+	public int getAge() {
+		return age;
+	}
+
+	public static void setAge(int age) {
+		Login.age = age;
+	}
+	
 	public String getAgeIs() {
 		return age_is;
 	}
 
 	public static void setAgeIs(String age_is) {
 		Login.age_is = age_is;
+	}
+	
+	public int getUserRole() {
+		return user_role;
+	}
+
+	public static void setUserRole(int user_role) {
+		Login.user_role = user_role;
 	}
 }
