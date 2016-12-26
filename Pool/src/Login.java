@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import java.sql.*;
 
 import javax.swing.JPasswordField;
+import java.awt.SystemColor;
 
 public class Login {
 	
@@ -69,9 +70,10 @@ public class Login {
 	 */
 	private void initialize() {
 		frmPoolSystem = new JFrame();
+		frmPoolSystem.setBackground(SystemColor.activeCaption);
 		frmPoolSystem.setTitle("Pool System - Login");
 		frmPoolSystem.setResizable(false);
-		frmPoolSystem.setBounds(100, 100, 479, 335);
+		frmPoolSystem.setBounds(100, 100, 520, 410);
 		frmPoolSystem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPoolSystem.getContentPane().setLayout(null);
 

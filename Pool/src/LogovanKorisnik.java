@@ -41,7 +41,7 @@ public class LogovanKorisnik extends Login {
 	private void initialize() {
 		frmUserPanel = new JFrame();
 		frmUserPanel.setTitle("User Panel");
-		frmUserPanel.setBounds(100, 100, 400, 206);
+		frmUserPanel.setBounds(100, 100, 520, 410);
 		frmUserPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmUserPanel.getContentPane().setLayout(null);
 		

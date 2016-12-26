@@ -49,7 +49,7 @@ public class BrisanjeKorisnika {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Brisanje Korisnika");
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 520, 410);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		

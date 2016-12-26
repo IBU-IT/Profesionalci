@@ -43,7 +43,7 @@ public class PrijaviGresku {
 	private void initialize() {
 		frmPrijaviGresku = new JFrame();
 		frmPrijaviGresku.setTitle("Prijavi Gresku");
-		frmPrijaviGresku.setBounds(100, 100, 450, 293);
+		frmPrijaviGresku.setBounds(100, 100, 520, 410);
 		frmPrijaviGresku.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPrijaviGresku.getContentPane().setLayout(null);
 		

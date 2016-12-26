@@ -39,7 +39,7 @@ public class ObrisiAnketu {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Obrisi Anketu");
-		frame.setBounds(100, 100, 519, 398);
+		frame.setBounds(100, 100, 520, 410);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		

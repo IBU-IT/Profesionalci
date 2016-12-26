@@ -40,7 +40,7 @@ public class ZakljucajAnketu {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Zakljucaj anketu");
-		frame.setBounds(100, 100, 512, 373);
+		frame.setBounds(100, 100, 520, 410);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
