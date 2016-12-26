@@ -47,7 +47,7 @@ public class LogovanAdmin extends Login {
 		frmAdminPanel = new JFrame();
 		frmAdminPanel.setResizable(false);
 		frmAdminPanel.setTitle("Admin Panel");
-		frmAdminPanel.setBounds(100, 100, 412, 329);
+		frmAdminPanel.setBounds(100, 100, 411, 329);
 		frmAdminPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAdminPanel.getContentPane().setLayout(null);
 		
