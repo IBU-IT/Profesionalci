@@ -88,6 +88,13 @@ public class LogovanAdmin extends Login{
 		frmAdminPanel.getContentPane().add(btnObriiAnketu);
 		
 		JButton btnPregeldStatistike = new JButton("PREGELD STATISTIKE");
+		btnPregeldStatistike.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e){
+				PregledStatistike pregled = new PregledStatistike();
+				pregled.PregledS();
+			}
+		});
 		btnPregeldStatistike.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnPregeldStatistike.setBounds(231, 216, 163, 63);
 		frmAdminPanel.getContentPane().add(btnPregeldStatistike);
