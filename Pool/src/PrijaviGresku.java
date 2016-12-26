@@ -47,18 +47,19 @@ public class PrijaviGresku {
 		frmPrijaviGresku.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPrijaviGresku.getContentPane().setLayout(null);
 		
-		JLabel lblOpiiteProblemKoji = new JLabel("Opi\u0161ite problem koji imate");
-		lblOpiiteProblemKoji.setBounds(10, 11, 203, 14);
+		JLabel lblOpiiteProblemKoji = new JLabel("Opi\u0161ite problem koji imate :");
+		lblOpiiteProblemKoji.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblOpiiteProblemKoji.setBounds(10, 11, 262, 34);
 		frmPrijaviGresku.getContentPane().add(lblOpiiteProblemKoji);
 		
 		JButton btnPrijaviGreku = new JButton("PRIJAVITE GRE\u0160KU");
 		btnPrijaviGreku.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnPrijaviGreku.setBounds(10, 191, 414, 46);
+		btnPrijaviGreku.setBounds(43, 295, 414, 46);
 		frmPrijaviGresku.getContentPane().add(btnPrijaviGreku);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setLineWrap(true);
-		textArea.setBounds(10, 36, 414, 144);
+		textArea.setBounds(10, 56, 484, 209);
 		frmPrijaviGresku.getContentPane().add(textArea);
 		
 	}
