@@ -119,11 +119,11 @@ public class LogovanAdmin extends Login{
 		prikaziUsername.setBounds(105, 11, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziUsername);
 		
-		JLabel prikaziIme = new JLabel("<html><font color='red'>"+first_name+"</font></html>");
+		JLabel prikaziIme = new JLabel("<html><font color='red'>"+novi.getFirstName()+"</font></html>");
 		prikaziIme.setBounds(105, 38, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziIme);
 		
-		JLabel prikaziPrezime = new JLabel("<html><font color='red'>"+last_name+"</font></html>");
+		JLabel prikaziPrezime = new JLabel("<html><font color='red'>"+novi.getLastName()+"</font></html>");
 		prikaziPrezime.setBounds(105, 65, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziPrezime);
 		
@@ -135,11 +135,11 @@ public class LogovanAdmin extends Login{
 		lblGodina.setBounds(10, 113, 85, 23);
 		frmAdminPanel.getContentPane().add(lblGodina);
 		
-		JLabel prikaziSpol = new JLabel("<html><font color='red'>"+gender_is+"</font></html>");
+		JLabel prikaziSpol = new JLabel("<html><font color='red'>"+novi.getGenderIs()+"</font></html>");
 		prikaziSpol.setBounds(105, 91, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziSpol);
 		
-		JLabel prikaziGodine = new JLabel("<html><font color='red'>"+age_is+"</font></html>");
+		JLabel prikaziGodine = new JLabel("<html><font color='red'>"+novi.getAgeIs()+"</font></html>");
 		prikaziGodine.setBounds(105, 113, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziGodine);
 		

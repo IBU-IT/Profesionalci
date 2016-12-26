@@ -19,11 +19,11 @@ public class Login {
 	
 	public static int id;
 	private static String username = "";
-	public static String first_name = "";
-	public static String last_name = "";
-	public static String gender_is = "";
-	public static int gender;
-	public static String age_is;
+	private static String first_name = "";
+	private static String last_name = "";
+	private static String gender_is = "";
+	private static int gender;
+	private static String age_is;
 
 	// Definisi JDBC driver name i URL baze
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -110,19 +110,19 @@ public class Login {
 					}
 
 					// Povuci podatke				
-					id = rs.getInt("id");
+					setId(rs.getInt("id"));
 					setUsername(rs.getString("username"));
-					first_name = rs.getString("first_name");
-					last_name = rs.getString("last_name");
+					setFirstName(rs.getString("first_name"));
+					setLastName(rs.getString("last_name"));
 					int age = rs.getInt("age");
-					age_is = String.valueOf(age);
-					gender = rs.getInt("gender");
+					setAgeIs(String.valueOf(age));
+					setGender(rs.getInt("gender"));
 					int user_role = rs.getInt("user_role");
 					
 					if (gender == 1){
-						gender_is = "Musko";
+						setGenderIs("Musko");
 					}else{
-						gender_is = "Zensko";
+						setGenderIs("Zensko");
 					}
 					
 					//Provjera User_Role (admin 1, sve ostalo user)
@@ -196,5 +196,53 @@ public class Login {
 
 	public static void setUsername(String username) {
 		Login.username = username;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public static void setId(int id) {
+		Login.id = id;
+	}
+	
+	public String getFirstName() {
+		return first_name;
+	}
+
+	public static void setFirstName(String first_name) {
+		Login.first_name = first_name;
+	}
+	
+	public String getLastName() {
+		return last_name;
+	}
+
+	public static void setLastName(String last_name) {
+		Login.last_name = last_name;
+	}
+	
+	public int getGender() {
+		return gender;
+	}
+
+	public static void setGender(int gender) {
+		Login.gender = gender;
+	}
+	
+	public String getGenderIs() {
+		return gender_is;
+	}
+
+	public static void setGenderIs(String gender_is) {
+		Login.gender_is = gender_is;
+	}
+	
+	public String getAgeIs() {
+		return age_is;
+	}
+
+	public static void setAgeIs(String age_is) {
+		Login.age_is = age_is;
 	}
 }
