@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.SystemColor;
 
 
 
@@ -51,6 +52,7 @@ public class LogovanAdmin extends Login{
 		frmAdminPanel.getContentPane().setLayout(null);
 		
 		JButton btnDodajKorisnika = new JButton("Dodaj Korisnika");
+		btnDodajKorisnika.setBackground(SystemColor.activeCaptionBorder);
 		btnDodajKorisnika.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -58,10 +60,11 @@ public class LogovanAdmin extends Login{
 				a.DodajK();
 			}
 		});
-		btnDodajKorisnika.setBounds(231, 148, 163, 23);
+		btnDodajKorisnika.setBounds(340, 203, 165, 30);
 		frmAdminPanel.getContentPane().add(btnDodajKorisnika);
 		
 		JButton btnObriiKorisnika = new JButton("Obri\u0161i Korisnika");
+		btnObriiKorisnika.setBackground(SystemColor.activeCaptionBorder);
 		btnObriiKorisnika.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -69,14 +72,16 @@ public class LogovanAdmin extends Login{
 				brisi.ObrisiK();
 			}
 		});
-		btnObriiKorisnika.setBounds(231, 182, 163, 23);
+		btnObriiKorisnika.setBounds(340, 254, 165, 30);
 		frmAdminPanel.getContentPane().add(btnObriiKorisnika);
 		
 		JButton btnDodajAnketu = new JButton("Dodaj Anketu");
-		btnDodajAnketu.setBounds(231, 11, 163, 23);
+		btnDodajAnketu.setBackground(SystemColor.activeCaption);
+		btnDodajAnketu.setBounds(340, 14, 165, 30);
 		frmAdminPanel.getContentPane().add(btnDodajAnketu);
 		
 		JButton btnObriiAnketu = new JButton("Obri\u0161i Anketu");
+		btnObriiAnketu.setBackground(SystemColor.activeCaption);
 		btnObriiAnketu.addMouseListener (new MouseAdapter(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -84,10 +89,11 @@ public class LogovanAdmin extends Login{
 				obrisi.ObrisiA();
 			}
 			});
-		btnObriiAnketu.setBounds(231, 79, 163, 23);
+		btnObriiAnketu.setBounds(340, 61, 165, 30);
 		frmAdminPanel.getContentPane().add(btnObriiAnketu);
 		
 		JButton btnPregeldStatistike = new JButton("PREGELD STATISTIKE");
+		btnPregeldStatistike.setBackground(SystemColor.activeCaption);
 		btnPregeldStatistike.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e){
@@ -96,22 +102,27 @@ public class LogovanAdmin extends Login{
 			}
 		});
 		btnPregeldStatistike.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnPregeldStatistike.setBounds(231, 216, 163, 63);
+		btnPregeldStatistike.setBounds(180, 325, 155, 45);
 		frmAdminPanel.getContentPane().add(btnPregeldStatistike);
 		
 		JLabel lblPrijavljeniKao = new JLabel("Prijavljen kao:");
-		lblPrijavljeniKao.setBounds(10, 11, 85, 23);
+		lblPrijavljeniKao.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		lblPrijavljeniKao.setBackground(SystemColor.activeCaption);
+		lblPrijavljeniKao.setBounds(10, 30, 85, 23);
 		frmAdminPanel.getContentPane().add(lblPrijavljeniKao);
 		
 		JLabel lblIme = new JLabel("Ime:");
-		lblIme.setBounds(10, 38, 85, 23);
+		lblIme.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		lblIme.setBounds(10, 64, 85, 23);
 		frmAdminPanel.getContentPane().add(lblIme);
 		
 		JLabel lblPrezime = new JLabel("Prezime:");
-		lblPrezime.setBounds(10, 65, 85, 23);
+		lblPrezime.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		lblPrezime.setBounds(10, 102, 85, 23);
 		frmAdminPanel.getContentPane().add(lblPrezime);
 		
 		JButton btnOdjaviSe = new JButton("ODJAVI SE");
+		btnOdjaviSe.setBackground(SystemColor.activeCaption);
 		btnOdjaviSe.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -119,12 +130,13 @@ public class LogovanAdmin extends Login{
 			}
 		});
 		btnOdjaviSe.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnOdjaviSe.setBounds(10, 216, 163, 63);
+		btnOdjaviSe.setBounds(10, 325, 155, 45);
 		frmAdminPanel.getContentPane().add(btnOdjaviSe);
 		
 		// Zakljucaj dugme
 		
 		JButton btnZakljucajAnketu = new JButton("Zaklju\u010Daj Anketu");
+		btnZakljucajAnketu.setBackground(SystemColor.activeCaption);
 		btnZakljucajAnketu.addMouseListener (new MouseAdapter(){
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -132,40 +144,44 @@ public class LogovanAdmin extends Login{
 			zakljucaj.ZakljucajA();
 		}
 		});
-		btnZakljucajAnketu.setBounds(231, 45, 163, 23);
+		btnZakljucajAnketu.setBounds(340, 156, 165, 30);
 		frmAdminPanel.getContentPane().add(btnZakljucajAnketu);
 		
 		// novi ce se koristit za sve get i set metode. Nije jos zavrseno
 		Login novi = new Login();
 		JLabel prikaziUsername = new JLabel("<html><font color='red'>"+novi.getUsername()+"</font></html>");
-		prikaziUsername.setBounds(105, 11, 104, 23);
+		prikaziUsername.setBackground(SystemColor.activeCaption);
+		prikaziUsername.setBounds(105, 30, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziUsername);
 		
-		JLabel prikaziIme = new JLabel("<html><font color='red'>"+novi.getFirstName()+"</font></html>");
-		prikaziIme.setBounds(105, 38, 104, 23);
+		JLabel prikaziIme = new JLabel("<html><font color='black'>"+novi.getFirstName()+"</font></html>");
+		prikaziIme.setBounds(105, 68, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziIme);
 		
-		JLabel prikaziPrezime = new JLabel("<html><font color='red'>"+novi.getLastName()+"</font></html>");
-		prikaziPrezime.setBounds(105, 65, 104, 23);
+		JLabel prikaziPrezime = new JLabel("<html><font color='black'>"+novi.getLastName()+"</font></html>");
+		prikaziPrezime.setBounds(105, 102, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziPrezime);
 		
 		JLabel lblSpol = new JLabel("Spol:");
-		lblSpol.setBounds(10, 91, 85, 23);
+		lblSpol.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		lblSpol.setBounds(10, 142, 85, 23);
 		frmAdminPanel.getContentPane().add(lblSpol);
 		
 		JLabel lblGodina = new JLabel("Godina:");
-		lblGodina.setBounds(10, 113, 85, 23);
+		lblGodina.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		lblGodina.setBounds(10, 180, 85, 23);
 		frmAdminPanel.getContentPane().add(lblGodina);
 		
-		JLabel prikaziSpol = new JLabel("<html><font color='red'>"+novi.getGenderIs()+"</font></html>");
-		prikaziSpol.setBounds(105, 91, 104, 23);
+		JLabel prikaziSpol = new JLabel("<html><font color='black'>"+novi.getGenderIs()+"</font></html>");
+		prikaziSpol.setBounds(105, 136, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziSpol);
 		
-		JLabel prikaziGodine = new JLabel("<html><font color='red'>"+novi.getAgeIs()+"</font></html>");
-		prikaziGodine.setBounds(105, 113, 104, 23);
+		JLabel prikaziGodine = new JLabel("<html><font color='black'>"+novi.getAgeIs()+"</font></html>");
+		prikaziGodine.setBounds(105, 181, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziGodine);
 		
 		JButton btnOtkljucajAnketu = new JButton("Otkljucaj Anketu");
+		btnOtkljucajAnketu.setBackground(SystemColor.activeCaption);
 		btnOtkljucajAnketu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -173,7 +189,7 @@ public class LogovanAdmin extends Login{
 				otkljucaj.OtkljucajA();
 			}
 			});
-		btnOtkljucajAnketu.setBounds(231, 114, 163, 23);
+		btnOtkljucajAnketu.setBounds(340, 107, 165, 30);
 		frmAdminPanel.getContentPane().add(btnOtkljucajAnketu);
 	}
 
