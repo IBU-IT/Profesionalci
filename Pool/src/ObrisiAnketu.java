@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.SystemColor;
 
 
 public class ObrisiAnketu {
@@ -44,6 +45,8 @@ public class ObrisiAnketu {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnObrisiAnketu = new JButton("OBRI\u0160I ");
+		btnObrisiAnketu.setBackground(SystemColor.activeCaption);
+		btnObrisiAnketu.setFont(new Font("Gadugi", Font.BOLD, 16));
 		btnObrisiAnketu.setBounds(144, 264, 213, 59);
 		frame.getContentPane().add(btnObrisiAnketu);
 		

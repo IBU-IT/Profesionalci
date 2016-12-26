@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import java.awt.SystemColor;
 
 
 public class OtkljucajAnketu {
@@ -50,18 +51,20 @@ public class OtkljucajAnketu {
 		frame.getContentPane().add(lblOtkljucajAnketu);
 		
 		JButton btnOtkljucaj = new JButton("OTKLJUCAJ");
-		btnOtkljucaj.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnOtkljucaj.setBounds(39, 246, 188, 39);
+		btnOtkljucaj.setBackground(SystemColor.activeCaption);
+		btnOtkljucaj.setFont(new Font("Gadugi", Font.BOLD, 16));
+		btnOtkljucaj.setBounds(260, 278, 200, 36);
 		frame.getContentPane().add(btnOtkljucaj);
 		
 		JButton btnOdaberiDrugu = new JButton("ODABERI DRUGU");
-		btnOdaberiDrugu.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnOdaberiDrugu.setBounds(237, 246, 205, 39);
+		btnOdaberiDrugu.setBackground(SystemColor.activeCaption);
+		btnOdaberiDrugu.setFont(new Font("Gadugi", Font.BOLD, 16));
+		btnOdaberiDrugu.setBounds(50, 278, 200, 36);
 		frame.getContentPane().add(btnOdaberiDrugu);
 		
 		JTextArea OtkljucajAnketu = new JTextArea();
 		
-		OtkljucajAnketu.setBounds(39, 66, 400, 161);
+		OtkljucajAnketu.setBounds(50, 66, 410, 201);
 		frame.getContentPane().add(OtkljucajAnketu);
 	}
 }
