@@ -17,7 +17,7 @@ import javax.swing.JPasswordField;
 
 public class Login {
 	
-	public static int id;
+	private static int id;
 	private static String username = "";
 	private static String first_name = "";
 	private static String last_name = "";
@@ -84,7 +84,7 @@ public class Login {
 		frmPoolSystem.getContentPane().add(pwText);
 
 		usernameField = new JTextField();
-		usernameField.setBounds(96, 179, 367, 20);
+		usernameField.setBounds(96, 179, 366, 20);
 		frmPoolSystem.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
 
@@ -187,7 +187,7 @@ public class Login {
 		frmPoolSystem.getContentPane().add(logo);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(97, 215, 366, 20);
+		passwordField.setBounds(96, 215, 366, 20);
 		frmPoolSystem.getContentPane().add(passwordField);
 		
 		
