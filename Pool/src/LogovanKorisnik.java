@@ -8,7 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
-public class LogovanKorisnik {
+public class LogovanKorisnik extends Login {
 
 	private JFrame frmUserPanel;
 
@@ -54,7 +54,7 @@ public class LogovanKorisnik {
 		frmUserPanel.getContentPane().add(lblIme);
 		
 		JLabel lblPrezime = new JLabel("Prezime:");
-		lblPrezime.setBounds(10, 66, 85, 23);
+		lblPrezime.setBounds(10, 71, 85, 18);
 		frmUserPanel.getContentPane().add(lblPrezime);
 		
 		JButton btnGlasajNaAnketi = new JButton("Glasaj na Anketi");
@@ -85,6 +85,18 @@ public class LogovanKorisnik {
 		});
 		btnodjaviSe.setBounds(10, 133, 359, 28);
 		frmUserPanel.getContentPane().add(btnodjaviSe);
+		
+		Login drugi = new Login();
+		JLabel privaljnenKaoTekst = new JLabel("<html><font color='red'>"+drugi.getUsername()+"</font></html>");
+		privaljnenKaoTekst.setBounds(105, 12, 113, 19);
+		frmUserPanel.getContentPane().add(privaljnenKaoTekst);
+		
+		JLabel prijavljenIme = new JLabel("<html><font color='red'>"+drugi.getFirstName()+"</font></html>");
+		prijavljenIme.setBounds(105, 41, 113, 19);
+		frmUserPanel.getContentPane().add(prijavljenIme);
+		
+		JLabel prijavljenPrezime = new JLabel("<html><font color='red'>"+drugi.getLastName()+"</font></html>");
+		prijavljenPrezime.setBounds(105, 70, 113, 19);
+		frmUserPanel.getContentPane().add(prijavljenPrezime);
 	}
-
 }
