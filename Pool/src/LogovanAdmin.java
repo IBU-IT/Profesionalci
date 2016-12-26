@@ -112,15 +112,15 @@ public class LogovanAdmin extends Login {
 		btnZakljuajAnketu.setBounds(231, 45, 163, 23);
 		frmAdminPanel.getContentPane().add(btnZakljuajAnketu);
 		
-		JLabel prikaziUsername = new JLabel(username);
+		JLabel prikaziUsername = new JLabel("<html><font color='red'>"+username+"</font></html>");
 		prikaziUsername.setBounds(105, 11, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziUsername);
 		
-		JLabel prikaziIme = new JLabel(first_name);
+		JLabel prikaziIme = new JLabel("<html><font color='red'>"+first_name+"</font></html>");
 		prikaziIme.setBounds(105, 38, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziIme);
 		
-		JLabel prikaziPrezime = new JLabel(last_name);
+		JLabel prikaziPrezime = new JLabel("<html><font color='red'>"+last_name+"</font></html>");
 		prikaziPrezime.setBounds(105, 65, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziPrezime);
 		
@@ -132,11 +132,11 @@ public class LogovanAdmin extends Login {
 		lblGodina.setBounds(10, 113, 85, 23);
 		frmAdminPanel.getContentPane().add(lblGodina);
 		
-		JLabel prikaziSpol = new JLabel(gender_is);
+		JLabel prikaziSpol = new JLabel("<html><font color='red'>"+gender_is+"</font></html>");
 		prikaziSpol.setBounds(105, 91, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziSpol);
 		
-		JLabel prikaziGodine = new JLabel(age_is);
+		JLabel prikaziGodine = new JLabel("<html><font color='red'>"+age_is+"</font></html>");
 		prikaziGodine.setBounds(105, 113, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziGodine);
 		
