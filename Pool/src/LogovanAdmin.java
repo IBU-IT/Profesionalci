@@ -109,6 +109,8 @@ public class LogovanAdmin extends Login{
 		btnOdjaviSe.setBounds(10, 216, 163, 63);
 		frmAdminPanel.getContentPane().add(btnOdjaviSe);
 		
+		// Zakljucaj dugme
+		
 		JButton btnZakljucajAnketu = new JButton("Zaklju\u010Daj Anketu");
 		btnZakljucajAnketu.addMouseListener (new MouseAdapter(){
 		@Override
