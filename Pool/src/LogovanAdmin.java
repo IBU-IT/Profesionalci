@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class LogovanAdmin extends Login {
+public class LogovanAdmin extends Login{
 
 	private JFrame frmAdminPanel;
 
@@ -113,7 +113,8 @@ public class LogovanAdmin extends Login {
 		btnZakljuajAnketu.setBounds(231, 45, 163, 23);
 		frmAdminPanel.getContentPane().add(btnZakljuajAnketu);
 		
-		JLabel prikaziUsername = new JLabel("<html><font color='red'>"+username+"</font></html>");
+		Login novi = new Login();
+		JLabel prikaziUsername = new JLabel("<html><font color='red'>"+novi.getUsername()+"</font></html>");
 		prikaziUsername.setBounds(105, 11, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziUsername);
 		
@@ -149,4 +150,5 @@ public class LogovanAdmin extends Login {
 		btnNewButton.setBounds(231, 114, 163, 23);
 		frmAdminPanel.getContentPane().add(btnNewButton);
 	}
+
 }

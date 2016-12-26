@@ -14,12 +14,11 @@ import javax.swing.ImageIcon;
 import java.sql.*;
 
 import javax.swing.JPasswordField;
-import java.awt.Font;
 
 public class Login {
 	
 	public static int id;
-	public static String username = "";
+	private static String username = "";
 	public static String first_name = "";
 	public static String last_name = "";
 	public static String gender_is = "";
@@ -110,15 +109,15 @@ public class Login {
 						JOptionPane.showMessageDialog(null, "Pogresni Podaci");
 					}
 
-					// Povuci podatke
-					// ZA PRIMJER KORISTIMO ID KAO USER_ROLE (1-admin, 2-user)
+					// Povuci podatke				
 					id = rs.getInt("id");
-					username = rs.getString("username");
+					setUsername(rs.getString("username"));
 					first_name = rs.getString("first_name");
 					last_name = rs.getString("last_name");
 					int age = rs.getInt("age");
 					age_is = String.valueOf(age);
 					gender = rs.getInt("gender");
+					int user_role = rs.getInt("user_role");
 					
 					if (gender == 1){
 						gender_is = "Musko";
@@ -126,9 +125,7 @@ public class Login {
 						gender_is = "Zensko";
 					}
 					
-					int user_role = rs.getInt("user_role");
-					
-					//Provjera ID-a (kasnije ce biti provjera User_Role
+					//Provjera User_Role (admin 1, sve ostalo user)
 					if (user_role == 1) {
 						// OTVORI ADMINA
 						LogovanAdmin lAdmin = new LogovanAdmin();
@@ -190,5 +187,14 @@ public class Login {
 		frmPoolSystem.getContentPane().add(passwordField);
 		
 		
+	}
+	
+	//Getteri i setteri
+	public String getUsername() {
+		return username;
+	}
+
+	public static void setUsername(String username) {
+		Login.username = username;
 	}
 }
