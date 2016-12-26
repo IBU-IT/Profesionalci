@@ -41,7 +41,7 @@ public class ZakljucajAnketu {
 		frame = new JFrame();
 		frame.setTitle("Zakljucaj anketu");
 		frame.setBounds(100, 100, 512, 373);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblZakljucajAnketu = new JLabel("ZAKLJUCAJ ANKETU");
