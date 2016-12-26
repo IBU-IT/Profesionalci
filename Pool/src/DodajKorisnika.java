@@ -60,7 +60,8 @@ public class DodajKorisnika {
 	 */
 	private void initialize() {
 		frmDodajNovogKorisnika = new JFrame();
-		frmDodajNovogKorisnika.setTitle("Dodaj Novog Korisnika");
+		frmDodajNovogKorisnika.setResizable(false);
+		frmDodajNovogKorisnika.setTitle("Dodaj Korisnika");
 		frmDodajNovogKorisnika.setBounds(100, 100, 262, 278);
 		frmDodajNovogKorisnika.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmDodajNovogKorisnika.getContentPane().setLayout(null);
