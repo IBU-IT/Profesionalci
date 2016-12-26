@@ -109,9 +109,16 @@ public class LogovanAdmin extends Login{
 		btnOdjaviSe.setBounds(10, 216, 163, 63);
 		frmAdminPanel.getContentPane().add(btnOdjaviSe);
 		
-		JButton btnZakljuajAnketu = new JButton("Zaklju\u010Daj Anketu");
-		btnZakljuajAnketu.setBounds(231, 45, 163, 23);
-		frmAdminPanel.getContentPane().add(btnZakljuajAnketu);
+		JButton btnZakljucajAnketu = new JButton("Zaklju\u010Daj Anketu");
+		btnZakljucajAnketu.addMouseListener (new MouseAdapter(){
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ZakljucajAnketu zakljucaj = new ZakljucajAnketu();
+			zakljucaj.ZakljucajA();
+		}
+		});
+		btnZakljucajAnketu.setBounds(231, 45, 163, 23);
+		frmAdminPanel.getContentPane().add(btnZakljucajAnketu);
 		
 		// novi ce se koristit za sve get i set metode. Nije jos zavrseno
 		Login novi = new Login();
