@@ -119,7 +119,7 @@ public class Login {
 					setGender(rs.getInt("gender"));
 					int user_role = rs.getInt("user_role");
 					
-					if (gender == 1){
+					if (getGender() == 1){
 						setGenderIs("Musko");
 					}else{
 						setGenderIs("Zensko");
