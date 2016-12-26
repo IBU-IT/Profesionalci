@@ -21,6 +21,9 @@ import java.awt.SystemColor;
 
 public class DodajKorisnika {
 	
+	private static int spol = 0;
+	private static int admin = 0;
+	
 	// Definisi JDBC driver name i URL baze
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
@@ -174,27 +177,23 @@ public class DodajKorisnika {
 			if(prezimeField.getText().equals("")){
 				JOptionPane.showMessageDialog(null, "Prezime mora biti uneseno");
 			}
-			if(godine < 0){
+			if(godine <= 0 ){
 				JOptionPane.showMessageDialog(null, "Godine moraju biti unesene i ne mogu biti negativna vrijednost");
 			}
-			int spol = 0;
 		    if(rdbtnMusko.isSelected()){
-	            spol=1;
+	            setSpol(1);
 	        }
 	        else if(rdbtnensko.isSelected()){
-	        	spol=2;
+	        	setSpol(2);
 	        }
-			if(spol == 0){
+			if(getSpol() == 0){
 				JOptionPane.showMessageDialog(null, "Spol korisnika nije definisan.");
 			}
-			int admin = 0;
-			//boolean checked = chckbxAdmin.isSelected();
 			if(chckbxAdmin.isSelected() == true) {
-			  admin = 1;
+				setAdmin(1);
 			}else{
-				admin = 0;
+				setAdmin(0);
 			}
-			JOptionPane.showMessageDialog(null, "Admin je: "+admin);
 			
 			}
 		});
@@ -206,5 +205,21 @@ public class DodajKorisnika {
 		lblIspuniteSvaPolja.setBounds(165, 11, 200, 50);
 		frmDodajNovogKorisnika.getContentPane().add(lblIspuniteSvaPolja);
 		
+	}
+	
+	//get i set
+	public int getSpol() {
+		return spol;
+	}
+
+	public static void setSpol(int spol) {
+		DodajKorisnika.spol = spol;
+	}
+	public int getAdmin() {
+		return admin;
+	}
+
+	public static void setAdmin(int admin) {
+		DodajKorisnika.admin = admin;
 	}
 }
