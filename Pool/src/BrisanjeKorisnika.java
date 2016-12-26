@@ -8,14 +8,17 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.BevelBorder;
 
 
 public class BrisanjeKorisnika {
 
 	private JFrame frame;
-	private JTextField textField;
 	private JButton btnBriiKorisnika;
 	private JLabel lblBrisanjeKorisnika;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -52,13 +55,8 @@ public class BrisanjeKorisnika {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(143, 105, 200, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
 		JLabel lblUnesiIme = new JLabel("Unesi username :");
-		lblUnesiIme.setBounds(10, 102, 103, 27);
+		lblUnesiIme.setBounds(10, 82, 112, 50);
 		frame.getContentPane().add(lblUnesiIme);
 		
 		btnBriiKorisnika = new JButton("Obriši korisnika");
@@ -73,6 +71,11 @@ public class BrisanjeKorisnika {
 		lblBrisanjeKorisnika.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblBrisanjeKorisnika.setBounds(143, 26, 200, 50);
 		frame.getContentPane().add(lblBrisanjeKorisnika);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setViewportBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), null));
+		scrollPane.setBounds(132, 82, 200, 50);
+		frame.getContentPane().add(scrollPane);
 		
 		// Brisanje korsinika ////
 	}
