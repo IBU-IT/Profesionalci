@@ -40,7 +40,7 @@ public class ObrisiAnketu {
 		frame = new JFrame();
 		frame.setTitle("Obrisi Anketu");
 		frame.setBounds(100, 100, 519, 398);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnObrisiAnketu = new JButton("OBRI\u0160I ");
