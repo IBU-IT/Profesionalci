@@ -159,13 +159,16 @@ public class LogovanAdmin extends Login{
 		prikaziGodine.setBounds(105, 113, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziGodine);
 		
-		JButton btnNewButton = new JButton("Otkljucaj Anketu");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JButton btnOtkljucajAnketu = new JButton("Otkljucaj Anketu");
+		btnOtkljucajAnketu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				OtkljucajAnketu otkljucaj = new OtkljucajAnketu();
+				otkljucaj.OtkljucajA();
 			}
-		});
-		btnNewButton.setBounds(231, 114, 163, 23);
-		frmAdminPanel.getContentPane().add(btnNewButton);
+			});
+		btnOtkljucajAnketu.setBounds(231, 114, 163, 23);
+		frmAdminPanel.getContentPane().add(btnOtkljucajAnketu);
 	}
 
 }
