@@ -283,4 +283,6 @@ public class RegistracijaKorisnika {
 		RegistracijaKorisnika.admin = admin;
 	}
 }
+
+//ATIF IMA GRESKU. NE MOZE KOMITAT
 		
