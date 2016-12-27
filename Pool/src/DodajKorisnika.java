@@ -224,10 +224,12 @@ public class DodajKorisnika {
 
 				// Napravi statement i izvrsi query
 				stmt = conn.createStatement();
-				stmt.executeUpdate("INSERT INTO users (username, password, first_name, last_name, age, gender, user_role) VALUES ('" + bazaUsername + "', '" + bazaPassword +"','" + bazaIme + "' , '" + bazaPrezime + "','" + bazaGodine + "', '" + bazaSpol + "', '" + bazaRole + "') ");
-
-				// Zatvori resultset, statement i db konekciju i ispisi greske ako postoje 
-
+				int gotovo = stmt.executeUpdate("INSERT INTO users (username, password, first_name, last_name, age, gender, user_role) VALUES ('" + bazaUsername + "', '" + bazaPassword +"','" + bazaIme + "' , '" + bazaPrezime + "','" + bazaGodine + "', '" + bazaSpol + "', '" + bazaRole + "') ");
+				
+				if (gotovo>0){
+					JOptionPane.showMessageDialog(null, "Uspješno ste dodali korisnika");
+				}
+				
 				stmt.close();
 				conn.close();
 			} catch (SQLException se) {
@@ -249,7 +251,8 @@ public class DodajKorisnika {
 					se.printStackTrace();
 				}// zavrsi try try
 			}// zavrsi glavni try try
-		} //zavrsi bazu
+			
+			} //zavrsi bazu
 
 		});
 		btnDodajNovogKorisnika.setBounds(64, 302, 359, 43);
