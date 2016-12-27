@@ -150,7 +150,7 @@ public class DodajKorisnika {
 		rdbtnensko.setBounds(179, 199, 102, 17);
 		frmDodajNovogKorisnika.getContentPane().add(rdbtnensko);
 		
-		ButtonGroup group = new ButtonGroup();
+		final ButtonGroup group = new ButtonGroup();
 	    group.add(rdbtnMusko);
 	    group.add(rdbtnensko);
 		
@@ -228,6 +228,16 @@ public class DodajKorisnika {
 				
 				if (gotovo>0){
 					JOptionPane.showMessageDialog(null, "Uspješno ste dodali korisnika");
+					usernameField.setText("");
+					passwordField.setText("");
+					imeField.setText("");
+					prezimeField.setText("");
+					spinner.setValue(0);
+					group.clearSelection();
+					chckbxAdmin.setSelected(false);
+					
+				}else{
+					JOptionPane.showMessageDialog(null, "Došlo je do greške izmedju aplikacije i dodavanja korisnika u bazu");
 				}
 				
 				stmt.close();
@@ -264,7 +274,7 @@ public class DodajKorisnika {
 		frmDodajNovogKorisnika.getContentPane().add(lblIspuniteSvaPolja);
 		
 	}
-	
+
 	//get i set
 	public int getSpol() {
 		return spol;
