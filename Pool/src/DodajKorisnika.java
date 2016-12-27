@@ -23,6 +23,7 @@ public class DodajKorisnika {
 	
 	private static int spol = 0;
 	private static int admin = 0;
+	private static int godine = 0;
 	
 	// Definisi JDBC driver name i URL baze
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -131,6 +132,10 @@ public class DodajKorisnika {
 		prezimeField.setBounds(93, 137, 170, 20);
 		frmDodajNovogKorisnika.getContentPane().add(prezimeField);
 		
+		final JSpinner spinner = new JSpinner();
+		spinner.setBounds(95, 167, 46, 20);
+		frmDodajNovogKorisnika.getContentPane().add(spinner);
+		
 		final JRadioButton rdbtnMusko = new JRadioButton("Musko");
 		rdbtnMusko.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		rdbtnMusko.setBounds(93, 197, 84, 20);
@@ -148,12 +153,6 @@ public class DodajKorisnika {
 		final JCheckBox chckbxAdmin = new JCheckBox("");
 		chckbxAdmin.setBounds(159, 230, 28, 14);
 		frmDodajNovogKorisnika.getContentPane().add(chckbxAdmin);
-		
-		JSpinner spinner = new JSpinner();
-		spinner.setFont(new Font("Gadugi", Font.PLAIN, 12));
-		spinner.setBounds(93, 162, 46, 20);
-		frmDodajNovogKorisnika.getContentPane().add(spinner);
-		final int godine = (Integer) spinner.getValue();
 		
 		JButton btnDodajNovogKorisnika = new JButton("Dodaj Novog Korisnika");
 		btnDodajNovogKorisnika.setBackground(SystemColor.activeCaption);
@@ -177,7 +176,11 @@ public class DodajKorisnika {
 			if(prezimeField.getText().equals("")){
 				JOptionPane.showMessageDialog(null, "Prezime mora biti uneseno");
 			}
-			if(godine <= 0 ){
+			
+			//Postavi godine
+			setGeodine((Integer) spinner.getValue());
+			
+			if(getGodine() <= 0 ){
 				JOptionPane.showMessageDialog(null, "Godine moraju biti unesene i ne mogu biti negativna vrijednost");
 			}
 		    if(rdbtnMusko.isSelected()){
@@ -221,5 +224,12 @@ public class DodajKorisnika {
 
 	public static void setAdmin(int admin) {
 		DodajKorisnika.admin = admin;
+	}
+	public int getGodine() {
+		return godine;
+	}
+
+	public static void setGeodine(int godine) {
+		DodajKorisnika.godine = godine;
 	}
 }
