@@ -49,6 +49,7 @@ public class BrisanjeKorisnika {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setTitle("Brisanje Korisnika");
 		frame.setBounds(100, 100, 520, 410);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

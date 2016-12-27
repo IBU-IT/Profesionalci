@@ -58,6 +58,7 @@ public class RegistracijaKorisnika {
 	 */
 	private void initialize() {
 		frmRegistrujSe = new JFrame();
+		frmRegistrujSe.setResizable(false);
 		frmRegistrujSe.setTitle("Registruj Se");
 		frmRegistrujSe.setBounds(100, 100, 520, 410);
 		frmRegistrujSe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

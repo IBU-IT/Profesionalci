@@ -39,6 +39,7 @@ public class PregledStatistike {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setTitle("Pregled Statistike");
 		frame.setBounds(100, 100, 520, 410);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
