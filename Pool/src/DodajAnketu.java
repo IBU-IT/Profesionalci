@@ -5,16 +5,35 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+
 
 public class DodajAnketu {
 
 	private JFrame frame;
 	private JTextField textField;
+	
+	// Definisi JDBC driver name i URL baze
+		static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+		static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
+
+    // Db podaci
+		static final String USER = "root";
+		static final String PASS = "123456";
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void DodajAnk() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,16 +65,70 @@ public class DodajAnketu {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblUpiiteImeAnkete = new JLabel("Upi\u0161ite ime ankete :");
-		lblUpiiteImeAnkete.setBounds(187, 11, 200, 50);
+		lblUpiiteImeAnkete.setFont(new Font("Gadugi", Font.BOLD, 16));
+		lblUpiiteImeAnkete.setBounds(167, 11, 200, 50);
 		frame.getContentPane().add(lblUpiiteImeAnkete);
 		
 		JButton btnNapraviAnketu = new JButton("NAPRAVI ANKETU");
+		btnNapraviAnketu.setBackground(SystemColor.activeCaption);
+	
+		btnNapraviAnketu.setFont(new Font("Gadugi", Font.BOLD, 16));
+		btnNapraviAnketu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNapraviAnketu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				// Spremi u varijable 
+				String bazaGetText = textField.getText();
+				int bazaIsClosed = 0;
+				Connection conn = null;
+				Statement stmt = null;
+				try {
+					// Registruj JDBC driver
+					Class.forName("com.mysql.jdbc.Driver");
+
+					// Zapocni konekciju conn
+					conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+					// Napravi statement i izvrsi query
+					stmt = conn.createStatement();
+					stmt.executeUpdate("INSERT INTO questions (question_text,is_closed) VALUES ('" + bazaGetText + "', '" + bazaIsClosed +"') ");
+
+					// Zatvori resultset, statement i db konekciju i ispisi greske ako postoje 
+					stmt.close();
+					conn.close();
+				} catch (SQLException se) {
+					// Errors JDBC
+					se.printStackTrace();
+				} catch (Exception x) {
+					// Errors za Class.forName
+					x.printStackTrace();
+				} finally {
+					try {
+						if (stmt != null)
+							stmt.close();
+					} catch (SQLException se2) {
+					}
+					try {
+						if (conn != null)
+							conn.close();
+					} catch (SQLException se) {
+						se.printStackTrace();
+					}// zavrsi try try
+				}// zavrsi glavni try try
+			}
+		});
 		btnNapraviAnketu.setBounds(117, 269, 287, 50);
 		frame.getContentPane().add(btnNapraviAnketu);
 		
 		textField = new JTextField();
-		textField.setBounds(123, 131, 264, 50);
+		textField.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		textField.setBounds(103, 131, 318, 50);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
+		
 	}
 }

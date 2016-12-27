@@ -77,6 +77,13 @@ public class LogovanAdmin extends Login{
 		
 		JButton btnDodajAnketu = new JButton("Dodaj Anketu");
 		btnDodajAnketu.setBackground(SystemColor.activeCaption);
+		btnDodajAnketu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DodajAnketu dodaj = new DodajAnketu();
+				dodaj.DodajAnk();
+			}
+		});
 		btnDodajAnketu.setBounds(340, 14, 165, 30);
 		frmAdminPanel.getContentPane().add(btnDodajAnketu);
 		
