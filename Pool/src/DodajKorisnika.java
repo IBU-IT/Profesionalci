@@ -178,7 +178,7 @@ public class DodajKorisnika {
 			}
 			
 			//Postavi godine
-			setGeodine((Integer) spinner.getValue());
+			setGodine((Integer) spinner.getValue());
 			
 			if(getGodine() <= 0 ){
 				JOptionPane.showMessageDialog(null, "Godine moraju biti unesene i ne mogu biti negativna vrijednost");
@@ -229,7 +229,7 @@ public class DodajKorisnika {
 		return godine;
 	}
 
-	public static void setGeodine(int godine) {
+	public static void setGodine(int godine) {
 		DodajKorisnika.godine = godine;
 	}
 }
