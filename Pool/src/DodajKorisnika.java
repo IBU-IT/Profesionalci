@@ -11,6 +11,10 @@ import javax.swing.JButton;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JSpinner;
 import java.awt.Font;
@@ -198,7 +202,55 @@ public class DodajKorisnika {
 				setAdmin(0);
 			}
 			
-			}
+			//Spremi u varijable
+			String bazaUsername = usernameField.getText();
+			String bazaPassword = passwordField.getText();
+			String bazaIme = imeField.getText();
+			String bazaPrezime = prezimeField.getText();
+			int bazaGodine = getGodine();
+			int bazaSpol = getSpol();
+			int bazaRole = getAdmin();
+			
+			//Kad je sve provjereno unesi to sve u bazu
+			
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				// Registruj JDBC driver
+				Class.forName("com.mysql.jdbc.Driver");
+
+				// Zapocni konekciju conn
+				conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+				// Napravi statement i izvrsi query
+				stmt = conn.createStatement();
+				stmt.executeUpdate("INSERT INTO users (username, password, first_name, last_name, age, gender, user_role) VALUES ('" + bazaUsername + "', '" + bazaPassword +"','" + bazaIme + "' , '" + bazaPrezime + "','" + bazaGodine + "', '" + bazaSpol + "', '" + bazaRole + "') ");
+
+				// Zatvori resultset, statement i db konekciju i ispisi greske ako postoje 
+
+				stmt.close();
+				conn.close();
+			} catch (SQLException se) {
+				// Errors JDBC
+				se.printStackTrace();
+			} catch (Exception x) {
+				// Errors za Class.forName
+				x.printStackTrace();
+			} finally {
+				try {
+					if (stmt != null)
+						stmt.close();
+				} catch (SQLException se2) {
+				}
+				try {
+					if (conn != null)
+						conn.close();
+				} catch (SQLException se) {
+					se.printStackTrace();
+				}// zavrsi try try
+			}// zavrsi glavni try try
+		} //zavrsi bazu
+
 		});
 		btnDodajNovogKorisnika.setBounds(64, 302, 359, 43);
 		frmDodajNovogKorisnika.getContentPane().add(btnDodajNovogKorisnika);

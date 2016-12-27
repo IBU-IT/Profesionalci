@@ -182,7 +182,7 @@ public class Login {
 						se.printStackTrace();
 					}// zavrsi try try
 				}// zavrsi glavni try try
-			}
+			} //zavrsi bazu
 		});
 		loginButton.setBounds(44, 306, 200, 29);
 		frmPoolSystem.getContentPane().add(loginButton);
