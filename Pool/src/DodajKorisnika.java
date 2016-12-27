@@ -168,25 +168,31 @@ public class DodajKorisnika {
 		btnDodajNovogKorisnika.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+			int greska = 1;
 			if(usernameField.getText().equals("")){
 				JOptionPane.showMessageDialog(null, "Username mora biti unesen");
-			}
+				greska = 1;
+			}else{greska = 0;}
 			if(passwordField.getText().equals("")){
 				JOptionPane.showMessageDialog(null, "Password mora biti unesen");
-			}
+				greska = 1;
+			}else{greska = 0;}
 			if(imeField.getText().equals("")){
 				JOptionPane.showMessageDialog(null, "Ime mora biti uneseno");
-			}
+				greska=1;
+			}else{greska = 0;}
 			if(prezimeField.getText().equals("")){
 				JOptionPane.showMessageDialog(null, "Prezime mora biti uneseno");
-			}
+				greska = 1;
+			}else{greska = 0;}
 			
 			//Postavi godine
 			setGodine((Integer) spinner.getValue());
 			
 			if(getGodine() <= 0 ){
 				JOptionPane.showMessageDialog(null, "Godine moraju biti unesene i ne mogu biti negativna vrijednost");
-			}
+				greska = 1;
+			}else{greska = 0;}
 		    if(rdbtnMusko.isSelected()){
 	            setSpol(1);
 	        }
@@ -195,7 +201,8 @@ public class DodajKorisnika {
 	        }
 			if(getSpol() == 0){
 				JOptionPane.showMessageDialog(null, "Spol korisnika nije definisan.");
-			}
+				greska = 1;
+			}else{greska = 0;}
 			if(chckbxAdmin.isSelected() == true) {
 				setAdmin(1);
 			}else{
@@ -212,7 +219,7 @@ public class DodajKorisnika {
 			int bazaRole = getAdmin();
 			
 			//Kad je sve provjereno unesi to sve u bazu
-			
+			if(greska == 0){
 			Connection conn = null;
 			Statement stmt = null;
 			try {
@@ -263,7 +270,7 @@ public class DodajKorisnika {
 			}// zavrsi glavni try try
 			
 			} //zavrsi bazu
-
+		}
 		});
 		btnDodajNovogKorisnika.setBounds(64, 302, 359, 43);
 		frmDodajNovogKorisnika.getContentPane().add(btnDodajNovogKorisnika);
