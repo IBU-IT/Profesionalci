@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2016 at 02:26 AM
+-- Generation Time: Dec 28, 2016 at 09:45 PM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -51,7 +51,10 @@ INSERT INTO `answers` (`id`, `question_id`, `answer`, `answer_count`) VALUES
 (9, 5, 'Napravii', 0),
 (10, 6, 'Venan', 0),
 (11, 6, 'V E N A N', 0),
-(12, 6, 'VENO OTAC', 0);
+(12, 6, 'VENO OTAC', 0),
+(13, 7, 'Jen', 0),
+(14, 7, 'Dva', 0),
+(15, 7, 'Tri', 0);
 
 -- --------------------------------------------------------
 
@@ -63,6 +66,15 @@ CREATE TABLE `greske` (
   `id` int(11) NOT NULL,
   `opis_greske` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `greske`
+--
+
+INSERT INTO `greske` (`id`, `opis_greske`) VALUES
+(1, 'Prijavi gresku'),
+(2, 'aasd aasd aasd aasd aasd aasd aasd '),
+(3, 'Problem u dodavanju anekte');
 
 -- --------------------------------------------------------
 
@@ -86,7 +98,8 @@ INSERT INTO `questions` (`id`, `question_text`, `is_closed`) VALUES
 (3, 'Za koga glasamo?', b'0'),
 (4, 'Drugo pitanje?', b'0'),
 (5, 'Evoga', b'0'),
-(6, 'Ko ima navecu kitu na faxu?', b'0');
+(6, 'Ko ima navecu kitu na faxu?', b'0'),
+(7, 'De jos jednu evo da me zelja mine.', b'0');
 
 -- --------------------------------------------------------
 
@@ -176,17 +189,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `greske`
 --
 ALTER TABLE `greske`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `submited_answers`
 --
