@@ -126,7 +126,6 @@ public class GlasajNaAnketi {
 					ResultSet rs2 = stmt2.executeQuery(sql);
 					rs2.next();
 					setId(rs2.getInt("id"));
-					JOptionPane.showMessageDialog(null, "ID: "+getId());
 					
 					rs2.close(); 
 					stmt2.close();
@@ -141,6 +140,8 @@ public class GlasajNaAnketi {
 				}
 				
 				//OTVORI ODGOVORE ZA IZABRANU ANKETU USKORO
+				PrikaziOdgovoreIzabraneAnkete a = new PrikaziOdgovoreIzabraneAnkete();
+				a.prikaziOdgovore();
 			
 			}
 		});
