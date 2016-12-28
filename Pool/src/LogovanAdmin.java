@@ -56,6 +56,7 @@ public class LogovanAdmin extends Login{
 		frmAdminPanel.getContentPane().setLayout(null);
 		
 		JButton btnDodajKorisnika = new JButton("Dodaj Korisnika");
+		btnDodajKorisnika.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		btnDodajKorisnika.setBackground(SystemColor.activeCaptionBorder);
 		btnDodajKorisnika.addMouseListener(new MouseAdapter() {
 			@Override
@@ -68,6 +69,7 @@ public class LogovanAdmin extends Login{
 		frmAdminPanel.getContentPane().add(btnDodajKorisnika);
 		
 		JButton btnObriiKorisnika = new JButton("Obri\u0161i Korisnika");
+		btnObriiKorisnika.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		btnObriiKorisnika.setBackground(SystemColor.activeCaptionBorder);
 		btnObriiKorisnika.addMouseListener(new MouseAdapter() {
 			@Override
@@ -80,6 +82,7 @@ public class LogovanAdmin extends Login{
 		frmAdminPanel.getContentPane().add(btnObriiKorisnika);
 		
 		JButton btnDodajAnketu = new JButton("Dodaj Anketu");
+		btnDodajAnketu.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		btnDodajAnketu.setBackground(SystemColor.activeCaption);
 		btnDodajAnketu.addMouseListener(new MouseAdapter() {
 			@Override
@@ -92,6 +95,7 @@ public class LogovanAdmin extends Login{
 		frmAdminPanel.getContentPane().add(btnDodajAnketu);
 		
 		JButton btnObriiAnketu = new JButton("Obri\u0161i Anketu");
+		btnObriiAnketu.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		btnObriiAnketu.setBackground(SystemColor.activeCaption);
 		btnObriiAnketu.addMouseListener (new MouseAdapter(){
 			@Override
@@ -112,7 +116,7 @@ public class LogovanAdmin extends Login{
 				pregled.PregledS();
 			}
 		});
-		btnPregeldStatistike.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnPregeldStatistike.setFont(new Font("Gadugi", Font.BOLD, 12));
 		btnPregeldStatistike.setBounds(180, 325, 155, 45);
 		frmAdminPanel.getContentPane().add(btnPregeldStatistike);
 		
@@ -140,13 +144,14 @@ public class LogovanAdmin extends Login{
 				System.exit(0);
 			}
 		});
-		btnOdjaviSe.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnOdjaviSe.setFont(new Font("Gadugi", Font.BOLD, 12));
 		btnOdjaviSe.setBounds(10, 325, 155, 45);
 		frmAdminPanel.getContentPane().add(btnOdjaviSe);
 		
 		// Zakljucaj dugme
 		
-		JButton btnZakljucajAnketu = new JButton("Zaklju\u010Daj Anketu");
+		JButton btnZakljucajAnketu = new JButton("Zakljucaj Anketu");
+		btnZakljucajAnketu.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		btnZakljucajAnketu.setBackground(SystemColor.activeCaption);
 		btnZakljucajAnketu.addMouseListener (new MouseAdapter(){
 		@Override
@@ -192,6 +197,7 @@ public class LogovanAdmin extends Login{
 		frmAdminPanel.getContentPane().add(prikaziGodine);
 		
 		JButton btnOtkljucajAnketu = new JButton("Otkljucaj Anketu");
+		btnOtkljucajAnketu.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		btnOtkljucajAnketu.setBackground(SystemColor.activeCaption);
 		btnOtkljucajAnketu.addMouseListener(new MouseAdapter() {
 			@Override
@@ -204,6 +210,8 @@ public class LogovanAdmin extends Login{
 		frmAdminPanel.getContentPane().add(btnOtkljucajAnketu);
 		
 		JButton btnNewButton = new JButton("Prikazi greske");
+		btnNewButton.setBackground(SystemColor.activeCaption);
+		btnNewButton.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
