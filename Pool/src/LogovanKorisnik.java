@@ -75,14 +75,20 @@ public class LogovanKorisnik extends Login {
 		});
 		btnGlasajNaAnketi.setBackground(SystemColor.activeCaption);
 		btnGlasajNaAnketi.setFont(new Font("Gadugi", Font.BOLD, 14));
-		
-			
-		
-	
 		btnGlasajNaAnketi.setBounds(53, 203, 183, 30);
 		frmUserPanel.getContentPane().add(btnGlasajNaAnketi);
 		
 		JButton btnAnketeNaKojim = new JButton("<html><body><center><p>Ankete na kojim si glasao</p></center></body></html>");
+		btnAnketeNaKojim.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GlasaneAnkete glasaneAA = new GlasaneAnkete();
+				glasaneAA.GlasaneA();
+				
+			}
+		});
+		
+		
 		btnAnketeNaKojim.setBackground(SystemColor.activeCaption);
 		btnAnketeNaKojim.setFont(new Font("Gadugi", Font.BOLD, 14));
 		btnAnketeNaKojim.addActionListener(new ActionListener() {
