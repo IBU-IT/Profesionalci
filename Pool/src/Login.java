@@ -130,7 +130,7 @@ public class Login {
 						JOptionPane.showMessageDialog(null, "Pogresni Podaci");
 					}
 
-					// Povuci podatke				
+					// Povuci podatke	
 					setId(rs.getInt("id"));
 					setUsername(rs.getString("username"));
 					setFirstName(rs.getString("first_name"));

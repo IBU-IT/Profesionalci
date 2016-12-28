@@ -109,7 +109,7 @@ public class LogovanKorisnik extends Login {
 		Login drugi = new Login();
 		JLabel privaljnenKaoTekst = new JLabel("<html><font color='red'>"+drugi.getUsername()+"</font></html>");
 		privaljnenKaoTekst.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		privaljnenKaoTekst.setBounds(123, 61, 113, 19);
+		privaljnenKaoTekst.setBounds(123, 61, 202, 19);
 		frmUserPanel.getContentPane().add(privaljnenKaoTekst);
 		
 		JLabel prijavljenIme = new JLabel("<html><font color='red'>"+drugi.getFirstName()+"</font></html>");
