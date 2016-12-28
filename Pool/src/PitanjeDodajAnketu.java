@@ -14,6 +14,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 
 public class PitanjeDodajAnketu extends DodajAnketu {
@@ -73,32 +75,35 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setTitle("Pitanje u Anketi");
+		frame.setTitle("Odgovori za anketu");
 		frame.setBounds(100, 100, 520, 410);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblUnesitePitanjeI = new JLabel("Unesite pitanje i odgovor :");
-		lblUnesitePitanjeI.setBounds(114, 10, 200, 50);
+		JLabel lblUnesitePitanjeI = new JLabel("Unesite odgovor u svako polje :");
+		lblUnesitePitanjeI.setFont(new Font("Gadugi", Font.BOLD, 16));
+		lblUnesitePitanjeI.setBounds(118, 37, 290, 50);
 		frame.getContentPane().add(lblUnesitePitanjeI);
 		
 		odgovor1 = new JTextField();
-		odgovor1.setBounds(91, 100, 290, 50);
+		odgovor1.setBounds(91, 109, 317, 50);
 		frame.getContentPane().add(odgovor1);
 		odgovor1.setColumns(10);
 		
 		odgovor2 = new JTextField();
-		odgovor2.setBounds(91, 156, 290, 50);
+		odgovor2.setBounds(91, 170, 317, 50);
 		frame.getContentPane().add(odgovor2);
 		odgovor2.setColumns(10);
 		
 		
 		odgovor3 = new JTextField();
-		odgovor3.setBounds(91, 216, 290, 50);
+		odgovor3.setBounds(91, 231, 317, 50);
 		frame.getContentPane().add(odgovor3);
 		odgovor3.setColumns(10);
 		
 		btnUnesiOdgovore = new JButton("UNESI ODGOVORE");
+		btnUnesiOdgovore.setBackground(SystemColor.activeCaption);
+		btnUnesiOdgovore.setFont(new Font("Gadugi", Font.BOLD, 16));
 		btnUnesiOdgovore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -163,7 +168,7 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 				}// zavrsi glavni try try
 			}
 			});
-		btnUnesiOdgovore.setBounds(132, 289, 200, 62);
+		btnUnesiOdgovore.setBounds(141, 307, 200, 50);
 		frame.getContentPane().add(btnUnesiOdgovore);
 			//veno
 		// radi
