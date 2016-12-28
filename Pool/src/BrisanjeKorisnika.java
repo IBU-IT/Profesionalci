@@ -65,15 +65,12 @@ public class BrisanjeKorisnika {
 		tekstInfo.setBounds(10, 11, 235, 14);
 		frame.getContentPane().add(tekstInfo);
 		
-		//TRY
 		Connection conn = null;
 		Statement stmt = null;
 				
 		try {
-			// Registruj JDBC driver
 			Class.forName("com.mysql.jdbc.Driver");
 
-			// Zapocni konekciju conn
 			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");	
 			
 			stmt = conn.createStatement();
@@ -83,7 +80,6 @@ public class BrisanjeKorisnika {
 		
 			while (rs.next()) { 
 			    String groupName = rs.getString("username"); 
-			    // add group names to the array list
 			    groupNames.add(groupName);
 			} 
 			
