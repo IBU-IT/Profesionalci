@@ -97,9 +97,7 @@ public class DodajAnketu {
 					// Zapocni konekciju conn
 					conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-					// Napravi statement i izvrsi query
-					//stmt = conn.createStatement();
-					//stmt.executeUpdate("INSERT INTO questions (question_text,is_closed) VALUES ('" + bazaGetText + "', '" + bazaIsClosed +"') ");
+					
 					
 					
 					stmt = conn.prepareStatement("INSERT INTO questions (question_text,is_closed) VALUES ('" + bazaGetText + "', " + bazaIsClosed +") ", Statement.RETURN_GENERATED_KEYS);
