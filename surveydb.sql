@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2016 at 01:20 AM
+-- Generation Time: Dec 28, 2016 at 02:26 AM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -32,8 +32,37 @@ CREATE TABLE `answers` (
   `id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   `answer` varchar(255) NOT NULL,
-  `answer_count` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `answer_count` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `answers`
+--
+
+INSERT INTO `answers` (`id`, `question_id`, `answer`, `answer_count`) VALUES
+(1, 3, 'Za mene', 0),
+(2, 3, 'Za tebe', 0),
+(3, 3, 'Za nas', 0),
+(4, 4, 'ODGOVOR PRVI', 0),
+(5, 4, 'ODGOVOR DRUGO', 0),
+(6, 4, 'ODGOVOR TRECI', 0),
+(7, 5, 'Adzo', 0),
+(8, 5, 'iVeno', 0),
+(9, 5, 'Napravii', 0),
+(10, 6, 'Venan', 0),
+(11, 6, 'V E N A N', 0),
+(12, 6, 'VENO OTAC', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `greske`
+--
+
+CREATE TABLE `greske` (
+  `id` int(11) NOT NULL,
+  `opis_greske` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -47,6 +76,18 @@ CREATE TABLE `questions` (
   `is_closed` bit(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `question_text`, `is_closed`) VALUES
+(1, 'Za koga glasate?', b'0'),
+(2, 'Za koga glasate?', b'0'),
+(3, 'Za koga glasamo?', b'0'),
+(4, 'Drugo pitanje?', b'0'),
+(5, 'Evoga', b'0'),
+(6, 'Ko ima navecu kitu na faxu?', b'0');
+
 -- --------------------------------------------------------
 
 --
@@ -57,7 +98,7 @@ CREATE TABLE `submited_answers` (
   `id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `voted` bit(1) DEFAULT b'0'
+  `answer_id` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -83,7 +124,15 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `age`, `gender`, `user_role`) VALUES
 (1, 'admin', 'admin', 'Venan', 'Osmic', 20, 1, 1),
-(2, 'user', 'user', 'Korisnik', 'Prezime', 25, 1, 2);
+(2, 'user', 'user', 'Korisnik', 'Prezime', 25, 1, 2),
+(3, 'adsasda', 'asdsad', 'asdsad', 'asdsadasd', 20, 1, 1),
+(4, 'johnD', '123', 'John', 'Doe', 22, 1, 0),
+(5, 'kiso', '123', 'Anes', 'Karic', 20, 1, 0),
+(6, 'novi neki', 'asddsada', 'venan', 'osmic', 20, 1, 1),
+(7, '', '', 'Sen', 'Seniii', 0, 0, 0),
+(8, 'Imal', 'Greske', '', '', 20, 1, 1),
+(9, 'a', 'a', 'sadbasj', 'kjsans', 10, 1, 0),
+(10, 'Mala Mlohava Kita', '123', 'Atif', 'Kotoric', 18, 2, 0);
 
 --
 -- Indexes for dumped tables
@@ -93,6 +142,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `a
 -- Indexes for table `answers`
 --
 ALTER TABLE `answers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `greske`
+--
+ALTER TABLE `greske`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -118,10 +173,20 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `greske`
+--
+ALTER TABLE `greske`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `submited_answers`
 --
@@ -131,7 +196,7 @@ ALTER TABLE `submited_answers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
