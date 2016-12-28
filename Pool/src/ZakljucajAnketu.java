@@ -4,10 +4,8 @@ import javax.swing.JFrame;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import java.awt.SystemColor;
-import javax.swing.JMenuItem;
-import javax.swing.JComboBox;
+
 
 
 public class ZakljucajAnketu {
@@ -65,8 +63,6 @@ public class ZakljucajAnketu {
 		btnOdaberiDrugu.setBounds(260, 278, 200, 36);
 		frame.getContentPane().add(btnOdaberiDrugu);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(50, 85, 410, 182);
-		frame.getContentPane().add(comboBox);
+		
 	}
 }

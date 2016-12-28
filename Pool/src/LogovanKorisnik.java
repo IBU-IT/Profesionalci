@@ -66,8 +66,19 @@ public class LogovanKorisnik extends Login {
 		frmUserPanel.getContentPane().add(lblPrezime);
 		
 		JButton btnGlasajNaAnketi = new JButton("Glasaj na Anketi");
+		btnGlasajNaAnketi.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				GlasajNaAnketi glasajNA = new GlasajNaAnketi();
+				glasajNA.GlasajnaA();
+			}
+		});
 		btnGlasajNaAnketi.setBackground(SystemColor.activeCaption);
 		btnGlasajNaAnketi.setFont(new Font("Gadugi", Font.BOLD, 14));
+		
+			
+		
+	
 		btnGlasajNaAnketi.setBounds(53, 203, 183, 30);
 		frmUserPanel.getContentPane().add(btnGlasajNaAnketi);
 		
