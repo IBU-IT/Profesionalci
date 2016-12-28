@@ -1,14 +1,22 @@
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
 import java.awt.Font;
 
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import java.awt.TextArea;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class PrijaviGresku {
@@ -43,7 +51,6 @@ public class PrijaviGresku {
 	 */
 	private void initialize() {
 		frmPrijaviGresku = new JFrame();
-		frmPrijaviGresku.setResizable(false);
 		frmPrijaviGresku.setTitle("Prijavi Gresku");
 		frmPrijaviGresku.setBounds(100, 100, 520, 410);
 		frmPrijaviGresku.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -55,15 +62,76 @@ public class PrijaviGresku {
 		frmPrijaviGresku.getContentPane().add(lblOpiiteProblemKoji);
 		
 		JButton btnPrijaviGreku = new JButton("PRIJAVITE GRE\u0160KU");
-		btnPrijaviGreku.setBackground(SystemColor.activeCaption);
+		
+			btnPrijaviGreku.setBackground(SystemColor.activeCaption);
+			btnPrijaviGreku.setFont(new Font("Tahoma", Font.BOLD, 13));
+			btnPrijaviGreku.setBounds(43, 295, 414, 46);
+			frmPrijaviGresku.getContentPane().add(btnPrijaviGreku);
+			
+			
+			final JTextArea textArea = new JTextArea();
+			textArea.setLineWrap(true);
+			textArea.setBounds(10, 56, 484, 209);
+			frmPrijaviGresku.getContentPane().add(textArea);
+			btnPrijaviGreku.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					DodajuBazu(textArea.getText());
+				}
+			
+			
+		});
+		/*btnPrijaviGreku.setBackground(SystemColor.activeCaption);
 		btnPrijaviGreku.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnPrijaviGreku.setBounds(43, 295, 414, 46);
 		frmPrijaviGresku.getContentPane().add(btnPrijaviGreku);
+		
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setLineWrap(true);
 		textArea.setBounds(10, 56, 484, 209);
 		frmPrijaviGresku.getContentPane().add(textArea);
+		String s = textArea.getText();*/
 		
+	
+	
+	}
+	
+	public void DodajuBazu(String s){
+		Connection conn = null;
+		Statement stmt = null;
+		try {
+			// Registruj JDBC driver
+			Class.forName("com.mysql.jdbc.Driver");
+
+			// Zapocni konekciju conn
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "");
+
+			// Napravi statement i izvrsi query
+			stmt = conn.createStatement();
+			String sql;
+			
+			sql = ("INSERT INTO feedback(FeedBack) VALUES('"+"Almir"+"')");
+			ResultSet rs = stmt.executeQuery(sql);
+		
+			rs.close();
+			stmt.close();
+			conn.close();
+		} catch (SQLException se) {
+			// Errors JDBC
+			se.printStackTrace();
+		}
+		catch (Exception x) {
+			// Errors za Class.forName
+			x.printStackTrace();
+		}
+}
+
+	public JFrame getFrmPrijaviGresku() {
+		return frmPrijaviGresku;
+	}
+
+	public void setFrmPrijaviGresku(JFrame frmPrijaviGresku) {
+		this.frmPrijaviGresku = frmPrijaviGresku;
 	}
 }
