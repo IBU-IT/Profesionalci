@@ -11,6 +11,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.SystemColor;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 
@@ -200,6 +202,22 @@ public class LogovanAdmin extends Login{
 			});
 		btnOtkljucajAnketu.setBounds(340, 107, 165, 30);
 		frmAdminPanel.getContentPane().add(btnOtkljucajAnketu);
+		
+		JButton btnNewButton = new JButton("Prikazi greske");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				PrikaziGreskeAdmin Admin= new PrikaziGreskeAdmin();
+				Admin.PrikaziGreskeAdmin();
+			}
+		});
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+			
+		});
+		btnNewButton.setBounds(340, 302, 165, 30);
+		frmAdminPanel.getContentPane().add(btnNewButton);
 	}
 
 }
