@@ -69,7 +69,7 @@ public class DodajAnketu {
 		
 		JLabel lblUpiiteImeAnkete = new JLabel("Upi\u0161ite ime ankete :");
 		lblUpiiteImeAnkete.setFont(new Font("Gadugi", Font.BOLD, 16));
-		lblUpiiteImeAnkete.setBounds(167, 11, 200, 50);
+		lblUpiiteImeAnkete.setBounds(165, 70, 200, 50);
 		frame.getContentPane().add(lblUpiiteImeAnkete);
 		
 		JButton btnNapraviAnketu = new JButton("NAPRAVI ANKETU");
@@ -152,7 +152,7 @@ public class DodajAnketu {
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		textField.setBounds(103, 131, 318, 50);
+		textField.setBounds(104, 138, 318, 50);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		//dodaj anketu

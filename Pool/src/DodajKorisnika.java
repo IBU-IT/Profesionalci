@@ -276,7 +276,7 @@ public class DodajKorisnika {
 		frmDodajNovogKorisnika.getContentPane().add(btnDodajNovogKorisnika);
 		
 		JLabel lblIspuniteSvaPolja = new JLabel("ISPUNITE SVA POLJA");
-		lblIspuniteSvaPolja.setFont(new Font("Gadugi", Font.PLAIN, 18));
+		lblIspuniteSvaPolja.setFont(new Font("Gadugi", Font.BOLD, 16));
 		lblIspuniteSvaPolja.setBounds(165, 11, 200, 50);
 		frmDodajNovogKorisnika.getContentPane().add(lblIspuniteSvaPolja);
 		

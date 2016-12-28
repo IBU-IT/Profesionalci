@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.SystemColor;
+import java.awt.Color;
+
 
 
 
@@ -114,7 +116,7 @@ public class LogovanAdmin extends Login{
 		
 		JLabel lblPrijavljeniKao = new JLabel("Prijavljen kao:");
 		lblPrijavljeniKao.setFont(new Font("Gadugi", Font.PLAIN, 12));
-		lblPrijavljeniKao.setBackground(SystemColor.activeCaption);
+		lblPrijavljeniKao.setBackground(Color.DARK_GRAY);
 		lblPrijavljeniKao.setBounds(10, 30, 85, 23);
 		frmAdminPanel.getContentPane().add(lblPrijavljeniKao);
 		
