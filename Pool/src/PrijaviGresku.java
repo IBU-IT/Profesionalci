@@ -1,15 +1,10 @@
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
-
 import java.awt.Font;
-
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
-import java.awt.TextArea;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
