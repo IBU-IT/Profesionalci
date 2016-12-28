@@ -1,3 +1,4 @@
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -9,6 +10,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.Font;
@@ -84,8 +87,9 @@ public class DodajAnketu {
 				// Spremi u varijable 
 				String bazaGetText = textField.getText();
 				int bazaIsClosed = 0;
+				int questionID = 0;
 				Connection conn = null;
-				Statement stmt = null;
+				PreparedStatement stmt = null;
 				try {
 					// Registruj JDBC driver
 					Class.forName("com.mysql.jdbc.Driver");
@@ -94,9 +98,28 @@ public class DodajAnketu {
 					conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 					// Napravi statement i izvrsi query
-					stmt = conn.createStatement();
-					stmt.executeUpdate("INSERT INTO questions (question_text,is_closed) VALUES ('" + bazaGetText + "', '" + bazaIsClosed +"') ");
-
+					//stmt = conn.createStatement();
+					//stmt.executeUpdate("INSERT INTO questions (question_text,is_closed) VALUES ('" + bazaGetText + "', '" + bazaIsClosed +"') ");
+					
+					
+					stmt = conn.prepareStatement("INSERT INTO questions (question_text,is_closed) VALUES ('" + bazaGetText + "', " + bazaIsClosed +") ", Statement.RETURN_GENERATED_KEYS);
+					//int idIzBaze = Integer.parseInt(autogenColumns);
+					
+					int affectedRows = stmt.executeUpdate();
+					
+					if (affectedRows == 0) {
+			            throw new SQLException("Kreiranje pitanja bezuspješno");
+			        }
+					
+					try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+			            if (generatedKeys.next()) {
+			                questionID = generatedKeys.getInt(1);
+			            }
+			            else {
+			                throw new SQLException("Kreira, no ID obtained.");
+			            }
+			        }
+					
 					// Zatvori resultset, statement i db konekciju i ispisi greske ako postoje 
 					stmt.close();
 					conn.close();
@@ -119,16 +142,21 @@ public class DodajAnketu {
 						se.printStackTrace();
 					}// zavrsi try try
 				}// zavrsi glavni try try
+				
+				PitanjeDodajAnketu nesto = new PitanjeDodajAnketu();
+				nesto.PDAnketu(questionID);
 			}
 		});
 		btnNapraviAnketu.setBounds(117, 269, 287, 50);
 		frame.getContentPane().add(btnNapraviAnketu);
+		
+		
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		textField.setBounds(103, 131, 318, 50);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-		
+		//dodaj anketu
 	}
 }
