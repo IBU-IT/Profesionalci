@@ -91,7 +91,7 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 		odgovor2.setBounds(91, 156, 290, 50);
 		frame.getContentPane().add(odgovor2);
 		odgovor2.setColumns(10);
-		odgovor2.setText(String.valueOf(this.pitanjeID));
+		
 		
 		odgovor3 = new JTextField();
 		odgovor3.setBounds(91, 216, 290, 50);
