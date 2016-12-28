@@ -88,7 +88,7 @@ public class LogovanKorisnik extends Login {
 			}
 		});
 		
-		
+		//btn
 		btnAnketeNaKojim.setBackground(SystemColor.activeCaption);
 		btnAnketeNaKojim.setFont(new Font("Gadugi", Font.BOLD, 14));
 		btnAnketeNaKojim.addActionListener(new ActionListener() {

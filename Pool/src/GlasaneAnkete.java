@@ -7,7 +7,7 @@ import java.awt.Font;
 public class GlasaneAnkete {
 
 	private JFrame frame;
-
+ //
 	/**
 	 * Launch the application.
 	 */
