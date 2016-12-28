@@ -73,7 +73,10 @@ public class PrijaviGresku {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
 					setTekst(textArea.getText());
-					
+					if(textArea.getDocument().getLength() < 25 ){
+						JOptionPane.showMessageDialog(null, "Poruka mora sadrzavati minimalno 25 karaktera");
+					}else{
+						
 					Connection conn = null;
 					Statement stmt = null;
 					try {
@@ -89,7 +92,10 @@ public class PrijaviGresku {
 						int gotovo = stmt.executeUpdate("INSERT INTO greske (opis_greske) VALUES('"+ getTekst() +"')");
 					
 						if (gotovo>0){
-							JOptionPane.showMessageDialog(null, "upisano");
+							JOptionPane.showMessageDialog(null, "Greska uspjesno poslana.");
+							textArea.setText("");
+						}else{
+							JOptionPane.showMessageDialog(null, "Doslo je do greške. molimo vas da pokusate ponovno.");
 						}
 						stmt.close();
 						conn.close();
@@ -100,6 +106,8 @@ public class PrijaviGresku {
 					catch (Exception x) {
 						// Errors za Class.forName
 						x.printStackTrace();
+					}
+					
 					}
 				}
 			
