@@ -58,7 +58,7 @@ public class BrisanjeKorisnika {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel tekstInfo = new JLabel("Odabreite korisnika kojega zelite obrisati:");
@@ -123,6 +123,7 @@ public class BrisanjeKorisnika {
 					
 					if(gotovo>0){
 						JOptionPane.showMessageDialog(null, "Korisnik uspjesno obrisan");
+						CloseFrame();
 					}
 					
 					stmt.close();
@@ -139,5 +140,10 @@ public class BrisanjeKorisnika {
 		});
 		btnObrisiKorisnika.setBounds(10, 48, 414, 23);
 		frame.getContentPane().add(btnObrisiKorisnika);
+	}
+
+	public void CloseFrame() {
+		frame.dispose();
+		
 	}
 }
