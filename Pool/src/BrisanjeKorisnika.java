@@ -7,9 +7,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BrisanjeKorisnika {
 	
@@ -65,8 +68,7 @@ public class BrisanjeKorisnika {
 		//TRY
 		Connection conn = null;
 		Statement stmt = null;
-		
-		
+				
 		try {
 			// Registruj JDBC driver
 			Class.forName("com.mysql.jdbc.Driver");
@@ -98,7 +100,7 @@ public class BrisanjeKorisnika {
 		}
 		//TRY
 		
-		JComboBox comboBoxKorisnici = new JComboBox();
+		final JComboBox comboBoxKorisnici = new JComboBox();
 		comboBoxKorisnici.setBounds(217, 8, 207, 20);
 		frame.getContentPane().add(comboBoxKorisnici);
 		DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
@@ -106,6 +108,39 @@ public class BrisanjeKorisnika {
 		
 		
 		JButton btnObrisiKorisnika = new JButton("OBRISI !");
+		btnObrisiKorisnika.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				String anketa = (String)comboBoxKorisnici.getSelectedItem();
+				Connection conn = null;
+				Statement stmt = null;
+
+				try {
+					// Registruj JDBC driver
+					Class.forName("com.mysql.jdbc.Driver");
+
+					// Zapocni konekciju conn
+					conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");	
+					
+					stmt = conn.createStatement();
+					int gotovo = stmt.executeUpdate("DELETE FROM users WHERE username = '"+anketa+"' ");				
+					
+					if(gotovo>0){
+						JOptionPane.showMessageDialog(null, "Korisnik uspjesno obrisan");
+					}
+					
+					stmt.close();
+					conn.close();
+				} catch (SQLException se) {
+					// Errors JDBC
+					se.printStackTrace();
+				}
+				catch (Exception x) {
+					// Errors za Class.forName
+					x.printStackTrace();
+				}	
+			}
+		});
 		btnObrisiKorisnika.setBounds(10, 48, 414, 23);
 		frame.getContentPane().add(btnObrisiKorisnika);
 	}
