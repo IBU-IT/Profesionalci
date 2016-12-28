@@ -7,11 +7,9 @@ import javax.swing.JOptionPane;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-
 import java.awt.SystemColor;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -140,7 +138,7 @@ public class ZakljucajAnketu {
 							
 							int zakAnk = stmt.executeUpdate("UPDATE questions SET is_closed = 1 WHERE question_text = '"+zakkank+"'");
 							if(zakAnk>0){
-								JOptionPane.showMessageDialog(null, "Anketa uspjesno zakljucana");
+								JOptionPane.showMessageDialog(null, "Anketa uspjesno zakljucana !");
 								UgasiGa();
 							}
 							
