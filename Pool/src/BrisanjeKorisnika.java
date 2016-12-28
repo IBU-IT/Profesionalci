@@ -1,29 +1,34 @@
 import java.awt.EventQueue;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.BevelBorder;
-import java.awt.SystemColor;
-
 
 public class BrisanjeKorisnika {
+	
+	// Definisi JDBC driver name i URL baze
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
 
+	// Db podaci
+	static final String USER = "root";
+	static final String PASS = "123456";
+	
+	ArrayList<String> groupNames = new ArrayList<String>();
+	
+	
 	private JFrame frame;
-	private JButton btnBriiKorisnika;
-	private JLabel lblBrisanjeKorisnika;
-	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
 	 */
-	// Treba uraditi i ostalo 
-	// pisi komentare
 	public void ObrisiK() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,42 +49,64 @@ public class BrisanjeKorisnika {
 		initialize();
 	}
 
-	/** 
-	 *  Initialize the contents of the frame.
+	/**
+	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setTitle("Brisanje Korisnika");
-		frame.setBounds(100, 100, 520, 410);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblUnesiIme = new JLabel("Unesi username :");
-		lblUnesiIme.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		lblUnesiIme.setBounds(10, 100, 112, 50);
-		frame.getContentPane().add(lblUnesiIme);
+		JLabel tekstInfo = new JLabel("Odabreite korisnika kojega zelite obrisati:");
+		tekstInfo.setBounds(10, 11, 235, 14);
+		frame.getContentPane().add(tekstInfo);
 		
-		btnBriiKorisnika = new JButton("Obriši korisnika");
-		btnBriiKorisnika.setBackground(SystemColor.activeCaption);
-		btnBriiKorisnika.setFont(new Font("Gadugi", Font.BOLD, 16));
-		btnBriiKorisnika.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBriiKorisnika.setBounds(132, 224, 200, 50);
-		frame.getContentPane().add(btnBriiKorisnika);
+		//TRY
+		Connection conn = null;
+		Statement stmt = null;
 		
-		lblBrisanjeKorisnika = new JLabel("BRISANJE KORISNIKA");
-		lblBrisanjeKorisnika.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblBrisanjeKorisnika.setBounds(143, 26, 200, 50);
-		frame.getContentPane().add(lblBrisanjeKorisnika);
 		
-		scrollPane = new JScrollPane();
-		scrollPane.setViewportBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), null));
-		scrollPane.setBounds(132, 100, 200, 50);
-		frame.getContentPane().add(scrollPane);
+		try {
+			// Registruj JDBC driver
+			Class.forName("com.mysql.jdbc.Driver");
+
+			// Zapocni konekciju conn
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");	
+			
+			stmt = conn.createStatement();
+			String sql;
+			sql = ("SELECT username FROM users");
+			ResultSet rs = stmt.executeQuery(sql);
 		
-		// Brisanje korsinika ////
+			while (rs.next()) { 
+			    String groupName = rs.getString("username"); 
+			    // add group names to the array list
+			    groupNames.add(groupName);
+			} 
+			
+			rs.close(); 
+			stmt.close();
+			conn.close();
+		} catch (SQLException se) {
+			// Errors JDBC
+			se.printStackTrace();
+		}
+		catch (Exception x) {
+			// Errors za Class.forName
+			x.printStackTrace();
+		}
+		//TRY
+		
+		JComboBox comboBoxKorisnici = new JComboBox();
+		comboBoxKorisnici.setBounds(217, 8, 207, 20);
+		frame.getContentPane().add(comboBoxKorisnici);
+		DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
+		comboBoxKorisnici.setModel(model);
+		
+		
+		JButton btnObrisiKorisnika = new JButton("OBRISI !");
+		btnObrisiKorisnika.setBounds(10, 48, 414, 23);
+		frame.getContentPane().add(btnObrisiKorisnika);
 	}
 }
