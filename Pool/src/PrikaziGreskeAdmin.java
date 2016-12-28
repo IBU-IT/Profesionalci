@@ -57,19 +57,19 @@ public class PrikaziGreskeAdmin {
 			Class.forName("com.mysql.jdbc.Driver");
 
 			// Zapocni konekciju conn
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "");
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");
 
 			// Napravi statement i izvrsi query
 			stmt = conn.createStatement();
 			String sql;
 			
-			sql = ("SELECT * FROM feedback");
+			sql = ("SELECT * FROM greske");
 			
 			ResultSet rs = stmt.executeQuery(sql);
 			String greska;
 			while(rs.next())
 			{
-				greska=rs.getString("FeedBack");
+				greska=rs.getString("opis_greske");
 				textField.setText(textField.getText()+"\n"+greska);
 				
 			}
