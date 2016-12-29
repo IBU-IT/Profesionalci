@@ -78,7 +78,7 @@ public class GlasajNaAnketi {
 			
 			stmt = conn.createStatement();
 			String sql;
-			sql = ("SELECT question_text FROM questions WHERE is_closed=0");
+			sql = ("SELECT question_text FROM questions AS q WHERE is_closed=0 AND id NOT IN (SELECT question_id FROM submited_answers WHERE user_id = 2)");
 			ResultSet rs = stmt.executeQuery(sql);
 		
 			while (rs.next()) { 
