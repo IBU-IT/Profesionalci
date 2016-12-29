@@ -144,7 +144,7 @@ public class GlasajNaAnketi {
 				//OTVORI ODGOVORE ZA IZABRANU ANKETU USKORO
 				PrikaziOdgovoreIzabraneAnkete a = new PrikaziOdgovoreIzabraneAnkete();
 				a.prikaziOdgovore();
-			
+				frame.dispose();
 			}
 		});
 		btnGlasaj.setBackground(SystemColor.activeCaption);

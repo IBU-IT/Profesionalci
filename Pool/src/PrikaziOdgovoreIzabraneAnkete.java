@@ -122,37 +122,45 @@ public class PrikaziOdgovoreIzabraneAnkete {
 		btnOdgovor1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				GlasajNaAnketi zatvaranje = new GlasajNaAnketi();
+			      Connection conn = null;
+									
+					try {
+						// Registruj JDBC driver
+						Class.forName("com.mysql.jdbc.Driver");
 
-				Connection conn = null;
-				Statement stmt = null;
-				try {
-					// Registruj JDBC driver
-					Class.forName("com.mysql.jdbc.Driver");
-
-					// Zapocni konekciju conn
-					conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");
-
-					// Napravi statement i izvrsi query
-					stmt = conn.createStatement();
-					
-					int gotovo = stmt.executeUpdate("INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"+getPitanjeID()+"', '"+getUserID()+"', '"+getPrviID()+"')");
-				
-					if (gotovo>0){
-						JOptionPane.showMessageDialog(null, "Vav glas je unesen");
-					}else{
-						JOptionPane.showMessageDialog(null, "Doslo je do greške. molimo vas da pokusate ponovno.");
+						// Zapocni konekciju conn
+						conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");
+					      
+					      Statement stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+					      String prvi = "INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"+getPitanjeID()+"', '"+getUserID()+"', '"+getPrviID()+"')";
+					      String drugi = "UPDATE answers SET answer_count = answer_count + 1 WHERE id = '"+getPrviID()+"' ";
+					      
+					      conn.setAutoCommit(false);
+					      stmt1.addBatch(prvi);
+					      stmt1.addBatch(drugi);
+					      int[] count = stmt1.executeBatch();
+					      conn.commit();
+					      if(count.length != 0){
+					    	  JOptionPane.showMessageDialog(null, "Uspjesno");
+					    	  frmUskoro.dispose();
+					      }else{
+					    	  JOptionPane.showMessageDialog(null, "Doslo je do greske, pokusajte ponovno");
+					      }
+						stmt1.close();
+						conn.close();
+					} catch (SQLException se) {
+						// Errors JDBC
+						se.printStackTrace();
 					}
-					stmt.close();
-					conn.close();
-				} catch (SQLException se) {
-					// Errors JDBC
-					se.printStackTrace();
-				}
-				catch (Exception x) {
-					// Errors za Class.forName
-					x.printStackTrace();
-				}
-				
+					catch (Exception x) {
+						// Errors za Class.forName
+						x.printStackTrace();
+					}
+					
+					
+			      //VAKO
+			      
 			}
 		});
 		btnOdgovor1.setBounds(10, 86, 424, 23);
