@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 
 public class LogovanKorisnik{
@@ -46,23 +47,23 @@ public class LogovanKorisnik{
 		frmUserPanel = new JFrame();
 		frmUserPanel.setResizable(false);
 		frmUserPanel.setTitle("User Panel");
-		frmUserPanel.setBounds(100, 100, 520, 410);
+		frmUserPanel.setBounds(100, 100, 520, 250);
 		frmUserPanel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmUserPanel.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Prijavljen kao:");
-		lblNewLabel.setFont(new Font("Gadugi", Font.BOLD, 14));
-		lblNewLabel.setBounds(10, 57, 103, 23);
+		lblNewLabel.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		lblNewLabel.setBounds(12, 57, 103, 23);
 		frmUserPanel.getContentPane().add(lblNewLabel);
 		
 		JLabel lblIme = new JLabel("Ime:");
-		lblIme.setFont(new Font("Gadugi", Font.BOLD, 14));
-		lblIme.setBounds(10, 87, 85, 23);
+		lblIme.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		lblIme.setBounds(12, 87, 85, 23);
 		frmUserPanel.getContentPane().add(lblIme);
 		
 		JLabel lblPrezime = new JLabel("Prezime:");
-		lblPrezime.setFont(new Font("Gadugi", Font.BOLD, 14));
-		lblPrezime.setBounds(10, 118, 85, 18);
+		lblPrezime.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		lblPrezime.setBounds(12, 118, 85, 18);
 		frmUserPanel.getContentPane().add(lblPrezime);
 		
 		JButton btnGlasajNaAnketi = new JButton("Glasaj na Anketi");
@@ -75,7 +76,7 @@ public class LogovanKorisnik{
 		});
 		btnGlasajNaAnketi.setBackground(SystemColor.activeCaption);
 		btnGlasajNaAnketi.setFont(new Font("Gadugi", Font.BOLD, 14));
-		btnGlasajNaAnketi.setBounds(53, 203, 183, 30);
+		btnGlasajNaAnketi.setBounds(293, 45, 211, 30);
 		frmUserPanel.getContentPane().add(btnGlasajNaAnketi);
 		
 		JButton btnAnketeNaKojim = new JButton("<html><body><center><p>Ankete na kojim si glasao</p></center></body></html>");
@@ -95,7 +96,7 @@ public class LogovanKorisnik{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAnketeNaKojim.setBounds(123, 257, 278, 30);
+		btnAnketeNaKojim.setBounds(293, 87, 211, 30);
 		frmUserPanel.getContentPane().add(btnAnketeNaKojim);
 		
 		JButton btnPrijaviGreku = new JButton("Prijavi Gre\u0161ku");
@@ -108,7 +109,7 @@ public class LogovanKorisnik{
 				greska.greska();
 			}
 		});
-		btnPrijaviGreku.setBounds(256, 203, 183, 30);
+		btnPrijaviGreku.setBounds(293, 128, 211, 30);
 		frmUserPanel.getContentPane().add(btnPrijaviGreku);
 		
 		JButton btnodjaviSe = new JButton("<html><body><center><p>ODJAVI SE</p></center></body></html>");
@@ -120,22 +121,27 @@ public class LogovanKorisnik{
 				System.exit(0);
 			}
 		});
-		btnodjaviSe.setBounds(53, 307, 386, 31);
+		btnodjaviSe.setBounds(12, 175, 492, 31);
 		frmUserPanel.getContentPane().add(btnodjaviSe);
 		
 		Login drugi = new Login();
 		JLabel privaljnenKaoTekst = new JLabel("<html><font color='red'>"+drugi.getUsername()+"</font></html>");
 		privaljnenKaoTekst.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		privaljnenKaoTekst.setBounds(123, 61, 202, 19);
+		privaljnenKaoTekst.setBounds(101, 57, 137, 19);
 		frmUserPanel.getContentPane().add(privaljnenKaoTekst);
 		
-		JLabel prijavljenIme = new JLabel("<html><font color='red'>"+drugi.getFirstName()+"</font></html>");
+		JLabel prijavljenIme = new JLabel("<html><font color='black'>"+drugi.getFirstName()+"</font></html>");
 		prijavljenIme.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		prijavljenIme.setBounds(123, 91, 113, 19);
+		prijavljenIme.setBounds(101, 87, 113, 19);
 		frmUserPanel.getContentPane().add(prijavljenIme);
 		
-		JLabel prijavljenPrezime = new JLabel("<html><font color='red'>"+drugi.getLastName()+"</font></html>");
-		prijavljenPrezime.setBounds(123, 117, 113, 19);
+		JLabel prijavljenPrezime = new JLabel("<html><font color='black'>"+drugi.getLastName()+"</font></html>");
+		prijavljenPrezime.setBounds(101, 118, 113, 19);
 		frmUserPanel.getContentPane().add(prijavljenPrezime);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(LogovanKorisnik.class.getResource("/images/korisnik1.png")));
+		lblNewLabel_1.setBounds(10, 35, 221, 129);
+		frmUserPanel.getContentPane().add(lblNewLabel_1);
 	}
 }
