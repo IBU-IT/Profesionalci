@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 
 
 
-public class LogovanAdmin extends Login{
+public class LogovanAdmin{
 
 	private JFrame frmAdminPanel;
 
@@ -117,7 +117,7 @@ public class LogovanAdmin extends Login{
 			}
 		});
 		btnPregeldStatistike.setFont(new Font("Gadugi", Font.BOLD, 12));
-		btnPregeldStatistike.setBounds(180, 325, 155, 45);
+		btnPregeldStatistike.setBounds(180, 333, 155, 37);
 		frmAdminPanel.getContentPane().add(btnPregeldStatistike);
 		
 		JLabel lblPrijavljeniKao = new JLabel("Prijavljen kao:");
@@ -145,7 +145,7 @@ public class LogovanAdmin extends Login{
 			}
 		});
 		btnOdjaviSe.setFont(new Font("Gadugi", Font.BOLD, 12));
-		btnOdjaviSe.setBounds(10, 325, 155, 45);
+		btnOdjaviSe.setBounds(10, 333, 155, 37);
 		frmAdminPanel.getContentPane().add(btnOdjaviSe);
 		
 		// Zakljucaj dugme
@@ -209,9 +209,9 @@ public class LogovanAdmin extends Login{
 		btnOtkljucajAnketu.setBounds(340, 107, 165, 30);
 		frmAdminPanel.getContentPane().add(btnOtkljucajAnketu);
 		
-		JButton btnNewButton = new JButton("Prikazi greske");
+		JButton btnNewButton = new JButton("PRIKAZI GRESKE");
 		btnNewButton.setBackground(SystemColor.activeCaption);
-		btnNewButton.setFont(new Font("Gadugi", Font.PLAIN, 12));
+		btnNewButton.setFont(new Font("Gadugi", Font.BOLD, 12));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
