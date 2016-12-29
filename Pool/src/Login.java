@@ -25,15 +25,7 @@ public class Login {
 	private static int gender;
 	private static String gender_is = "";
 	private static int user_role;
-
-	// Definisi JDBC driver name i URL baze
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-	// Db podaci
-	static final String USER = "root";
-	static final String PASS = "123456";
-
+	
 	private JFrame frmPoolSystem;
 	private JTextField usernameField;
 	private JPasswordField passwordField;
@@ -144,23 +136,21 @@ public class Login {
 
 	public void LoginUser() {
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement stmt = null;
 		try {
 			// Registruj JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(DbConnection.JDBC_DRIVER);
 
 			// Zapocni konekciju conn
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
-			// Napravi statement i izvrsi query
-			stmt = conn.createStatement();
-			String sql;
-			sql = ("SELECT id, username, password, first_name, last_name, age, gender, user_role FROM Users WHERE username='"
-					+ usernameField.getText() + "' AND password='" + passwordField.getText() + "'");
-			ResultSet rs = stmt.executeQuery(sql);
+			String loginSelect = "SELECT id, username, password, first_name, last_name, age, gender, user_role FROM Users WHERE BINARY username = ? AND BINARY password = ?";
+			stmt = conn.prepareStatement(loginSelect);
+			stmt.setString(1, usernameField.getText());
+			stmt.setString(2, passwordField.getText());
 
-			// Provjeri da li su uname i pw tacni tj. da li query daje
-			// rezultat
+			ResultSet rs = stmt.executeQuery();
+
 			if (rs.next() == false) {
 				JOptionPane.showMessageDialog(null, "Pogresni Podaci");
 			}
@@ -181,24 +171,17 @@ public class Login {
 				setGenderIs("Zensko");
 			}
 
-			// Provjera User_Role (admin 1, sve ostalo user)
 			if (getUserRole() == 1) {
-				// OTVORI ADMIN
 				LogovanAdmin lAdmin = new LogovanAdmin();
 				lAdmin.Admin();
 				frmPoolSystem.dispose();
 			} else {
-				// OTVORI USERA
 				LogovanKorisnik IKorisnik = new LogovanKorisnik();
 				IKorisnik.LogovanProfil();
 				frmPoolSystem.dispose();
 			}
 
-			// Zatvori resultset, statement i db konekciju i ispisi
-			// greske ako postoje
 			rs.close();
-			stmt.close();
-			conn.close();
 		} catch (SQLException se) {
 			// Errors JDBC
 			se.printStackTrace();
@@ -209,14 +192,11 @@ public class Login {
 			try {
 				if (stmt != null)
 					stmt.close();
-			} catch (SQLException se2) {
-			}
-			try {
 				if (conn != null)
 					conn.close();
 			} catch (SQLException se) {
 				se.printStackTrace();
-			} // zavrsi try try
+			}
 		}
 	}
 

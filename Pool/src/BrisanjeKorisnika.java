@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 
 public class BrisanjeKorisnika {
-	
+
 	// Definisi JDBC driver name i URL baze
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
@@ -27,10 +28,9 @@ public class BrisanjeKorisnika {
 	// Db podaci
 	static final String USER = "root";
 	static final String PASS = "123456";
-	
+
 	ArrayList<String> groupNames = new ArrayList<String>();
-	
-	
+
 	private JFrame frame;
 
 	/**
@@ -65,51 +65,49 @@ public class BrisanjeKorisnika {
 		frame.setBounds(100, 100, 520, 205);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JLabel tekstInfo = new JLabel("ODABERITE KORISNIKA ZA BRISANJE :");
 		tekstInfo.setFont(new Font("Gadugi", Font.BOLD, 14));
 		tekstInfo.setBounds(10, 11, 360, 20);
 		frame.getContentPane().add(tekstInfo);
-		
+
 		Connection conn = null;
 		Statement stmt = null;
-				
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
 
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");	
-			
+		try {
+			Class.forName(JDBC_DRIVER);
+
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
 			stmt = conn.createStatement();
 			String sql;
 			sql = ("SELECT username FROM users");
 			ResultSet rs = stmt.executeQuery(sql);
-		
-			while (rs.next()) { 
-			    String groupName = rs.getString("username"); 
-			    groupNames.add(groupName);
-			} 
-			
-			rs.close(); 
+
+			while (rs.next()) {
+				String groupName = rs.getString("username");
+				groupNames.add(groupName);
+			}
+
+			rs.close();
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
 			// Errors JDBC
 			se.printStackTrace();
-		}
-		catch (Exception x) {
+		} catch (Exception x) {
 			// Errors za Class.forName
 			x.printStackTrace();
 		}
-		//TRY
-		
+		// TRY
+
 		final JComboBox comboBoxKorisnici = new JComboBox();
 		comboBoxKorisnici.setFont(new Font("Gadugi", Font.BOLD, 14));
 		comboBoxKorisnici.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(comboBoxKorisnici);
 		DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
 		comboBoxKorisnici.setModel(model);
-		
-		
+
 		JButton btnObrisiKorisnika = new JButton("OBRISI");
 		btnObrisiKorisnika.setBackground(SystemColor.activeCaption);
 		btnObrisiKorisnika.addActionListener(new ActionListener() {
@@ -120,43 +118,45 @@ public class BrisanjeKorisnika {
 		btnObrisiKorisnika.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				String anketa = (String)comboBoxKorisnici.getSelectedItem();
+				String user = (String) comboBoxKorisnici.getSelectedItem();
 				Connection conn = null;
-				Statement stmt = null;
+				PreparedStatement stmt = null;
 
 				try {
 					// Registruj JDBC driver
-					Class.forName("com.mysql.jdbc.Driver");
+					Class.forName(JDBC_DRIVER);
 
-					// Zapocni konekciju conn
-					conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");	
-					
-					stmt = conn.createStatement();
-					int gotovo = stmt.executeUpdate("DELETE FROM users WHERE username = '"+anketa+"' ");				
-					
-					if(gotovo>0){
+					conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+					String deleteUser = "DELETE FROM users WHERE username = ?";
+
+					stmt = conn.prepareStatement(deleteUser);
+					stmt.setString(1, user);
+					int gotovo = stmt.executeUpdate();
+
+					if (gotovo > 0) {
 						JOptionPane.showMessageDialog(null, "Korisnik uspjesno obrisan");
 						CloseFrame();
 					}
-					
+
 					stmt.close();
 					conn.close();
 				} catch (SQLException se) {
 					// Errors JDBC
 					se.printStackTrace();
-				}
-				catch (Exception x) {
+				} catch (Exception x) {
 					// Errors za Class.forName
 					x.printStackTrace();
-				}	
+				}
 			}
 		});
+
 		btnObrisiKorisnika.setBounds(10, 121, 484, 31);
 		frame.getContentPane().add(btnObrisiKorisnika);
 	}
 
 	public void CloseFrame() {
 		frame.dispose();
-		
+
 	}
 }
