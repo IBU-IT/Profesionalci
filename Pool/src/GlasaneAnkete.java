@@ -1,6 +1,9 @@
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -118,7 +121,16 @@ public class GlasaneAnkete {
 					}
 				
 				table = new JTable(tableModel);
+				table.setEnabled(false);
 				table.setBounds(10, 104, 494, 266);
-				frame.getContentPane().add(table);		
+		        table.setFillsViewportHeight(true);
+				
+				JScrollPane js=new JScrollPane(table);
+				js.setEnabled(false);
+				js.setSize(494, 266);
+				js.setLocation(10, 104);
+		        js.setVisible(true);
+		        frame.getContentPane().add(js);	
+				
 	}
 }
