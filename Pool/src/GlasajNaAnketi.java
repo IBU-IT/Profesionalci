@@ -99,6 +99,7 @@ public class GlasajNaAnketi {
 		//TRY
 		
 		final JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		comboBox.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(comboBox);
 		DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
@@ -146,7 +147,7 @@ public class GlasajNaAnketi {
 			}
 		});
 		btnGlasaj.setBackground(SystemColor.activeCaption);
-		btnGlasaj.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		btnGlasaj.setFont(new Font("Gadugi", Font.BOLD, 16));
 		btnGlasaj.setBounds(10, 121, 484, 31);
 		frame.getContentPane().add(btnGlasaj);
 	}

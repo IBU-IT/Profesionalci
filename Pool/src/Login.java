@@ -75,7 +75,7 @@ public class Login {
 		frmPoolSystem = new JFrame();
 		frmPoolSystem.getContentPane().setBackground(SystemColor.control);
 		frmPoolSystem.setBackground(SystemColor.activeCaption);
-		frmPoolSystem.setTitle("Pool System - Login");
+		frmPoolSystem.setTitle("MySurvey Login");
 		frmPoolSystem.setResizable(false);
 		frmPoolSystem.setBounds(100, 100, 520, 410);
 		frmPoolSystem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
