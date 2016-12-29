@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PrikaziOdgovoreIzabraneAnkete {
 
@@ -24,6 +26,8 @@ public class PrikaziOdgovoreIzabraneAnkete {
 	private int drugiID=0;
 	private int treciID=0;
 	private int imalga = 0;
+	private int userID = 0;
+	private int pitanjeID = 0;
 
 	/**
 	 * Launch the application.
@@ -81,7 +85,10 @@ public class PrikaziOdgovoreIzabraneAnkete {
 				listID.add(rs2.getInt("id")); //ID
 				list.add(rs2.getString("answer")); //Odgovor
 			}
-
+			
+			Login povuci = new Login();
+			setPitanjeID(pitanje.getId());
+			setUserID(povuci.getId());
 			setPrviOdgovor(list.get(0));
 			setPrviID(listID.get(0));
 			setDrugiOdgovor(list.get(1));
@@ -112,6 +119,42 @@ public class PrikaziOdgovoreIzabraneAnkete {
 		
 		
 		JButton btnOdgovor1 = new JButton(getPrviOdgovor());
+		btnOdgovor1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+
+				Connection conn = null;
+				Statement stmt = null;
+				try {
+					// Registruj JDBC driver
+					Class.forName("com.mysql.jdbc.Driver");
+
+					// Zapocni konekciju conn
+					conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");
+
+					// Napravi statement i izvrsi query
+					stmt = conn.createStatement();
+					
+					int gotovo = stmt.executeUpdate("INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"+getPitanjeID()+"', '"+getUserID()+"', '"+getPrviID()+"')");
+				
+					if (gotovo>0){
+						JOptionPane.showMessageDialog(null, "Vav glas je unesen");
+					}else{
+						JOptionPane.showMessageDialog(null, "Doslo je do greške. molimo vas da pokusate ponovno.");
+					}
+					stmt.close();
+					conn.close();
+				} catch (SQLException se) {
+					// Errors JDBC
+					se.printStackTrace();
+				}
+				catch (Exception x) {
+					// Errors za Class.forName
+					x.printStackTrace();
+				}
+				
+			}
+		});
 		btnOdgovor1.setBounds(10, 86, 424, 23);
 		frmUskoro.getContentPane().add(btnOdgovor1);
 		
@@ -181,5 +224,21 @@ public class PrikaziOdgovoreIzabraneAnkete {
 
 	public void setTreciOdgovor(String treciOdgovor) {
 		this.treciOdgovor = treciOdgovor;
+	}
+
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+	public int getPitanjeID() {
+		return pitanjeID;
+	}
+
+	public void setPitanjeID(int pitanjeID) {
+		this.pitanjeID = pitanjeID;
 	}
 }
