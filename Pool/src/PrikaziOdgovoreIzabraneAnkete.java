@@ -23,6 +23,7 @@ public class PrikaziOdgovoreIzabraneAnkete {
 	private String prviOdgovor = "";
 	private String drugiOdgovor = "";
 	private String treciOdgovor = "";
+	private int imalga = 0;
 
 	/**
 	 * Launch the application.
@@ -52,7 +53,7 @@ public class PrikaziOdgovoreIzabraneAnkete {
 	 */
 	private void initialize() {
 		frmUskoro = new JFrame();
-		frmUskoro.setTitle("Uskoro");
+		frmUskoro.setTitle("Glasajte");
 		frmUskoro.setResizable(false);
 		frmUskoro.setBounds(100, 100, 450, 300);
 		frmUskoro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -83,6 +84,9 @@ public class PrikaziOdgovoreIzabraneAnkete {
 			setPrviOdgovor(list.get(0));
 			setDrugiOdgovor(list.get(1));
 			setTreciOdgovor(list.get(2));
+			if(getTreciOdgovor().equals("")){
+				imalga = 1;
+			}
 			
 			rs2.close(); 
 			stmt2.close();
@@ -98,16 +102,18 @@ public class PrikaziOdgovoreIzabraneAnkete {
 		
 		
 		JButton btnOdgovor1 = new JButton(getPrviOdgovor());
-		btnOdgovor1.setBounds(10, 86, 89, 23);
+		btnOdgovor1.setBounds(10, 86, 424, 23);
 		frmUskoro.getContentPane().add(btnOdgovor1);
 		
 		JButton btnOdgovor2 = new JButton(getDrugiOdgovor());
-		btnOdgovor2.setBounds(109, 86, 89, 23);
+		btnOdgovor2.setBounds(10, 120, 424, 23);
 		frmUskoro.getContentPane().add(btnOdgovor2);
 		
+		if(getPostojilTreci() == 0){
 		JButton btnOdgovor3 = new JButton(getTreciOdgovor());
-		btnOdgovor3.setBounds(208, 86, 89, 23);
+		btnOdgovor3.setBounds(10, 154, 424, 23);
 		frmUskoro.getContentPane().add(btnOdgovor3);
+		}
 		
 	}
 
@@ -125,6 +131,14 @@ public class PrikaziOdgovoreIzabraneAnkete {
 
 	public void setDrugiOdgovor(String drugiOdgovor) {
 		this.drugiOdgovor = drugiOdgovor;
+	}
+	
+	public int getPostojilTreci() {
+		return imalga;
+	}
+
+	public void setPostojilTreci(int imalga) {
+		this.imalga = imalga;
 	}
 
 	public String getTreciOdgovor() {
