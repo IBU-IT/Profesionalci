@@ -13,6 +13,7 @@ import java.awt.SystemColor;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 
 
@@ -123,17 +124,17 @@ public class LogovanAdmin{
 		JLabel lblPrijavljeniKao = new JLabel("Prijavljen kao:");
 		lblPrijavljeniKao.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		lblPrijavljeniKao.setBackground(Color.DARK_GRAY);
-		lblPrijavljeniKao.setBounds(10, 30, 85, 23);
+		lblPrijavljeniKao.setBounds(10, 18, 85, 23);
 		frmAdminPanel.getContentPane().add(lblPrijavljeniKao);
 		
 		JLabel lblIme = new JLabel("Ime:");
 		lblIme.setFont(new Font("Gadugi", Font.PLAIN, 12));
-		lblIme.setBounds(10, 64, 85, 23);
+		lblIme.setBounds(10, 52, 85, 23);
 		frmAdminPanel.getContentPane().add(lblIme);
 		
 		JLabel lblPrezime = new JLabel("Prezime:");
 		lblPrezime.setFont(new Font("Gadugi", Font.PLAIN, 12));
-		lblPrezime.setBounds(10, 102, 85, 23);
+		lblPrezime.setBounds(10, 86, 85, 23);
 		frmAdminPanel.getContentPane().add(lblPrezime);
 		
 		JButton btnOdjaviSe = new JButton("ODJAVI SE");
@@ -167,33 +168,33 @@ public class LogovanAdmin{
 		Login novi = new Login();
 		JLabel prikaziUsername = new JLabel("<html><font color='red'>"+novi.getUsername()+"</font></html>");
 		prikaziUsername.setBackground(SystemColor.activeCaption);
-		prikaziUsername.setBounds(105, 30, 104, 23);
+		prikaziUsername.setBounds(90, 18, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziUsername);
 		
 		JLabel prikaziIme = new JLabel("<html><font color='black'>"+novi.getFirstName()+"</font></html>");
-		prikaziIme.setBounds(105, 68, 104, 23);
+		prikaziIme.setBounds(90, 52, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziIme);
 		
 		JLabel prikaziPrezime = new JLabel("<html><font color='black'>"+novi.getLastName()+"</font></html>");
-		prikaziPrezime.setBounds(105, 102, 104, 23);
+		prikaziPrezime.setBounds(90, 86, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziPrezime);
 		
 		JLabel lblSpol = new JLabel("Spol:");
 		lblSpol.setFont(new Font("Gadugi", Font.PLAIN, 12));
-		lblSpol.setBounds(10, 142, 85, 23);
+		lblSpol.setBounds(10, 120, 85, 23);
 		frmAdminPanel.getContentPane().add(lblSpol);
 		
 		JLabel lblGodina = new JLabel("Godina:");
 		lblGodina.setFont(new Font("Gadugi", Font.PLAIN, 12));
-		lblGodina.setBounds(10, 180, 85, 23);
+		lblGodina.setBounds(10, 160, 85, 23);
 		frmAdminPanel.getContentPane().add(lblGodina);
 		
 		JLabel prikaziSpol = new JLabel("<html><font color='black'>"+novi.getGenderIs()+"</font></html>");
-		prikaziSpol.setBounds(105, 136, 104, 23);
+		prikaziSpol.setBounds(90, 120, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziSpol);
 		
 		JLabel prikaziGodine = new JLabel("<html><font color='black'>"+novi.getAgeIs()+"</font></html>");
-		prikaziGodine.setBounds(105, 181, 104, 23);
+		prikaziGodine.setBounds(90, 160, 104, 23);
 		frmAdminPanel.getContentPane().add(prikaziGodine);
 		
 		JButton btnOtkljucajAnketu = new JButton("Otkljucaj Anketu");
@@ -226,6 +227,11 @@ public class LogovanAdmin{
 		});
 		btnNewButton.setBounds(350, 333, 155, 37);
 		frmAdminPanel.getContentPane().add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(LogovanAdmin.class.getResource("/images/Untitled-2.png")));
+		lblNewLabel.setBounds(10, 14, 210, 177);
+		frmAdminPanel.getContentPane().add(lblNewLabel);
 	}
 
 }
