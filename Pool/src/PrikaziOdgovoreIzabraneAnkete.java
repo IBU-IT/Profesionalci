@@ -10,12 +10,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class PrikaziOdgovoreIzabraneAnkete {
 
 	private JFrame frmUskoro;
 	private ArrayList<String> list = new ArrayList<>();
-	//private ArrayList<Integer> listID = new ArrayList<>();
+	private ArrayList<Integer> listID = new ArrayList<>();
 	private String prviOdgovor = "";
 	private String drugiOdgovor = "";
 	private String treciOdgovor = "";
@@ -74,24 +75,28 @@ public class PrikaziOdgovoreIzabraneAnkete {
 			
 			stmt2 = conn2.createStatement();
 			String sql;
-			sql = ("SELECT answer FROM answers WHERE question_id='"+pitanje.getId()+"' ");
+			sql = ("SELECT id, answer FROM answers WHERE question_id='"+pitanje.getId()+"' ");
 			ResultSet rs2 = stmt2.executeQuery(sql);
 			while(rs2.next()){    
-				//listID.add(rs2.getInt("id")); //ID
+				listID.add(rs2.getInt("id")); //ID
 				list.add(rs2.getString("answer")); //Odgovor
 			}
 
 			setPrviOdgovor(list.get(0));
-			//setPrviID(listID.get(0));
+			setPrviID(listID.get(0));
 			setDrugiOdgovor(list.get(1));
-			//setDrugiID(listID.get(1));
-			
-			if(getTreciOdgovor().equals("")){
-				setPostojilTreci(1);
-			}else{
+			setDrugiID(listID.get(1));
+
+			try {
+				list.get(2);
+				setPostojilTreci(0);
 				setTreciOdgovor(list.get(2));
-				//setTreciID(listID.get(2));
+				setTreciID(listID.get(2));
+			} catch ( IndexOutOfBoundsException e ) {
+				setPostojilTreci(1);
 			}
+			
+			
 			
 			rs2.close(); 
 			stmt2.close();
