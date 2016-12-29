@@ -31,9 +31,6 @@ public class Login {
 	private static String gender_is = "";
 	private static int user_role;
 
-	
-	
-
 	// Definisi JDBC driver name i URL baze
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
