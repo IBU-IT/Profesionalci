@@ -80,9 +80,9 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblUnesitePitanjeI = new JLabel("Unesite odgovor u svako polje :");
+		JLabel lblUnesitePitanjeI = new JLabel("UNESITE ODGOVORE U SVAKO POLJE:");
 		lblUnesitePitanjeI.setFont(new Font("Gadugi", Font.BOLD, 16));
-		lblUnesitePitanjeI.setBounds(118, 37, 290, 50);
+		lblUnesitePitanjeI.setBounds(106, 36, 290, 50);
 		frame.getContentPane().add(lblUnesitePitanjeI);
 		
 		odgovor1 = new JTextField();
@@ -162,10 +162,15 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 					try {
 						if (conn != null)
 							conn.close();
+						CloseFrame();
 					} catch (SQLException se) {
 						se.printStackTrace();
 					}// zavrsi try try
 				}// zavrsi glavni try try
+			}
+
+			private void CloseFrame() {
+				frame.dispose();
 			}
 			});
 		btnUnesiOdgovore.setBounds(141, 307, 200, 50);

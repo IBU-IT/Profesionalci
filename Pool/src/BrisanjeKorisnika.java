@@ -13,6 +13,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BrisanjeKorisnika {
 	
@@ -57,12 +60,14 @@ public class BrisanjeKorisnika {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setTitle("BRISANJE KORSINIKA");
+		frame.setBounds(100, 100, 520, 205);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel tekstInfo = new JLabel("Odabreite korisnika kojega zelite obrisati:");
-		tekstInfo.setBounds(10, 11, 235, 14);
+		JLabel tekstInfo = new JLabel("ODABERITE KORISNIKA ZA BRISANJE :");
+		tekstInfo.setFont(new Font("Gadugi", Font.BOLD, 14));
+		tekstInfo.setBounds(10, 11, 360, 20);
 		frame.getContentPane().add(tekstInfo);
 		
 		Connection conn = null;
@@ -97,13 +102,19 @@ public class BrisanjeKorisnika {
 		//TRY
 		
 		final JComboBox comboBoxKorisnici = new JComboBox();
-		comboBoxKorisnici.setBounds(217, 8, 207, 20);
+		comboBoxKorisnici.setFont(new Font("Gadugi", Font.BOLD, 14));
+		comboBoxKorisnici.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(comboBoxKorisnici);
 		DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
 		comboBoxKorisnici.setModel(model);
 		
 		
-		JButton btnObrisiKorisnika = new JButton("OBRISI !");
+		JButton btnObrisiKorisnika = new JButton("OBRISI");
+		btnObrisiKorisnika.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnObrisiKorisnika.setFont(new Font("Gadugi", Font.BOLD, 16));
 		btnObrisiKorisnika.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -138,7 +149,7 @@ public class BrisanjeKorisnika {
 				}	
 			}
 		});
-		btnObrisiKorisnika.setBounds(10, 48, 414, 23);
+		btnObrisiKorisnika.setBounds(10, 121, 484, 31);
 		frame.getContentPane().add(btnObrisiKorisnika);
 	}
 

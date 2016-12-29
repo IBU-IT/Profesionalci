@@ -18,6 +18,7 @@ import java.sql.Statement;
 
 import javax.swing.JSpinner;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
@@ -242,6 +243,7 @@ public class DodajKorisnika {
 					spinner.setValue(0);
 					group.clearSelection();
 					chckbxAdmin.setSelected(false);
+					CloseFrame();
 					
 				}else{
 					JOptionPane.showMessageDialog(null, "Došlo je do greške izmedju aplikacije i dodavanja korisnika u bazu");
@@ -271,6 +273,8 @@ public class DodajKorisnika {
 			
 			} //zavrsi bazu
 		}
+
+			
 		});
 		btnDodajNovogKorisnika.setBounds(64, 302, 359, 43);
 		frmDodajNovogKorisnika.getContentPane().add(btnDodajNovogKorisnika);
@@ -303,5 +307,10 @@ public class DodajKorisnika {
 
 	public static void setGodine(int godine) {
 		DodajKorisnika.godine = godine;
+	}
+	public void CloseFrame() {
+		frmDodajNovogKorisnika.dispose();
+	
+		
 	}
 }

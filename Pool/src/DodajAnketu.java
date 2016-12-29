@@ -63,13 +63,13 @@ public class DodajAnketu {
 		frame = new JFrame();
 		frame.setTitle("Dodaj Anketu");
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 520, 410);
+		frame.setBounds(100, 100, 520, 205);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblUpiiteImeAnkete = new JLabel("Upi\u0161ite ime ankete :");
-		lblUpiiteImeAnkete.setFont(new Font("Gadugi", Font.BOLD, 16));
-		lblUpiiteImeAnkete.setBounds(165, 70, 200, 50);
+		JLabel lblUpiiteImeAnkete = new JLabel("UNESITE IME ANKETE :");
+		lblUpiiteImeAnkete.setFont(new Font("Gadugi", Font.BOLD, 14));
+		lblUpiiteImeAnkete.setBounds(10, 11, 360, 20);
 		frame.getContentPane().add(lblUpiiteImeAnkete);
 		
 		JButton btnNapraviAnketu = new JButton("NAPRAVI ANKETU");
@@ -112,6 +112,7 @@ public class DodajAnketu {
 					try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
 			            if (generatedKeys.next()) {
 			                questionID = generatedKeys.getInt(1);
+			                CloseFrame();
 			            }
 			            else {
 			                throw new SQLException("Kreira, no ID obtained.");
@@ -144,15 +145,20 @@ public class DodajAnketu {
 				PitanjeDodajAnketu nesto = new PitanjeDodajAnketu();
 				nesto.PDAnketu(questionID);
 			}
+
+			private void CloseFrame() {
+				frame.dispose();
+				
+			}
 		});
-		btnNapraviAnketu.setBounds(117, 269, 287, 50);
+		btnNapraviAnketu.setBounds(10, 121, 484, 31);
 		frame.getContentPane().add(btnNapraviAnketu);
 		
 		
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		textField.setBounds(104, 138, 318, 50);
+		textField.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		//dodaj anketu

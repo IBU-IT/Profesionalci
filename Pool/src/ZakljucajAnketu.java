@@ -58,24 +58,17 @@ public class ZakljucajAnketu {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setFont(new Font("Gadugi", Font.BOLD, 12));
 		frame.setResizable(false);
 		frame.setTitle("Zakljucaj anketu");
-		frame.setBounds(100, 100, 520, 410);
+		frame.setBounds(100, 100, 520, 205);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblZakljucajAnketu = new JLabel("ZAKLJUCAJ ANKETU");
-		lblZakljucajAnketu.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblZakljucajAnketu.setBounds(143, 22, 207, 45);
+		JLabel lblZakljucajAnketu = new JLabel("ODABERI ANKETU ZA ZAKLJUCAVANJE :");
+		lblZakljucajAnketu.setFont(new Font("Gadugi", Font.BOLD, 14));
+		lblZakljucajAnketu.setBounds(10, 11, 360, 20);
 		frame.getContentPane().add(lblZakljucajAnketu);
-		
-		
-		
-		JButton btnOdaberiDrugu = new JButton("ODABERI DRUGU");
-		btnOdaberiDrugu.setBackground(SystemColor.activeCaption);
-		btnOdaberiDrugu.setFont(new Font("Gadugi", Font.BOLD, 16));
-		btnOdaberiDrugu.setBounds(260, 278, 200, 36);
-		frame.getContentPane().add(btnOdaberiDrugu);
 		
 		//TRY
 				Connection conn = null;
@@ -114,7 +107,7 @@ public class ZakljucajAnketu {
 				//TRY
 				
 				final JComboBox comboBoxZakljucajAnketu = new JComboBox();
-				comboBoxZakljucajAnketu.setBounds(238, 64, 207, 20);
+				comboBoxZakljucajAnketu.setBounds(10, 43, 484, 40);
 				frame.getContentPane().add(comboBoxZakljucajAnketu);
 				DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
 				comboBoxZakljucajAnketu.setModel(model);
@@ -157,7 +150,7 @@ public class ZakljucajAnketu {
 				});
 				btnZakljucaj.setBackground(SystemColor.activeCaption);
 				btnZakljucaj.setFont(new Font("Gadugi", Font.BOLD, 16));
-				btnZakljucaj.setBounds(50, 278, 200, 36);
+				btnZakljucaj.setBounds(10, 121, 484, 31);
 				frame.getContentPane().add(btnZakljucaj);
 		
 		
