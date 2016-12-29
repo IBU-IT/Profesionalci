@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import java.awt.SystemColor;
 
 
 
@@ -76,7 +77,7 @@ public class RegistracijaKorisnika {
 		frmRegistrujSe = new JFrame();
 		frmRegistrujSe.setResizable(false);
 		frmRegistrujSe.setTitle("Registruj Se");
-		frmRegistrujSe.setBounds(100, 100, 520, 410);
+		frmRegistrujSe.setBounds(100, 100, 450, 270);
 		frmRegistrujSe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmRegistrujSe.getContentPane().setLayout(null);
 		
@@ -86,7 +87,7 @@ public class RegistracijaKorisnika {
 		frmRegistrujSe.getContentPane().add(lblName);
 		
 		nField = new JTextField();
-		nField.setBounds(76, 11, 153, 20);
+		nField.setBounds(76, 11, 210, 20);
 		frmRegistrujSe.getContentPane().add(nField);
 		nField.setColumns(10);
 		
@@ -99,7 +100,7 @@ public class RegistracijaKorisnika {
 		
 		
 		sField = new JTextField();
-		sField.setBounds(76, 36, 153, 20);
+		sField.setBounds(76, 36, 210, 20);
 		frmRegistrujSe.getContentPane().add(sField);
 		sField.setColumns(10);
 		
@@ -118,7 +119,7 @@ public class RegistracijaKorisnika {
 		frmRegistrujSe.getContentPane().add(lblNewLabel);
 		
 		unameField = new JTextField();
-		unameField.setBounds(76, 86, 153, 20);
+		unameField.setBounds(76, 86, 210, 20);
 		frmRegistrujSe.getContentPane().add(unameField);
 		unameField.setColumns(10);
 		
@@ -128,7 +129,7 @@ public class RegistracijaKorisnika {
 		frmRegistrujSe.getContentPane().add(lblPassword);
 		
 		pwField = new JPasswordField();
-		pwField.setBounds(76, 110, 153, 20);
+		pwField.setBounds(76, 110, 210, 20);
 		frmRegistrujSe.getContentPane().add(pwField);
 		
 		JLabel lblGendre = new JLabel("Gender");
@@ -150,9 +151,10 @@ public class RegistracijaKorisnika {
 	    grupa.add(Male);
 	    grupa.add(Female);
 		
-		JButton RegistrujSe = new JButton("Registruj Se");
-		RegistrujSe.setFont(new Font("Arial", Font.PLAIN, 13));
-		RegistrujSe.setBounds(10, 171, 219, 44);
+		JButton RegistrujSe = new JButton("REGISTRUJ SE");
+		RegistrujSe.setBackground(SystemColor.activeCaption);
+		RegistrujSe.setFont(new Font("Gadugi", Font.BOLD, 16));
+		RegistrujSe.setBounds(32, 171, 375, 44);
 		frmRegistrujSe.getContentPane().add(RegistrujSe);
 		RegistrujSe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -224,6 +226,7 @@ public class RegistracijaKorisnika {
 						sField.setText("");
 						spinnerAge.setValue(0);
 						grupa.clearSelection();
+						CloseFrame();
 						
 					}else{
 						JOptionPane.showMessageDialog(null, "Došlo je do greške izmedju aplikacije i dodavanja korisnika u bazu");
@@ -256,6 +259,11 @@ public class RegistracijaKorisnika {
 			}
 				
 		}
+
+			private void CloseFrame() {
+				frmRegistrujSe.dispose();
+				
+			}
 			
 		});
 		
