@@ -122,7 +122,6 @@ public class PrikaziOdgovoreIzabraneAnkete {
 		btnOdgovor1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				GlasajNaAnketi zatvaranje = new GlasajNaAnketi();
 			      Connection conn = null;
 									
 					try {
