@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
 
 public class PrijaviGresku {
@@ -48,26 +49,27 @@ public class PrijaviGresku {
 	private void initialize() {
 		frmPrijaviGresku = new JFrame();
 		frmPrijaviGresku.setTitle("Prijavi Gresku");
-		frmPrijaviGresku.setBounds(100, 100, 520, 410);
+		frmPrijaviGresku.setBounds(100, 100, 520, 205);
 		frmPrijaviGresku.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPrijaviGresku.getContentPane().setLayout(null);
 		
-		JLabel lblOpiiteProblemKoji = new JLabel("Opi\u0161ite problem koji imate :");
-		lblOpiiteProblemKoji.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblOpiiteProblemKoji.setBounds(10, 11, 262, 34);
+		JLabel lblOpiiteProblemKoji = new JLabel("OPISITE PROBLEME KOJE IMATE :");
+		lblOpiiteProblemKoji.setFont(new Font("Gadugi", Font.BOLD, 14));
+		lblOpiiteProblemKoji.setBounds(10, 11, 360, 20);
 		frmPrijaviGresku.getContentPane().add(lblOpiiteProblemKoji);
 		
 		JButton btnPrijaviGreku = new JButton("PRIJAVITE GRE\u0160KU");
 		
 			btnPrijaviGreku.setBackground(SystemColor.activeCaption);
 			btnPrijaviGreku.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnPrijaviGreku.setBounds(43, 295, 414, 46);
+			btnPrijaviGreku.setBounds(10, 121, 484, 31);
 			frmPrijaviGresku.getContentPane().add(btnPrijaviGreku);
 			
 			
 			final JTextArea textArea = new JTextArea();
+			textArea.setBackground(Color.LIGHT_GRAY);
 			textArea.setLineWrap(true);
-			textArea.setBounds(10, 56, 484, 209);
+			textArea.setBounds(10, 43, 484, 60);
 			frmPrijaviGresku.getContentPane().add(textArea);
 			btnPrijaviGreku.addMouseListener(new MouseAdapter() {
 				@Override

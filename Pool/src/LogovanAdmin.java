@@ -224,7 +224,7 @@ public class LogovanAdmin{
 			}
 			
 		});
-		btnNewButton.setBounds(340, 302, 165, 30);
+		btnNewButton.setBounds(350, 333, 155, 37);
 		frmAdminPanel.getContentPane().add(btnNewButton);
 	}
 

@@ -64,27 +64,15 @@ public class OtkljucajAnketu {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setTitle("Otkljucaj anketu");
-		frame.setBounds(100, 100, 520, 410);
+		frame.setBounds(100, 100, 520, 205);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		
-		JLabel lblOtkljucajAnketu = new JLabel("OTKLJUCAJ ANKETU");
-		lblOtkljucajAnketu.setBounds(148, 11, 216, 47);
-		lblOtkljucajAnketu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		JLabel lblOtkljucajAnketu = new JLabel("ODABERI ANKETU ZA OTKLJUCAVANJE : ");
+		lblOtkljucajAnketu.setBounds(10, 11, 360, 20);
+		lblOtkljucajAnketu.setFont(new Font("Gadugi", Font.BOLD, 14));
 		frame.getContentPane().add(lblOtkljucajAnketu);
-		
-		JButton btnOtkljucaj = new JButton("OTKLJUCAJ");
-		btnOtkljucaj.setBounds(50, 278, 200, 36);
-		btnOtkljucaj.setBackground(SystemColor.activeCaption);
-		btnOtkljucaj.setFont(new Font("Gadugi", Font.BOLD, 16));
-		frame.getContentPane().add(btnOtkljucaj);
-		
-		JButton btnOdaberiDrugu = new JButton("ODABERI DRUGU");
-		btnOdaberiDrugu.setBounds(260, 278, 200, 36);
-		btnOdaberiDrugu.setBackground(SystemColor.activeCaption);
-		btnOdaberiDrugu.setFont(new Font("Gadugi", Font.BOLD, 16));
-		frame.getContentPane().add(btnOdaberiDrugu);
 		//TRY
 		Connection conn = null;
 		Statement stmt = null;
@@ -121,17 +109,18 @@ public class OtkljucajAnketu {
 		}
 		//TRY
 		
-		final JComboBox comboBoxZakljucajAnketu = new JComboBox();
-		comboBoxZakljucajAnketu.setBounds(238, 64, 207, 20);
-		frame.getContentPane().add(comboBoxZakljucajAnketu);
+		final JComboBox comboBoxOtkljucajAnketu = new JComboBox();
+		comboBoxOtkljucajAnketu.setBounds(10, 43, 484, 40);
+		frame.getContentPane().add(comboBoxOtkljucajAnketu);
 		DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
-		comboBoxZakljucajAnketu.setModel(model);
+		comboBoxOtkljucajAnketu.setModel(model);
 		
-		JButton btnZakljucaj = new JButton("ZAKLJUCAJ ");
-		btnZakljucaj.addMouseListener(new MouseAdapter() {
+		JButton btnOtkljucaj = new JButton("OTKLJUCAJ");
+		btnOtkljucaj.addMouseListener(new MouseAdapter() {
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String zakkank = (String)comboBoxZakljucajAnketu.getSelectedItem();
+				String zakkank = (String)comboBoxOtkljucajAnketu.getSelectedItem();
 				// Spremi u varijable 
 				
 				Connection conn = null;
@@ -146,8 +135,9 @@ public class OtkljucajAnketu {
 					
 					int zakAnk = stmt.executeUpdate("UPDATE questions SET is_closed = 0 WHERE question_text = '"+zakkank+"'");
 					if(zakAnk>0){
-						JOptionPane.showMessageDialog(null, "Anketa uspjesno zakljucana !");
+						JOptionPane.showMessageDialog(null, "Anketa uspjesno otkljucana !");
 						UgasiGa();
+						
 					}
 					
 
@@ -163,10 +153,10 @@ public class OtkljucajAnketu {
 				}
 			}
 		});
-		btnZakljucaj.setBackground(SystemColor.activeCaption);
-		btnZakljucaj.setFont(new Font("Gadugi", Font.BOLD, 16));
-		btnZakljucaj.setBounds(50, 278, 200, 36);
-		frame.getContentPane().add(btnZakljucaj);
+		btnOtkljucaj.setBackground(SystemColor.activeCaption);
+		btnOtkljucaj.setFont(new Font("Gadugi", Font.BOLD, 16));
+		btnOtkljucaj.setBounds(10, 121, 484, 31);
+		frame.getContentPane().add(btnOtkljucaj);
 
 
 }

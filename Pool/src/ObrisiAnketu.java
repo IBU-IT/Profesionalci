@@ -63,14 +63,14 @@ public class ObrisiAnketu {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setTitle("Obrisi Anketu");
-		frame.setBounds(100, 100, 520, 410);
+		frame.setBounds(100, 100, 520, 205);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		
 		JLabel lblBrisanjeAnkete = new JLabel("ODABERI ANKETU ZA BRISANJE :");
-		lblBrisanjeAnkete.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblBrisanjeAnkete.setBounds(93, 33, 327, 50);
+		lblBrisanjeAnkete.setFont(new Font("Gadugi", Font.BOLD, 14));
+		lblBrisanjeAnkete.setBounds(10, 11, 360, 20);
 		frame.getContentPane().add(lblBrisanjeAnkete);
 		
 		//TRY
@@ -112,7 +112,7 @@ public class ObrisiAnketu {
 		
 		@SuppressWarnings("rawtypes")
 		final JComboBox comboBoxObrisiAnketu = new JComboBox();
-		comboBoxObrisiAnketu.setBounds(93, 119, 327, 36);
+		comboBoxObrisiAnketu.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(comboBoxObrisiAnketu);
 		DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
 		comboBoxObrisiAnketu.setModel(model);
@@ -176,7 +176,7 @@ public class ObrisiAnketu {
 		});
 		btnObrisi.setBackground(SystemColor.activeCaption);
 		btnObrisi.setFont(new Font("Gadugi", Font.BOLD, 16));
-		btnObrisi.setBounds(157, 289, 200, 36);
+		btnObrisi.setBounds(10, 121, 484, 31);
 		frame.getContentPane().add(btnObrisi);
 	}
 	public void UgasiGa() {
