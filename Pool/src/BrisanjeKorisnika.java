@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class BrisanjeKorisnika {
 	
@@ -110,6 +111,7 @@ public class BrisanjeKorisnika {
 		
 		
 		JButton btnObrisiKorisnika = new JButton("OBRISI");
+		btnObrisiKorisnika.setBackground(SystemColor.activeCaption);
 		btnObrisiKorisnika.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
