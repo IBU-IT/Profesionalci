@@ -136,6 +136,7 @@ public class LogovanKorisnik{
 		frmUserPanel.getContentPane().add(prijavljenIme);
 		
 		JLabel prijavljenPrezime = new JLabel("<html><font color='black'>"+drugi.getLastName()+"</font></html>");
+		prijavljenPrezime.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		prijavljenPrezime.setBounds(101, 118, 113, 19);
 		frmUserPanel.getContentPane().add(prijavljenPrezime);
 		
