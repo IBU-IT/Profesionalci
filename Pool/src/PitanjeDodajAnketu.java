@@ -126,6 +126,8 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 				
 				if(odgovor3.getText().equals("")){
 					provjera=1;
+				}else{
+					provjera=2;
 				}
 				
 				Connection conn = null;
@@ -151,21 +153,21 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 					
 					String treca = "INSERT INTO answers (question_id,answer,answer_count) VALUES ('" + bazaId + "', '" + getAnswer3+ "', '"+atif+"')";
 					
+					conn.setAutoCommit(false); 
+					
 					if(provjera == 1){
-					conn.setAutoCommit(false);  
 					stmt.addBatch(prva);
 					stmt.addBatch(druga);
-				    stmt.executeBatch();
-				    conn.commit();
-					conn.close();	 
-					}else{
-						conn.setAutoCommit(false);  
+					stmt.executeBatch();
+					}else if(provjera == 2){ 
 						stmt.addBatch(prva);
 						stmt.addBatch(druga);
 					    stmt.addBatch(treca);
-					    conn.commit();
-						conn.close();
+					    stmt.executeBatch();
 					}
+					
+				    conn.commit();
+					conn.close();	
 					
 				} catch (SQLException se) {
 					// Errors JDBC
