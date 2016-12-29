@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class LogovanKorisnik extends Login {
+public class LogovanKorisnik{
 
 	private JFrame frmUserPanel;
 
