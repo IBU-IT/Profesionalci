@@ -24,6 +24,7 @@ public class GlasajNaAnketi {
 	
 	ArrayList<String> groupNames = new ArrayList<String>();
 	private static int id;
+	private static String pitanje="";
 	private JFrame frame;
 
 	/**
@@ -99,6 +100,7 @@ public class GlasajNaAnketi {
 		//TRY
 		
 		final JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Gadugi", Font.PLAIN, 12));
 		comboBox.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(comboBox);
 		DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
@@ -108,7 +110,7 @@ public class GlasajNaAnketi {
 		btnGlasaj.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				String text_ankete = (String)comboBox.getSelectedItem();
+				setPitanje((String)comboBox.getSelectedItem());
 				
 				//Izvuci ID
 				Connection conn2 = null;
@@ -122,7 +124,7 @@ public class GlasajNaAnketi {
 					
 					stmt2 = conn2.createStatement();
 					String sql;
-					sql = ("SELECT id FROM questions WHERE question_text='"+text_ankete+"'  ");
+					sql = ("SELECT id FROM questions WHERE question_text='"+getPitanje()+"'  ");
 					ResultSet rs2 = stmt2.executeQuery(sql);
 					rs2.next();
 					setId(rs2.getInt("id"));
@@ -146,7 +148,7 @@ public class GlasajNaAnketi {
 			}
 		});
 		btnGlasaj.setBackground(SystemColor.activeCaption);
-		btnGlasaj.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		btnGlasaj.setFont(new Font("Gadugi", Font.BOLD, 16));
 		btnGlasaj.setBounds(10, 121, 484, 31);
 		frame.getContentPane().add(btnGlasaj);
 	}
@@ -157,5 +159,13 @@ public class GlasajNaAnketi {
 
 	public static void setId(int id) {
 		GlasajNaAnketi.id = id;
+	}
+	
+	public String getPitanje() {
+		return pitanje;
+	}
+
+	public static void setPitanje(String pitanje) {
+		GlasajNaAnketi.pitanje = pitanje;
 	}
 }
