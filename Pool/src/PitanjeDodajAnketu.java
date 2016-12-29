@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -25,6 +26,7 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 	private JTextField odgovor2;
 	private JTextField odgovor3;
 	private int pitanjeID;
+	public int provjera = 0;
 	
 	// Definisi JDBC driver name i URL baze
 			static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -112,12 +114,19 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				if (odgovor1.getText().equals("") || odgovor2.getText().equals("")){
+					JOptionPane.showMessageDialog(null, "Minimalno 2 odgovora");
+				}else{
+				
 				// Spremi u varijable 
 				int bazaId = pitanjeID;
 				String getAnswer1 = odgovor1.getText();
 				String getAnswer2 = odgovor2.getText();
 				String getAnswer3 = odgovor3.getText();
 				
+				if(odgovor3.getText().equals("")){
+					provjera=1;
+				}
 				
 				Connection conn = null;
 				
@@ -141,15 +150,22 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 					
 					
 					String treca = "INSERT INTO answers (question_id,answer,answer_count) VALUES ('" + bazaId + "', '" + getAnswer3+ "', '"+atif+"')";
-					conn.setAutoCommit(false);
-				      
-				      stmt.addBatch(prva);
-				      stmt.addBatch(druga);
-				      stmt.addBatch(treca);
-				      stmt.executeBatch();
-				      conn.commit();
-				      conn.close();	
 					
+					if(provjera == 1){
+					conn.setAutoCommit(false);  
+					stmt.addBatch(prva);
+					stmt.addBatch(druga);
+				    stmt.executeBatch();
+				    conn.commit();
+					conn.close();	 
+					}else{
+						conn.setAutoCommit(false);  
+						stmt.addBatch(prva);
+						stmt.addBatch(druga);
+					    stmt.addBatch(treca);
+					    conn.commit();
+						conn.close();
+					}
 					
 				} catch (SQLException se) {
 					// Errors JDBC
@@ -167,6 +183,7 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 						se.printStackTrace();
 					}// zavrsi try try
 				}// zavrsi glavni try try
+			}
 			}
 
 			private void CloseFrame() {

@@ -83,7 +83,7 @@ public class DodajAnketu {
 		btnNapraviAnketu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+					
 				// Spremi u varijable 
 				String bazaGetText = textField.getText();
 				int bazaIsClosed = 0;
