@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 public class PrikaziStatistikuIzabranog {
 
@@ -52,7 +53,8 @@ public class PrikaziStatistikuIzabranog {
 		
 		PregledStatistike obj = new PregledStatistike();
 		JLabel lblTextpitanja = new JLabel(obj.getIzabranoPitanje());
-		lblTextpitanja.setBounds(10, 11, 414, 14);
+		lblTextpitanja.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		lblTextpitanja.setBounds(10, 11, 414, 20);
 		frame.getContentPane().add(lblTextpitanja);
 		
 		//IZVUCI ID
@@ -117,19 +119,23 @@ public class PrikaziStatistikuIzabranog {
 				//IZVUCI ODGOVORE
 		
 		JLabel prviOdgovorText = new JLabel(odgovori.get(0));
-		prviOdgovorText.setBounds(10, 63, 130, 15);
+		prviOdgovorText.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		prviOdgovorText.setBounds(10, 63, 130, 20);
 		frame.getContentPane().add(prviOdgovorText);
 		
 		JLabel brojac1 = new JLabel (String.valueOf(counter.get(0)));
-		brojac1.setBounds(10, 84, 46, 14);
+		brojac1.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		brojac1.setBounds(10, 84, 46, 20);
 		frame.getContentPane().add(brojac1);
 		
 		JLabel drugiOdgovorText = new JLabel (odgovori.get(1));
-		drugiOdgovorText.setBounds(154, 63, 130, 15);
+		drugiOdgovorText.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		drugiOdgovorText.setBounds(154, 63, 130, 20);
 		frame.getContentPane().add(drugiOdgovorText);		
 		
 		JLabel brojac2 = new JLabel(String.valueOf(counter.get(1)));
-		brojac2.setBounds(153, 84, 46, 14);
+		brojac2.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		brojac2.setBounds(154, 84, 46, 20);
 		frame.getContentPane().add(brojac2);
 		
 		
@@ -142,11 +148,13 @@ public class PrikaziStatistikuIzabranog {
 		
 		if(getPostojilGreska() == 0){
 		JLabel treciOdgovorText = new JLabel(odgovori.get(2));
-		treciOdgovorText.setBounds(294, 63, 130, 15);
+		treciOdgovorText.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		treciOdgovorText.setBounds(294, 63, 130, 20);
 		frame.getContentPane().add(treciOdgovorText);
 		
 		JLabel brojac3 = new JLabel (String.valueOf(counter.get(2)));
-		brojac3.setBounds(324, 84, 46, 14);
+		brojac3.setFont(new Font("Gadugi", Font.PLAIN, 14));
+		brojac3.setBounds(294, 83, 46, 20);
 		frame.getContentPane().add(brojac3);
 		}
 	}

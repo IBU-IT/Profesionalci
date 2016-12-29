@@ -1,9 +1,7 @@
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -65,7 +63,7 @@ public class GlasaneAnkete {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblAnketeNaKojima = new JLabel("ANKETE NA KOJIMA SI GLASAO");
+		JLabel lblAnketeNaKojima = new JLabel("ANKETE NA KOJIMA SI GLASAO :");
 		lblAnketeNaKojima.setFont(new Font("Gadugi", Font.BOLD, 16));
 		lblAnketeNaKojima.setBounds(131, 23, 273, 48);
 		frame.getContentPane().add(lblAnketeNaKojima);
@@ -121,6 +119,7 @@ public class GlasaneAnkete {
 					}
 				
 				table = new JTable(tableModel);
+				table.setFont(new Font("Gadugi", Font.PLAIN, 12));
 				table.setEnabled(false);
 				table.setBounds(10, 104, 494, 266);
 		        table.setFillsViewportHeight(true);

@@ -1,20 +1,13 @@
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.ImageIcon;
-
 import java.sql.*;
-
 import javax.swing.JPasswordField;
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -80,7 +73,7 @@ public class Login {
 		frmPoolSystem.setBounds(100, 100, 520, 410);
 		frmPoolSystem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPoolSystem.getContentPane().setLayout(null);
-		
+
 		JLabel unameText = new JLabel("Username:");
 		unameText.setFont(new Font("Gadugi", Font.BOLD, 14));
 		unameText.setBounds(84, 181, 77, 14);
@@ -98,7 +91,7 @@ public class Login {
 		usernameField.setBounds(171, 179, 257, 20);
 		frmPoolSystem.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
-		
+
 		JButton loginButton = new JButton("Login");
 		loginButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		loginButton.addActionListener(new ActionListener() {
@@ -110,7 +103,7 @@ public class Login {
 		loginButton.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("deprecation")
 			public void mouseClicked(MouseEvent e) {
-				 LoginUser();
+				LoginUser();
 			} // zavrsi bazu
 		});
 
@@ -139,17 +132,17 @@ public class Login {
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		passwordField.setBounds(171, 215, 257, 20);
 		frmPoolSystem.getContentPane().add(passwordField);
-		
+
 		passwordField.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            LoginUser();
-	        }
-	    });
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LoginUser();
+			}
+		});
 
 	}
-	
-	public void LoginUser(){
+
+	public void LoginUser() {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
@@ -226,7 +219,6 @@ public class Login {
 			} // zavrsi try try
 		}
 	}
-	
 
 	// Getteri i setteri
 	public String getUsername() {

@@ -54,13 +54,13 @@ public class PregledStatistike {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setTitle("Pregled Statistike");
-		frame.setBounds(100, 100, 520, 410);
+		frame.setBounds(100, 100, 520, 205);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblStatistika = new JLabel("STATISTIKA");
+		JLabel lblStatistika = new JLabel("ODABERITE ANKETU DA VIDITE STATISTIKU :");
 		lblStatistika.setFont(new Font("Gadugi", Font.BOLD, 16));
-		lblStatistika.setBounds(10, 11, 97, 22);
+		lblStatistika.setBounds(10, 11, 360, 20);
 		frame.getContentPane().add(lblStatistika);
 		
 		//TRY
@@ -98,14 +98,16 @@ public class PregledStatistike {
 				//TRY
 		
 		final JComboBox listaAnketa = new JComboBox();
-		listaAnketa.setBounds(10, 57, 494, 36);
+		listaAnketa.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(listaAnketa);
 		DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
 		listaAnketa.setModel(model);
 		
 		
 		
-		JButton btnNewButton = new JButton("PrikazS");
+		JButton btnNewButton = new JButton("PRIKAZI STATISTIKU");
+		btnNewButton.setFont(new Font("Gadugi", Font.BOLD, 16));
+		btnNewButton.setBackground(SystemColor.activeCaption);
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -115,7 +117,7 @@ public class PregledStatistike {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(10, 104, 494, 23);
+		btnNewButton.setBounds(10, 121, 484, 31);
 		frame.getContentPane().add(btnNewButton);
 	}
 	
