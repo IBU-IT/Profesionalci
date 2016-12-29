@@ -3,20 +3,31 @@ import java.awt.EventQueue;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
-
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.awt.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 
 public class GlasaneAnkete {
-	ArrayList<String> groupNames = new ArrayList<String>();
+	
+	// Definisi JDBC driver name i URL baze
+		static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+		static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
+
+		// Db podaci
+		static final String USER = "root";
+		static final String PASS = "123456";
+		
+	ArrayList<UserSurvey> userSurveys = new ArrayList<>();
 	private JFrame frame;
+	private JTable table;
  //
 	/**
 	 * Launch the application.
@@ -44,6 +55,8 @@ public class GlasaneAnkete {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
+	
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -56,40 +69,39 @@ public class GlasaneAnkete {
 		lblAnketeNaKojima.setFont(new Font("Gadugi", Font.BOLD, 16));
 		lblAnketeNaKojima.setBounds(131, 23, 273, 48);
 		frame.getContentPane().add(lblAnketeNaKojima);
-		DefaultListModel<String> model = new DefaultListModel<>();
-		JList menu = new JList();
-		menu.setBounds(23, 109, 468, 250);
-		frame.getContentPane().add(menu);
+		
+		Object columnNames[] = { "Pitanje "};
+		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		
 		//public void DodajuBazu(String s){
 				Connection conn = null;
-				Statement stmt = null;
+				PreparedStatement stmt = null;
 				try {
+					Login l = new Login();					
+					int userID = l.getId();
+					
 					// Registruj JDBC driver
 					Class.forName("com.mysql.jdbc.Driver");
 
 					// Zapocni konekciju conn
 					conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");
-
+					String sqlSelect = "SELECT SA.question_id, SA.user_id, Q.question_text FROM `submited_answers` AS SA INNER JOIN questions AS Q ON SA.question_id = Q.id WHERE user_id = ?";
+					
 					// Napravi statement i izvrsi query
-					stmt = conn.createStatement();
-					String sql;
+					stmt = conn.prepareStatement(sqlSelect);
+					stmt.setInt(1, userID);
+					ResultSet rs = stmt.executeQuery();
 					
-					sql = ("SELECT * FROM submited_answers WHERE voted=1");
-					
-					ResultSet rs = stmt.executeQuery(sql);
-				//	String ;
 					while(rs.next())
 					{
-						String groupName = rs.getString("voted=1");
-						groupNames.add(groupName);
+						UserSurvey us = new UserSurvey();
+						us.questionId = rs.getInt("question_id");
+						us.questionText = rs.getString("question_text");
+						us.userID = rs.getInt("user_id");
 						
+						userSurveys.add(us);
 					}
-					for(String s:groupNames){
-						model.addElement(s);
-					}
-					menu = new JList(model);
-				
+
 					rs.close();
 					stmt.close();
 					conn.close();
@@ -101,5 +113,15 @@ public class GlasaneAnkete {
 					// Errors za Class.forName
 					x.printStackTrace();
 				}
+				
+				for (int i = 0; i < userSurveys.size(); i++){
+					   String name = userSurveys.get(i).questionText;
+					   Object[] data = {name};
+					   tableModel.addRow(data);
+					}
+				
+				table = new JTable(tableModel);
+				table.setBounds(10, 104, 494, 266);
+				frame.getContentPane().add(table);		
 	}
 }
