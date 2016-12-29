@@ -63,8 +63,6 @@ public class PrikaziOdgovoreIzabraneAnkete {
 		lblNewLabel.setBounds(10, 11, 424, 14);
 		frmUskoro.getContentPane().add(lblNewLabel);
 		
-		//Izvuci odgovore
-		//Izvuci ID
 		Connection conn2 = null;
 		Statement stmt2 = null;		
 		try {
@@ -98,7 +96,6 @@ public class PrikaziOdgovoreIzabraneAnkete {
 			x.printStackTrace();
 		}
 		
-		//Kraj izvlacenja odgovora
 		
 		JButton btnOdgovor1 = new JButton(getPrviOdgovor());
 		btnOdgovor1.setBounds(10, 86, 89, 23);
