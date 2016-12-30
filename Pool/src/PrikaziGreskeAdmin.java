@@ -66,7 +66,7 @@ public class PrikaziGreskeAdmin {
 			lblAnketeNaKojima.setBounds(131, 23, 273, 48);
 			frame.getContentPane().add(lblAnketeNaKojima);
 			
-			Object columnNames[] = { "PRIJAVLJENE GRESKE "};
+			Object columnNames[] = { "GRESKE "};
 			DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 			
 			//public void DodajuBazu(String s){

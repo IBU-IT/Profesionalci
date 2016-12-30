@@ -25,7 +25,7 @@ public class Login {
 	private static int gender;
 	private static String gender_is = "";
 	private static int user_role;
-	
+
 	private JFrame frmPoolSystem;
 	private JTextField usernameField;
 	private JPasswordField passwordField;

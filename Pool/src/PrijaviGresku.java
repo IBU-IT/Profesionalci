@@ -96,6 +96,7 @@ public class PrijaviGresku {
 						if (gotovo>0){
 							JOptionPane.showMessageDialog(null, "Greska uspjesno poslana.");
 							textArea.setText("");
+							CloseFrame();
 						}else{
 							JOptionPane.showMessageDialog(null, "Doslo je do greške. molimo vas da pokusate ponovno.");
 						}
@@ -111,6 +112,12 @@ public class PrijaviGresku {
 					}
 					
 					}
+				}
+
+				private void CloseFrame() {
+					frmPrijaviGresku.dispose();
+					
+					
 				}
 			
 			

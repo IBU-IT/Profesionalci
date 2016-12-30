@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.SystemColor;
+import javax.swing.ImageIcon;
 
 public class PrikaziStatistikuIzabranog {
 
@@ -46,6 +48,7 @@ public class PrikaziStatistikuIzabranog {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("PREGLED STATISTIKE");
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -53,8 +56,8 @@ public class PrikaziStatistikuIzabranog {
 		
 		PregledStatistike obj = new PregledStatistike();
 		JLabel lblTextpitanja = new JLabel(obj.getIzabranoPitanje());
-		lblTextpitanja.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		lblTextpitanja.setBounds(10, 11, 414, 20);
+		lblTextpitanja.setFont(new Font("Gadugi", Font.BOLD, 14));
+		lblTextpitanja.setBounds(85, 11, 339, 20);
 		frame.getContentPane().add(lblTextpitanja);
 		
 		//IZVUCI ID
@@ -119,24 +122,50 @@ public class PrikaziStatistikuIzabranog {
 				//IZVUCI ODGOVORE
 		
 		JLabel prviOdgovorText = new JLabel(odgovori.get(0));
-		prviOdgovorText.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		prviOdgovorText.setBounds(10, 63, 130, 20);
+		prviOdgovorText.setFont(new Font("Gadugi", Font.BOLD, 14));
+		prviOdgovorText.setBounds(15, 83, 130, 20);
 		frame.getContentPane().add(prviOdgovorText);
 		
 		JLabel brojac1 = new JLabel (String.valueOf(counter.get(0)));
-		brojac1.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		brojac1.setBounds(10, 84, 46, 20);
+		brojac1.setFont(new Font("Gadugi", Font.BOLD, 14));
+		brojac1.setBounds(15, 103, 46, 20);
 		frame.getContentPane().add(brojac1);
 		
 		JLabel drugiOdgovorText = new JLabel (odgovori.get(1));
-		drugiOdgovorText.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		drugiOdgovorText.setBounds(154, 63, 130, 20);
+		drugiOdgovorText.setFont(new Font("Gadugi", Font.BOLD, 14));
+		drugiOdgovorText.setBounds(154, 83, 130, 20);
 		frame.getContentPane().add(drugiOdgovorText);		
 		
 		JLabel brojac2 = new JLabel(String.valueOf(counter.get(1)));
-		brojac2.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		brojac2.setBounds(154, 84, 46, 20);
+		brojac2.setFont(new Font("Gadugi", Font.BOLD, 14));
+		brojac2.setBounds(154, 103, 46, 20);
 		frame.getContentPane().add(brojac2);
+		
+		JLabel lblOdgovor = new JLabel("1. ODGOVOR");
+		lblOdgovor.setFont(new Font("Gadugi", Font.BOLD, 12));
+		lblOdgovor.setBounds(15, 58, 96, 14);
+		frame.getContentPane().add(lblOdgovor);
+		
+		JLabel lblOdgovor_1 = new JLabel("2. ODGOVOR");
+		lblOdgovor_1.setFont(new Font("Gadugi", Font.BOLD, 12));
+		lblOdgovor_1.setBounds(154, 58, 88, 14);
+		frame.getContentPane().add(lblOdgovor_1);
+		
+		JLabel lblOdgovor_2 = new JLabel("3. ODGOVOR");
+		lblOdgovor_2.setFont(new Font("Gadugi", Font.BOLD, 12));
+		lblOdgovor_2.setBounds(294, 58, 96, 14);
+		frame.getContentPane().add(lblOdgovor_2);
+		
+		JLabel lblPitanje = new JLabel("PITANJE :");
+		lblPitanje.setForeground(SystemColor.activeCaption);
+		lblPitanje.setFont(new Font("Gadugi", Font.BOLD, 14));
+		lblPitanje.setBounds(10, 11, 77, 20);
+		frame.getContentPane().add(lblPitanje);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(PrikaziStatistikuIzabranog.class.getResource("/images/pngzaanketu.png")));
+		lblNewLabel.setBounds(10, 49, 427, 93);
+		frame.getContentPane().add(lblNewLabel);
 		
 		
 		try {
@@ -148,13 +177,13 @@ public class PrikaziStatistikuIzabranog {
 		
 		if(getPostojilGreska() == 0){
 		JLabel treciOdgovorText = new JLabel(odgovori.get(2));
-		treciOdgovorText.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		treciOdgovorText.setBounds(294, 63, 130, 20);
+		treciOdgovorText.setFont(new Font("Gadugi", Font.BOLD, 14));
+		treciOdgovorText.setBounds(294, 83, 130, 20);
 		frame.getContentPane().add(treciOdgovorText);
 		
 		JLabel brojac3 = new JLabel (String.valueOf(counter.get(2)));
-		brojac3.setFont(new Font("Gadugi", Font.PLAIN, 14));
-		brojac3.setBounds(294, 83, 46, 20);
+		brojac3.setFont(new Font("Gadugi", Font.BOLD, 14));
+		brojac3.setBounds(294, 103, 46, 20);
 		frame.getContentPane().add(brojac3);
 		}
 	}
