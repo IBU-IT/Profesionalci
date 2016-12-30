@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PrikaziStatistikuIzabranog {
 
@@ -50,7 +53,7 @@ public class PrikaziStatistikuIzabranog {
 		frame = new JFrame();
 		frame.setTitle("PREGLED STATISTIKE");
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 234);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -166,6 +169,23 @@ public class PrikaziStatistikuIzabranog {
 		lblNewLabel.setIcon(new ImageIcon(PrikaziStatistikuIzabranog.class.getResource("/images/pngzaanketu.png")));
 		lblNewLabel.setBounds(10, 49, 427, 93);
 		frame.getContentPane().add(lblNewLabel);
+		
+		JButton btnIzlaz = new JButton("IZLAZ");
+		btnIzlaz.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CloseFrame();
+			}
+
+			private void CloseFrame() {
+				frame.dispose();
+				
+			}
+		});
+		btnIzlaz.setBackground(SystemColor.activeCaption);
+		btnIzlaz.setFont(new Font("Gadugi", Font.BOLD, 16));
+		btnIzlaz.setBounds(96, 153, 223, 41);
+		frame.getContentPane().add(btnIzlaz);
 		
 		
 		try {

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.SystemColor;
 
 
 public class GlasaneAnkete {
@@ -58,12 +59,14 @@ public class GlasaneAnkete {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setTitle("Ankete na kojima si glasao");
+		frame.setTitle("GLASANE ANKETE");
 		frame.setBounds(100, 100, 520, 410);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblAnketeNaKojima = new JLabel("ANKETE NA KOJIMA SI GLASAO :");
+		lblAnketeNaKojima.setForeground(SystemColor.activeCaption);
+		lblAnketeNaKojima.setBackground(SystemColor.activeCaption);
 		lblAnketeNaKojima.setFont(new Font("Gadugi", Font.BOLD, 16));
 		lblAnketeNaKojima.setBounds(131, 23, 273, 48);
 		frame.getContentPane().add(lblAnketeNaKojima);

@@ -157,6 +157,7 @@ public class DodajAnketu {
 		
 		
 		textField = new JTextField();
+		textField.setBackground(SystemColor.activeCaption);
 		textField.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		textField.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(textField);
