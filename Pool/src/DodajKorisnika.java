@@ -203,13 +203,13 @@ public class DodajKorisnika {
 			if(getSpol() == 0){
 				JOptionPane.showMessageDialog(null, "Spol korisnika nije definisan.");
 				greska = 1;
-			}else{greska = 0;}
-			if(chckbxAdmin.isSelected() == true) {
+			}
+			if(chckbxAdmin.isSelected()) {
 				setAdmin(1);
 			}else{
 				setAdmin(0);
 			}
-			
+
 			//Spremi u varijable
 			String bazaUsername = usernameField.getText();
 			String bazaPassword = passwordField.getText();
