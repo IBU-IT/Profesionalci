@@ -117,7 +117,9 @@ public class LogovanKorisnik {
 		btnodjaviSe.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
+				Login x = new Login();
+				x.pojaviSe();
+				frmUserPanel.dispose();
 			}
 		});
 		btnodjaviSe.setBounds(12, 175, 492, 31);

@@ -171,11 +171,11 @@ public class Login {
 			if (getUserRole() == 1) {
 				LogovanAdmin lAdmin = new LogovanAdmin();
 				lAdmin.Admin();
-				frmPoolSystem.dispose();
+				frmPoolSystem.setVisible(false);
 			} else {
 				LogovanKorisnik IKorisnik = new LogovanKorisnik();
 				IKorisnik.LogovanProfil();
-				frmPoolSystem.dispose();
+				frmPoolSystem.setVisible(false);
 			}
 
 			rs.close();
@@ -265,5 +265,10 @@ public class Login {
 
 	public static void setUserRole(int user_role) {
 		Login.user_role = user_role;
+	}
+
+	public void pojaviSe() {
+		frmPoolSystem.setVisible(true);
+		
 	}
 }

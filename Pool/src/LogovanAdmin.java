@@ -139,7 +139,10 @@ public class LogovanAdmin {
 		btnOdjaviSe.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
+				Login a = new Login();
+				a.pojaviSe();
+				frmAdminPanel.dispose();
+				
 			}
 		});
 		btnOdjaviSe.setFont(new Font("Gadugi", Font.BOLD, 12));
