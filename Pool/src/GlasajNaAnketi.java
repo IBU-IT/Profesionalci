@@ -72,10 +72,8 @@ public class GlasajNaAnketi {
 
 			String sql = "SELECT question_text FROM questions AS q WHERE is_closed=0 AND id NOT IN (SELECT question_id FROM submited_answers WHERE user_id = ?)";
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, Login.getId());
-			
-			
-			ResultSet rs = stmt.executeQuery(sql);
+			stmt.setInt(1, Login.getId());			
+			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				String groupName = rs.getString("question_text");
