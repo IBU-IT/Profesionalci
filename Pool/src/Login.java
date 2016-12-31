@@ -1,3 +1,7 @@
+// SRETNA NOVA
+//2017
+//
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
