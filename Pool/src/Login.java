@@ -203,7 +203,7 @@ public class Login {
 		Login.username = username;
 	}
 
-	public int getId() {
+	public static int getId() {
 		return id;
 	}
 

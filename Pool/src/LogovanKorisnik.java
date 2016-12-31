@@ -15,7 +15,6 @@ import javax.swing.ImageIcon;
 public class LogovanKorisnik {
 
 	private JFrame frmUserPanel;
-
 	/**
 	 * Launch the application.
 	 */
@@ -145,4 +144,5 @@ public class LogovanKorisnik {
 		lblNewLabel_1.setBounds(10, 35, 221, 129);
 		frmUserPanel.getContentPane().add(lblNewLabel_1);
 	}
+
 }

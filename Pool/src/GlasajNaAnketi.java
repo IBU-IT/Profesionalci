@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import java.awt.SystemColor;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -62,16 +63,18 @@ public class GlasajNaAnketi {
 
 		// TRY
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement stmt = null;
 
 		try {
 			
 			Class.forName(DbConnection.JDBC_DRIVER);
 			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
-			stmt = conn.createStatement();
-			String sql;
-			sql = ("SELECT question_text FROM questions AS q WHERE is_closed=0 AND id NOT IN (SELECT question_id FROM submited_answers WHERE user_id = 2)");
+			String sql = "SELECT question_text FROM questions AS q WHERE is_closed=0 AND id NOT IN (SELECT question_id FROM submited_answers WHERE user_id = ?)";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, Login.getId());
+			
+			
 			ResultSet rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
@@ -150,4 +153,5 @@ public class GlasajNaAnketi {
 	public static void setPitanje(String pitanje) {
 		GlasajNaAnketi.pitanje = pitanje;
 	}
+
 }
