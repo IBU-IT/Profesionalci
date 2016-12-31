@@ -152,11 +152,6 @@ public class PrikaziStatistikuIzabranog {
 		lblPitanje.setBounds(10, 11, 77, 20);
 		frame.getContentPane().add(lblPitanje);
 
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(PrikaziStatistikuIzabranog.class.getResource("/images/pngzaanketu.png")));
-		lblNewLabel.setBounds(10, 49, 427, 93);
-		frame.getContentPane().add(lblNewLabel);
-
 		JButton btnIzlaz = new JButton("IZLAZ");
 		btnIzlaz.addMouseListener(new MouseAdapter() {
 			@Override
@@ -182,16 +177,21 @@ public class PrikaziStatistikuIzabranog {
 		}
 
 		if (getPostojilGreska() == 0) {
-			JLabel treciOdgovorText = new JLabel(odgovori.get(2));
-			treciOdgovorText.setFont(new Font("Gadugi", Font.BOLD, 14));
-			treciOdgovorText.setBounds(294, 83, 130, 20);
-			frame.getContentPane().add(treciOdgovorText);
+			JLabel lblPitanje_1 = new JLabel(odgovori.get(2));
+			lblPitanje_1.setFont(new Font("Gadugi", Font.BOLD, 14));
+			lblPitanje_1.setBounds(294, 83, 130, 20);
+			frame.getContentPane().add(lblPitanje_1);
 
-			JLabel brojac3 = new JLabel(String.valueOf(counter.get(2)));
-			brojac3.setFont(new Font("Gadugi", Font.BOLD, 14));
-			brojac3.setBounds(294, 103, 46, 20);
-			frame.getContentPane().add(brojac3);
+			JLabel lblBrojac = new JLabel(String.valueOf(counter.get(2)));
+			lblBrojac.setFont(new Font("Gadugi", Font.BOLD, 14));
+			lblBrojac.setBounds(294, 103, 46, 20);
+			frame.getContentPane().add(lblBrojac);
 		}
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(PrikaziStatistikuIzabranog.class.getResource("/images/pngzaanketu.png")));
+		lblNewLabel.setBounds(10, 49, 427, 93);
+		frame.getContentPane().add(lblNewLabel);
 	}
 
 	public int getIdPitanja() {
