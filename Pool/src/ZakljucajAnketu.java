@@ -19,14 +19,6 @@ import java.awt.event.MouseEvent;
 
 public class ZakljucajAnketu {
 
-	// Definisi JDBC driver name i URL baze
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-	// Db podaci
-	static final String USER = "root";
-	static final String PASS = "123456";
-
 	ArrayList<String> groupNames = new ArrayList<String>();
 	private JFrame frame;
 
@@ -70,18 +62,13 @@ public class ZakljucajAnketu {
 		lblZakljucajAnketu.setBounds(10, 11, 360, 20);
 		frame.getContentPane().add(lblZakljucajAnketu);
 
-		// TRY
 		Connection conn = null;
 		Statement stmt = null;
 
 		try {
-			// Registruj JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
 
-			// Zapocni konekciju conn
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-					"123456");
+			Class.forName(DbConnection.JDBC_DRIVER);
+			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 			stmt = conn.createStatement();
 			String sql;
@@ -90,7 +77,6 @@ public class ZakljucajAnketu {
 
 			while (rs.next()) {
 				String groupName = rs.getString("question_text");
-				// add group names to the array list
 				groupNames.add(groupName);
 			}
 
@@ -98,10 +84,8 @@ public class ZakljucajAnketu {
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		}
 		// TRY
@@ -117,18 +101,15 @@ public class ZakljucajAnketu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String zakkank = (String) comboBoxZakljucajAnketu.getSelectedItem();
-				// Spremi u varijable
 
 				Connection conn = null;
 				Statement stmt = null;
-				try {
-					// Registruj JDBC driver
-					Class.forName("com.mysql.jdbc.Driver");
 
-					// Zapocni konekciju conn
-					conn = DriverManager.getConnection(
-							"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-							"123456");
+				try {
+
+					Class.forName(DbConnection.JDBC_DRIVER);
+					conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
+
 					stmt = conn.createStatement();
 
 					int zakAnk = stmt.executeUpdate(
@@ -141,10 +122,8 @@ public class ZakljucajAnketu {
 					stmt.close();
 					conn.close();
 				} catch (SQLException se) {
-					// Errors JDBC
 					se.printStackTrace();
 				} catch (Exception x) {
-					// Errors za Class.forName
 					x.printStackTrace();
 				}
 			}

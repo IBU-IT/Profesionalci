@@ -15,14 +15,6 @@ import java.awt.SystemColor;
 
 public class GlasaneAnkete {
 
-	// Definisi JDBC driver name i URL baze
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-	// Db podaci
-	static final String USER = "root";
-	static final String PASS = "123456";
-
 	ArrayList<UserSurvey> userSurveys = new ArrayList<>();
 	private JFrame frame;
 	private JTable table;
@@ -73,23 +65,16 @@ public class GlasaneAnkete {
 		Object columnNames[] = { "Pitanje " };
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
-		// public void DodajuBazu(String s){
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
 			Login l = new Login();
 			int userID = l.getId();
 
-			// Registruj JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
-
-			// Zapocni konekciju conn
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-					"123456");
+			Class.forName(DbConnection.JDBC_DRIVER);
+			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 			String sqlSelect = "SELECT SA.question_id, SA.user_id, Q.question_text FROM `submited_answers` AS SA INNER JOIN questions AS Q ON SA.question_id = Q.id WHERE user_id = ?";
 
-			// Napravi statement i izvrsi query
 			stmt = conn.prepareStatement(sqlSelect);
 			stmt.setInt(1, userID);
 			ResultSet rs = stmt.executeQuery();
@@ -107,10 +92,8 @@ public class GlasaneAnkete {
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		}
 

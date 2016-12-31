@@ -21,14 +21,6 @@ import java.awt.SystemColor;
 
 public class BrisanjeKorisnika {
 
-	// Definisi JDBC driver name i URL baze
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-	// Db podaci
-	static final String USER = "root";
-	static final String PASS = "123456";
-
 	ArrayList<String> groupNames = new ArrayList<String>();
 
 	private JFrame frame;
@@ -75,9 +67,8 @@ public class BrisanjeKorisnika {
 		Statement stmt = null;
 
 		try {
-			Class.forName(JDBC_DRIVER);
-
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			Class.forName(DbConnection.JDBC_DRIVER);
+			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 			stmt = conn.createStatement();
 			String sql;
@@ -93,13 +84,10 @@ public class BrisanjeKorisnika {
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		}
-		// TRY
 
 		final JComboBox comboBoxKorisnici = new JComboBox();
 		comboBoxKorisnici.setFont(new Font("Gadugi", Font.BOLD, 14));
@@ -123,10 +111,8 @@ public class BrisanjeKorisnika {
 				PreparedStatement stmt = null;
 
 				try {
-					// Registruj JDBC driver
-					Class.forName(JDBC_DRIVER);
-
-					conn = DriverManager.getConnection(DB_URL, USER, PASS);
+					Class.forName(DbConnection.JDBC_DRIVER);
+					conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 					String deleteUser = "DELETE FROM users WHERE username = ?";
 
@@ -142,10 +128,8 @@ public class BrisanjeKorisnika {
 					stmt.close();
 					conn.close();
 				} catch (SQLException se) {
-					// Errors JDBC
 					se.printStackTrace();
 				} catch (Exception x) {
-					// Errors za Class.forName
 					x.printStackTrace();
 				}
 			}

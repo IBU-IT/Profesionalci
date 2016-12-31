@@ -25,14 +25,6 @@ public class DodajKorisnika {
 	private static int admin = 0;
 	private static int godine = 0;
 
-	// Definisi JDBC driver name i URL baze
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-	// Db podaci
-	static final String USER = "root";
-	static final String PASS = "123456";
-
 	private JFrame frmDodajNovogKorisnika;
 	private JTextField usernameField;
 	private JTextField passwordField;
@@ -190,7 +182,6 @@ public class DodajKorisnika {
 					greska = 0;
 				}
 
-				// Postavi godine
 				setGodine((Integer) spinner.getValue());
 
 				if (getGodine() <= 0) {
@@ -215,7 +206,6 @@ public class DodajKorisnika {
 					setAdmin(0);
 				}
 
-				// Spremi u varijable
 				String bazaUsername = usernameField.getText();
 				String bazaPassword = passwordField.getText();
 				String bazaIme = imeField.getText();
@@ -224,18 +214,14 @@ public class DodajKorisnika {
 				int bazaSpol = getSpol();
 				int bazaRole = getAdmin();
 
-				// Kad je sve provjereno unesi to sve u bazu
 				if (greska == 0) {
 					Connection conn = null;
 					Statement stmt = null;
 					try {
-						// Registruj JDBC driver
-						Class.forName("com.mysql.jdbc.Driver");
 
-						// Zapocni konekciju conn
-						conn = DriverManager.getConnection(DB_URL, USER, PASS);
+						Class.forName(DbConnection.JDBC_DRIVER);
+						conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
-						// Napravi statement i izvrsi query
 						stmt = conn.createStatement();
 						int gotovo = stmt.executeUpdate(
 								"INSERT INTO users (username, password, first_name, last_name, age, gender, user_role) VALUES ('"
@@ -261,10 +247,8 @@ public class DodajKorisnika {
 						stmt.close();
 						conn.close();
 					} catch (SQLException se) {
-						// Errors JDBC
 						se.printStackTrace();
 					} catch (Exception x) {
-						// Errors za Class.forName
 						x.printStackTrace();
 					} finally {
 						try {
@@ -277,10 +261,9 @@ public class DodajKorisnika {
 								conn.close();
 						} catch (SQLException se) {
 							se.printStackTrace();
-						} // zavrsi try try
-					} // zavrsi glavni try try
-
-				} // zavrsi bazu
+						}
+					}
+				}
 			}
 
 		});
@@ -294,7 +277,6 @@ public class DodajKorisnika {
 
 	}
 
-	// get i set
 	public int getSpol() {
 		return spol;
 	}

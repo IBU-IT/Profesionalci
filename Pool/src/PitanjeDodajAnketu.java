@@ -26,14 +26,6 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 	private JTextField odgovor3;
 	private int pitanjeID;
 	public int provjera = 0;
-
-	// Definisi JDBC driver name i URL baze
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-	// Db podaci
-	static final String USER = "root";
-	static final String PASS = "123456";
 	private JButton btnUnesiOdgovore;
 
 	/**
@@ -114,7 +106,6 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 					JOptionPane.showMessageDialog(null, "Minimalno 2 odgovora");
 				} else {
 
-					// Spremi u varijable
 					int bazaId = pitanjeID;
 					String getAnswer1 = odgovor1.getText();
 					String getAnswer2 = odgovor2.getText();
@@ -129,29 +120,20 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 					Connection conn = null;
 
 					try {
-						// Registruj JDBC driver
-						Class.forName("com.mysql.jdbc.Driver");
-
-						// Zapocni konekciju conn
-						int atif = 0;
-						conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
-						// Napravi statement i izvrsi query
-						// stmt = conn.createStatement();
-						// stmt.executeUpdate("INSERT INTO questions
-						// (question_text,is_closed) VALUES ('" + bazaGetText +
-						// "', '" + bazaIsClosed +"') ");
+						int defaultCounter = 0;
+						Class.forName(DbConnection.JDBC_DRIVER);
+						conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 						Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 								ResultSet.CONCUR_UPDATABLE);
 
 						String prva = "INSERT INTO answers (question_id,answer,answer_count) VALUES ('" + bazaId
-								+ "', '" + getAnswer1 + "', '" + atif + "')";
+								+ "', '" + getAnswer1 + "', '" + defaultCounter + "')";
 
 						String druga = "INSERT INTO answers (question_id,answer,answer_count) VALUES ('" + bazaId
-								+ "', '" + getAnswer2 + "', '" + atif + "')";
+								+ "', '" + getAnswer2 + "', '" + defaultCounter + "')";
 
 						String treca = "INSERT INTO answers (question_id,answer,answer_count) VALUES ('" + bazaId
-								+ "', '" + getAnswer3 + "', '" + atif + "')";
+								+ "', '" + getAnswer3 + "', '" + defaultCounter + "')";
 
 						conn.setAutoCommit(false);
 
@@ -170,10 +152,8 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 						conn.close();
 
 					} catch (SQLException se) {
-						// Errors JDBC
 						se.printStackTrace();
 					} catch (Exception x) {
-						// Errors za Class.forName
 						x.printStackTrace();
 					} finally {
 
@@ -183,8 +163,8 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 							CloseFrame();
 						} catch (SQLException se) {
 							se.printStackTrace();
-						} // zavrsi try try
-					} // zavrsi glavni try try
+						}
+					}
 				}
 			}
 
@@ -194,7 +174,5 @@ public class PitanjeDodajAnketu extends DodajAnketu {
 		});
 		btnUnesiOdgovore.setBounds(141, 307, 200, 50);
 		frame.getContentPane().add(btnUnesiOdgovore);
-		// veno
-		// radi
 	}
 }

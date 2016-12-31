@@ -65,13 +65,9 @@ public class GlasajNaAnketi {
 		Statement stmt = null;
 
 		try {
-			// Registruj JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
-
-			// Zapocni konekciju conn
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-					"123456");
+			
+			Class.forName(DbConnection.JDBC_DRIVER);
+			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 			stmt = conn.createStatement();
 			String sql;
@@ -87,13 +83,10 @@ public class GlasajNaAnketi {
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		}
-		// TRY
 
 		final JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Gadugi", Font.PLAIN, 12));
@@ -108,17 +101,12 @@ public class GlasajNaAnketi {
 			public void mouseClicked(MouseEvent arg0) {
 				setPitanje((String) comboBox.getSelectedItem());
 
-				// Izvuci ID
 				Connection conn2 = null;
 				Statement stmt2 = null;
 				try {
-					// Registruj JDBC driver
-					Class.forName("com.mysql.jdbc.Driver");
-
-					// Zapocni konekciju conn
-					conn2 = DriverManager.getConnection(
-							"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-							"123456");
+					
+					Class.forName(DbConnection.JDBC_DRIVER);
+					conn2 = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 					stmt2 = conn2.createStatement();
 					String sql;
@@ -131,14 +119,11 @@ public class GlasajNaAnketi {
 					stmt2.close();
 					conn2.close();
 				} catch (SQLException se) {
-					// Errors JDBC
 					se.printStackTrace();
 				} catch (Exception x) {
-					// Errors za Class.forName
 					x.printStackTrace();
 				}
 
-				// OTVORI ODGOVORE ZA IZABRANU ANKETU USKORO
 				PrikaziOdgovoreIzabraneAnkete a = new PrikaziOdgovoreIzabraneAnkete();
 				a.prikaziOdgovore();
 				frame.dispose();

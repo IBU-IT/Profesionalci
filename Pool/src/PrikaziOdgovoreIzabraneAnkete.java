@@ -71,21 +71,17 @@ public class PrikaziOdgovoreIzabraneAnkete {
 		Connection conn2 = null;
 		Statement stmt2 = null;
 		try {
-			// Registruj JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
 
-			// Zapocni konekciju conn
-			conn2 = DriverManager.getConnection(
-					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-					"123456");
+			Class.forName(DbConnection.JDBC_DRIVER);
+			conn2 = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 			stmt2 = conn2.createStatement();
 			String sql;
 			sql = ("SELECT id, answer FROM answers WHERE question_id='" + pitanje.getId() + "' ");
 			ResultSet rs2 = stmt2.executeQuery(sql);
 			while (rs2.next()) {
-				listID.add(rs2.getInt("id")); // ID
-				list.add(rs2.getString("answer")); // Odgovor
+				listID.add(rs2.getInt("id"));
+				list.add(rs2.getString("answer"));
 			}
 
 			Login povuci = new Login();
@@ -109,10 +105,8 @@ public class PrikaziOdgovoreIzabraneAnkete {
 			stmt2.close();
 			conn2.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		}
 
@@ -122,13 +116,9 @@ public class PrikaziOdgovoreIzabraneAnkete {
 			public void mouseClicked(MouseEvent arg0) {
 				Connection conn = null;
 				try {
-					// Registruj JDBC driver
-					Class.forName("com.mysql.jdbc.Driver");
 
-					// Zapocni konekciju conn
-					conn = DriverManager.getConnection(
-							"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-							"123456");
+					Class.forName(DbConnection.JDBC_DRIVER);
+					conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 					Statement stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 					String prvi = "INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"
@@ -150,14 +140,10 @@ public class PrikaziOdgovoreIzabraneAnkete {
 					stmt1.close();
 					conn.close();
 				} catch (SQLException se) {
-					// Errors JDBC
 					se.printStackTrace();
 				} catch (Exception x) {
-					// Errors za Class.forName
 					x.printStackTrace();
 				}
-
-				// VAKO
 
 			}
 		});
@@ -170,13 +156,9 @@ public class PrikaziOdgovoreIzabraneAnkete {
 			public void mouseClicked(MouseEvent arg0) {
 				Connection conn = null;
 				try {
-					// Registruj JDBC driver
-					Class.forName("com.mysql.jdbc.Driver");
 
-					// Zapocni konekciju conn
-					conn = DriverManager.getConnection(
-							"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-							"123456");
+					Class.forName(DbConnection.JDBC_DRIVER);
+					conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 					Statement stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 					String prvi = "INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"
@@ -198,10 +180,8 @@ public class PrikaziOdgovoreIzabraneAnkete {
 					stmt1.close();
 					conn.close();
 				} catch (SQLException se) {
-					// Errors JDBC
 					se.printStackTrace();
 				} catch (Exception x) {
-					// Errors za Class.forName
 					x.printStackTrace();
 				}
 			}
@@ -217,14 +197,9 @@ public class PrikaziOdgovoreIzabraneAnkete {
 				public void mouseClicked(MouseEvent arg0) {
 					Connection conn = null;
 					try {
-						// Registruj JDBC driver
-						Class.forName("com.mysql.jdbc.Driver");
 
-						// Zapocni konekciju conn
-						conn = DriverManager.getConnection(
-								"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false",
-								"root", "123456");
-
+						Class.forName(DbConnection.JDBC_DRIVER);
+						conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 						Statement stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 								ResultSet.CONCUR_UPDATABLE);
 						String prvi = "INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"
@@ -246,10 +221,8 @@ public class PrikaziOdgovoreIzabraneAnkete {
 						stmt1.close();
 						conn.close();
 					} catch (SQLException se) {
-						// Errors JDBC
 						se.printStackTrace();
 					} catch (Exception x) {
-						// Errors za Class.forName
 						x.printStackTrace();
 					}
 				}

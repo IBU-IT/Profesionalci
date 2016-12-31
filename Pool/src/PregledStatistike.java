@@ -62,18 +62,13 @@ public class PregledStatistike {
 		lblStatistika.setBounds(10, 11, 360, 20);
 		frame.getContentPane().add(lblStatistika);
 
-		// TRY
 		Connection conn = null;
 		Statement stmt = null;
 
 		try {
-			// Registruj JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
 
-			// Zapocni konekciju conn
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-					"123456");
+			Class.forName(DbConnection.JDBC_DRIVER);
+			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 			stmt = conn.createStatement();
 			String sql;
@@ -89,13 +84,10 @@ public class PregledStatistike {
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		}
-		// TRY
 
 		final JComboBox listaAnketa = new JComboBox();
 		listaAnketa.setBounds(10, 43, 484, 40);

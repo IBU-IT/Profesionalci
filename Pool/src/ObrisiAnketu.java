@@ -18,13 +18,6 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 
 public class ObrisiAnketu {
-	// Definisi JDBC driver name i URL baze
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-	// Db podaci
-	static final String USER = "root";
-	static final String PASS = "123456";
 
 	ArrayList<String> groupNames = new ArrayList<String>();
 
@@ -70,18 +63,13 @@ public class ObrisiAnketu {
 		lblBrisanjeAnkete.setBounds(10, 11, 360, 20);
 		frame.getContentPane().add(lblBrisanjeAnkete);
 
-		// TRY
 		Connection conn = null;
 		Statement stmt = null;
 
 		try {
-			// Registruj JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
 
-			// Zapocni konekciju conn
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-					"123456");
+			Class.forName(DbConnection.JDBC_DRIVER);
+			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 			stmt = conn.createStatement();
 			String sql;
@@ -90,7 +78,6 @@ public class ObrisiAnketu {
 
 			while (rs.next()) {
 				String groupName = rs.getString("question_text");
-				// add group names to the array list
 				groupNames.add(groupName);
 			}
 
@@ -98,13 +85,10 @@ public class ObrisiAnketu {
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		}
-		// TRY
 
 		@SuppressWarnings("rawtypes")
 		final JComboBox comboBoxObrisiAnketu = new JComboBox();
@@ -118,20 +102,12 @@ public class ObrisiAnketu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String zakkank = (String) comboBoxObrisiAnketu.getSelectedItem();
-				// Spremi u varijable
-
 				Connection conn = null;
 
 				try {
-					// Registruj JDBC driver
-					Class.forName("com.mysql.jdbc.Driver");
+					Class.forName(DbConnection.JDBC_DRIVER);
+					conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
-					// Zapocni konekciju conn
-					conn = DriverManager.getConnection(
-							"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-							"123456");
-
-					// Poziv id-a iz baze, brisanje ankete i odgovora
 					Statement stmt3 = null;
 					stmt3 = conn.createStatement();
 					String queri = ("SELECT id FROM questions WHERE question_text = '" + zakkank + "' ");
@@ -157,10 +133,8 @@ public class ObrisiAnketu {
 					stmt1.close();
 					conn.close();
 				} catch (SQLException se) {
-					// Errors JDBC
 					se.printStackTrace();
 				} catch (Exception x) {
-					// Errors za Class.forName
 					x.printStackTrace();
 				}
 			}

@@ -161,7 +161,6 @@ public class LogovanAdmin {
 		btnZakljucajAnketu.setBounds(340, 156, 165, 30);
 		frmAdminPanel.getContentPane().add(btnZakljucajAnketu);
 
-		// novi ce se koristit za sve get i set metode. Nije jos zavrseno
 		Login novi = new Login();
 		JLabel prikaziUsername = new JLabel("<html><font color='red'>" + novi.getUsername() + "</font></html>");
 		prikaziUsername.setBackground(SystemColor.activeCaption);

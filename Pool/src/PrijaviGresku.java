@@ -80,19 +80,12 @@ public class PrijaviGresku {
 					Connection conn = null;
 					Statement stmt = null;
 					try {
-						// Registruj JDBC driver
-						Class.forName("com.mysql.jdbc.Driver");
 
-						// Zapocni konekciju conn
-						conn = DriverManager.getConnection(
-								"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false",
-								"root", "123456");
-
-						// Napravi statement i izvrsi query
+						Class.forName(DbConnection.JDBC_DRIVER);
+						conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 						stmt = conn.createStatement();
 
-						int gotovo = stmt
-								.executeUpdate("INSERT INTO greske (opis_greske) VALUES('" + getTekst() + "')");
+						int gotovo = stmt.executeUpdate("INSERT INTO greske (opis_greske) VALUES('" + getTekst() + "')");
 
 						if (gotovo > 0) {
 							JOptionPane.showMessageDialog(null, "Greska uspjesno poslana.");
@@ -104,10 +97,8 @@ public class PrijaviGresku {
 						stmt.close();
 						conn.close();
 					} catch (SQLException se) {
-						// Errors JDBC
 						se.printStackTrace();
 					} catch (Exception x) {
-						// Errors za Class.forName
 						x.printStackTrace();
 					}
 

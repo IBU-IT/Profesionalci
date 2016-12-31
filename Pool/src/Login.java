@@ -138,10 +138,8 @@ public class Login {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
-			// Registruj JDBC driver
-			Class.forName(DbConnection.JDBC_DRIVER);
 
-			// Zapocni konekciju conn
+			Class.forName(DbConnection.JDBC_DRIVER);
 			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 			String loginSelect = "SELECT id, username, password, first_name, last_name, age, gender, user_role FROM Users WHERE BINARY username = ? AND BINARY password = ?";
@@ -155,7 +153,6 @@ public class Login {
 				JOptionPane.showMessageDialog(null, "Pogresni Podaci");
 			}
 
-			// Povuci podatke
 			setId(rs.getInt("id"));
 			setUsername(rs.getString("username"));
 			setFirstName(rs.getString("first_name"));
@@ -183,10 +180,8 @@ public class Login {
 
 			rs.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		} finally {
 			try {
@@ -200,7 +195,6 @@ public class Login {
 		}
 	}
 
-	// Getteri i setteri
 	public String getUsername() {
 		return username;
 	}

@@ -24,14 +24,6 @@ public class DodajAnketu {
 	private JFrame frame;
 	private JTextField textField;
 
-	// Definisi JDBC driver name i URL baze
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-	// Db podaci
-	static final String USER = "root";
-	static final String PASS = "123456";
-
 	/**
 	 * Launch the application.
 	 */
@@ -83,25 +75,19 @@ public class DodajAnketu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				// Spremi u varijable
 				String bazaGetText = textField.getText();
 				int bazaIsClosed = 0;
 				int questionID = 0;
 				Connection conn = null;
 				PreparedStatement stmt = null;
 				try {
-					// Registruj JDBC driver
-					Class.forName("com.mysql.jdbc.Driver");
 
-					// Zapocni konekciju conn
-					conn = DriverManager.getConnection(DB_URL, USER, PASS);
+					Class.forName(DbConnection.JDBC_DRIVER);
+					conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
 					stmt = conn.prepareStatement("INSERT INTO questions (question_text,is_closed) VALUES ('"
 							+ bazaGetText + "', " + bazaIsClosed + ") ", Statement.RETURN_GENERATED_KEYS);
-					// int idIzBaze = Integer.parseInt(autogenColumns);
-
 					int affectedRows = stmt.executeUpdate();
-
 					if (affectedRows == 0) {
 						throw new SQLException("Kreiranje pitanja bezuspješno");
 					}
@@ -115,15 +101,11 @@ public class DodajAnketu {
 						}
 					}
 
-					// Zatvori resultset, statement i db konekciju i ispisi
-					// greske ako postoje
 					stmt.close();
 					conn.close();
 				} catch (SQLException se) {
-					// Errors JDBC
 					se.printStackTrace();
 				} catch (Exception x) {
-					// Errors za Class.forName
 					x.printStackTrace();
 				} finally {
 					try {
@@ -136,8 +118,8 @@ public class DodajAnketu {
 							conn.close();
 					} catch (SQLException se) {
 						se.printStackTrace();
-					} // zavrsi try try
-				} // zavrsi glavni try try
+					}
+				}
 
 				PitanjeDodajAnketu nesto = new PitanjeDodajAnketu();
 				nesto.PDAnketu(questionID);
@@ -157,6 +139,5 @@ public class DodajAnketu {
 		textField.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-		// dodaj anketu
 	}
 }

@@ -14,13 +14,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class PrikaziGreskeAdmin {
-	// Definisi JDBC driver name i URL baze
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-	// Db podaci
-	static final String USER = "root";
-	static final String PASS = "123456";
 
 	ArrayList<UserSurvey> userSurveys = new ArrayList<>();
 	private JFrame frame;
@@ -70,21 +63,14 @@ public class PrikaziGreskeAdmin {
 		Object columnNames[] = { "GRESKE " };
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
-		// public void DodajuBazu(String s){
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
 
-			// Registruj JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(DbConnection.JDBC_DRIVER);
+			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
-			// Zapocni konekciju conn
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-					"123456");
 			String sqlSelect = "SELECT * FROM greske";
-
-			// Napravi statement i izvrsi query
 			stmt = conn.prepareStatement(sqlSelect);
 			ResultSet rs = stmt.executeQuery();
 
@@ -99,10 +85,8 @@ public class PrikaziGreskeAdmin {
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		}
 

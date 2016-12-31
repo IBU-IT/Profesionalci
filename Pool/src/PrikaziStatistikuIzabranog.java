@@ -63,17 +63,13 @@ public class PrikaziStatistikuIzabranog {
 		lblTextpitanja.setBounds(85, 11, 339, 20);
 		frame.getContentPane().add(lblTextpitanja);
 
-		// IZVUCI ID
 		Connection conn = null;
 		Statement stmt = null;
 		try {
-			// Registruj JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
 
-			// Zapocni konekciju conn
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-					"123456");
+			Class.forName(DbConnection.JDBC_DRIVER);
+			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
+
 			stmt = conn.createStatement();
 			String sql;
 			sql = ("SELECT id FROM questions WHERE question_text = '" + obj.getIzabranoPitanje() + "' ");
@@ -85,25 +81,17 @@ public class PrikaziStatistikuIzabranog {
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		}
-		// ID POVUCEN
 
-		// IZVUCI ODGOVORE
 		Connection conn2 = null;
 		Statement stmt2 = null;
 		try {
-			// Registruj JDBC driver
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(DbConnection.JDBC_DRIVER);
+			conn2 = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
-			// Zapocni konekciju conn
-			conn2 = DriverManager.getConnection(
-					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
-					"123456");
 			stmt2 = conn2.createStatement();
 			String sql2;
 			sql2 = ("SELECT answer, answer_count FROM answers WHERE question_id = '" + getIdPitanja() + "' ");
@@ -118,13 +106,10 @@ public class PrikaziStatistikuIzabranog {
 			stmt2.close();
 			conn2.close();
 		} catch (SQLException se) {
-			// Errors JDBC
 			se.printStackTrace();
 		} catch (Exception x) {
-			// Errors za Class.forName
 			x.printStackTrace();
 		}
-		// IZVUCI ODGOVORE
 
 		JLabel prviOdgovorText = new JLabel(odgovori.get(0));
 		prviOdgovorText.setFont(new Font("Gadugi", Font.BOLD, 14));

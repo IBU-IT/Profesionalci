@@ -25,15 +25,6 @@ public class RegistracijaKorisnika {
 	private static int spol = 0;
 	private static int admin = 0;
 	private static int godine = 0;
-
-	// Definisi JDBC driver name i URL baze
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
-
-	// Db podaci
-	static final String USER = "root";
-	static final String PASS = "123456";
-
 	private JFrame frmRegistrujSe;
 	/* private final Action action = new SwingAction(); */
 	JButton button;
@@ -211,17 +202,13 @@ public class RegistracijaKorisnika {
 					int bazaSpoll = getSpol();
 					int bazaRolee = getAdmin();
 
-					// Kad je sve provjereno unesi to sve u bazu
 					Connection conn = null;
 					Statement stmt = null;
 					try {
-						// Registruj JDBC driver
-						Class.forName("com.mysql.jdbc.Driver");
 
-						// Zapocni konekciju conn
-						conn = DriverManager.getConnection(DB_URL, USER, PASS);
+						Class.forName(DbConnection.JDBC_DRIVER);
+						conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
-						// Napravi statement i izvrsi query
 						stmt = conn.createStatement();
 						int gotovo = stmt.executeUpdate(
 								"INSERT INTO users (username, password, first_name, last_name, age, gender, user_role) VALUES ('"
@@ -246,10 +233,8 @@ public class RegistracijaKorisnika {
 						stmt.close();
 						conn.close();
 					} catch (SQLException se) {
-						// Errors JDBC
 						se.printStackTrace();
 					} catch (Exception x) {
-						// Errors za Class.forName
 						x.printStackTrace();
 					} finally {
 						try {
@@ -262,8 +247,8 @@ public class RegistracijaKorisnika {
 								conn.close();
 						} catch (SQLException se) {
 							se.printStackTrace();
-						} // zavrsi try try
-					} // zavrsi glavni try try
+						}
+					}
 
 				} else {
 					JOptionPane.showMessageDialog(null, "GRESKA");
@@ -304,5 +289,3 @@ public class RegistracijaKorisnika {
 		RegistracijaKorisnika.admin = admin;
 	}
 }
-
-// ATIF IMA GRESKU. NE MOZE KOMITAT
