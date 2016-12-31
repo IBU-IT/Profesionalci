@@ -19,19 +19,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
-
 public class OtkljucajAnketu {
 
 	// Definisi JDBC driver name i URL baze
-		static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-		static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
 
-		// Db podaci
-		static final String USER = "root";
-		static final String PASS = "123456";
-		
-		ArrayList<String> groupNames = new ArrayList<String>();
+	// Db podaci
+	static final String USER = "root";
+	static final String PASS = "123456";
+
+	ArrayList<String> groupNames = new ArrayList<String>();
 	private JFrame frame;
 
 	/**
@@ -67,62 +65,61 @@ public class OtkljucajAnketu {
 		frame.setBounds(100, 100, 520, 205);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		
+
 		JLabel lblOtkljucajAnketu = new JLabel("ODABERI ANKETU ZA OTKLJUCAVANJE : ");
 		lblOtkljucajAnketu.setBounds(10, 11, 360, 20);
 		lblOtkljucajAnketu.setFont(new Font("Gadugi", Font.BOLD, 14));
 		frame.getContentPane().add(lblOtkljucajAnketu);
-		//TRY
+		// TRY
 		Connection conn = null;
 		Statement stmt = null;
-		
-		
+
 		try {
 			// Registruj JDBC driver
 			Class.forName("com.mysql.jdbc.Driver");
 
 			// Zapocni konekciju conn
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");	
-			
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
+					"123456");
+
 			stmt = conn.createStatement();
 			String sql;
 			sql = ("SELECT question_text FROM questions WHERE is_closed=1");
 			ResultSet rs = stmt.executeQuery(sql);
-		
-			while (rs.next()) { 
-			    String groupName = rs.getString("question_text"); 
-			    // add group names to the array list
-			    groupNames.add(groupName);
-			} 
-			
-			rs.close(); 
+
+			while (rs.next()) {
+				String groupName = rs.getString("question_text");
+				// add group names to the array list
+				groupNames.add(groupName);
+			}
+
+			rs.close();
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
 			// Errors JDBC
 			se.printStackTrace();
-		}
-		catch (Exception x) {
+		} catch (Exception x) {
 			// Errors za Class.forName
 			x.printStackTrace();
 		}
-		//TRY
-		
+		// TRY
+
 		final JComboBox comboBoxOtkljucajAnketu = new JComboBox();
 		comboBoxOtkljucajAnketu.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(comboBoxOtkljucajAnketu);
 		DefaultComboBoxModel model = new DefaultComboBoxModel(groupNames.toArray());
 		comboBoxOtkljucajAnketu.setModel(model);
-		
+
 		JButton btnOtkljucaj = new JButton("OTKLJUCAJ");
 		btnOtkljucaj.addMouseListener(new MouseAdapter() {
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String zakkank = (String)comboBoxOtkljucajAnketu.getSelectedItem();
-				// Spremi u varijable 
-				
+				String zakkank = (String) comboBoxOtkljucajAnketu.getSelectedItem();
+				// Spremi u varijable
+
 				Connection conn = null;
 				Statement stmt = null;
 				try {
@@ -130,24 +127,25 @@ public class OtkljucajAnketu {
 					Class.forName("com.mysql.jdbc.Driver");
 
 					// Zapocni konekciju conn
-					conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");
+					conn = DriverManager.getConnection(
+							"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
+							"123456");
 					stmt = conn.createStatement();
-					
-					int zakAnk = stmt.executeUpdate("UPDATE questions SET is_closed = 0 WHERE question_text = '"+zakkank+"'");
-					if(zakAnk>0){
+
+					int zakAnk = stmt.executeUpdate(
+							"UPDATE questions SET is_closed = 0 WHERE question_text = '" + zakkank + "'");
+					if (zakAnk > 0) {
 						JOptionPane.showMessageDialog(null, "Anketa uspjesno otkljucana !");
 						UgasiGa();
-						
+
 					}
-					
 
 					stmt.close();
 					conn.close();
 				} catch (SQLException se) {
 					// Errors JDBC
 					se.printStackTrace();
-				}
-				catch (Exception x) {
+				} catch (Exception x) {
 					// Errors za Class.forName
 					x.printStackTrace();
 				}
@@ -158,19 +156,10 @@ public class OtkljucajAnketu {
 		btnOtkljucaj.setBounds(10, 121, 484, 31);
 		frame.getContentPane().add(btnOtkljucaj);
 
+	}
 
+	public void UgasiGa() {
+		frame.dispose();
+
+	}
 }
-
-public void UgasiGa() {
-frame.dispose();
-		
-		
-		
-		
-		
-
-	}
-	}
-
-	
-

@@ -22,9 +22,9 @@ public class PrikaziOdgovoreIzabraneAnkete {
 	private String prviOdgovor = "";
 	private String drugiOdgovor = "";
 	private String treciOdgovor = "";
-	private int prviID=0;
-	private int drugiID=0;
-	private int treciID=0;
+	private int prviID = 0;
+	private int drugiID = 0;
+	private int treciID = 0;
 	private int imalga = 0;
 	private int userID = 0;
 	private int pitanjeID = 0;
@@ -62,30 +62,32 @@ public class PrikaziOdgovoreIzabraneAnkete {
 		frmUskoro.setBounds(100, 100, 450, 300);
 		frmUskoro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmUskoro.getContentPane().setLayout(null);
-		
+
 		GlasajNaAnketi pitanje = new GlasajNaAnketi();
 		JLabel lblNewLabel = new JLabel(pitanje.getPitanje());
 		lblNewLabel.setBounds(10, 11, 424, 14);
 		frmUskoro.getContentPane().add(lblNewLabel);
-		
+
 		Connection conn2 = null;
-		Statement stmt2 = null;		
+		Statement stmt2 = null;
 		try {
 			// Registruj JDBC driver
 			Class.forName("com.mysql.jdbc.Driver");
 
 			// Zapocni konekciju conn
-			conn2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");	
-			
+			conn2 = DriverManager.getConnection(
+					"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
+					"123456");
+
 			stmt2 = conn2.createStatement();
 			String sql;
-			sql = ("SELECT id, answer FROM answers WHERE question_id='"+pitanje.getId()+"' ");
+			sql = ("SELECT id, answer FROM answers WHERE question_id='" + pitanje.getId() + "' ");
 			ResultSet rs2 = stmt2.executeQuery(sql);
-			while(rs2.next()){    
-				listID.add(rs2.getInt("id")); //ID
-				list.add(rs2.getString("answer")); //Odgovor
+			while (rs2.next()) {
+				listID.add(rs2.getInt("id")); // ID
+				list.add(rs2.getString("answer")); // Odgovor
 			}
-			
+
 			Login povuci = new Login();
 			setPitanjeID(pitanje.getId());
 			setUserID(povuci.getId());
@@ -99,158 +101,164 @@ public class PrikaziOdgovoreIzabraneAnkete {
 				setPostojilTreci(0);
 				setTreciOdgovor(list.get(2));
 				setTreciID(listID.get(2));
-			} catch ( IndexOutOfBoundsException e ) {
+			} catch (IndexOutOfBoundsException e) {
 				setPostojilTreci(1);
 			}
-			
-			
-			
-			rs2.close(); 
+
+			rs2.close();
 			stmt2.close();
 			conn2.close();
 		} catch (SQLException se) {
 			// Errors JDBC
 			se.printStackTrace();
-		}
-		catch (Exception x) {
+		} catch (Exception x) {
 			// Errors za Class.forName
 			x.printStackTrace();
 		}
-		
-		
+
 		JButton btnOdgovor1 = new JButton(getPrviOdgovor());
 		btnOdgovor1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-			      Connection conn = null;			
+				Connection conn = null;
+				try {
+					// Registruj JDBC driver
+					Class.forName("com.mysql.jdbc.Driver");
+
+					// Zapocni konekciju conn
+					conn = DriverManager.getConnection(
+							"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
+							"123456");
+
+					Statement stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+					String prvi = "INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"
+							+ getPitanjeID() + "', '" + getUserID() + "', '" + getPrviID() + "')";
+					String drugi = "UPDATE answers SET answer_count = answer_count + 1 WHERE id = '" + getPrviID()
+							+ "' ";
+
+					conn.setAutoCommit(false);
+					stmt1.addBatch(prvi);
+					stmt1.addBatch(drugi);
+					int[] count = stmt1.executeBatch();
+					conn.commit();
+					if (count.length != 0) {
+						JOptionPane.showMessageDialog(null, "Uspjesno");
+						frmUskoro.dispose();
+					} else {
+						JOptionPane.showMessageDialog(null, "Doslo je do greske, pokusajte ponovno");
+					}
+					stmt1.close();
+					conn.close();
+				} catch (SQLException se) {
+					// Errors JDBC
+					se.printStackTrace();
+				} catch (Exception x) {
+					// Errors za Class.forName
+					x.printStackTrace();
+				}
+
+				// VAKO
+
+			}
+		});
+		btnOdgovor1.setBounds(10, 86, 424, 23);
+		frmUskoro.getContentPane().add(btnOdgovor1);
+
+		JButton btnOdgovor2 = new JButton(getDrugiOdgovor());
+		btnOdgovor2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Connection conn = null;
+				try {
+					// Registruj JDBC driver
+					Class.forName("com.mysql.jdbc.Driver");
+
+					// Zapocni konekciju conn
+					conn = DriverManager.getConnection(
+							"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root",
+							"123456");
+
+					Statement stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+					String prvi = "INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"
+							+ getPitanjeID() + "', '" + getUserID() + "', '" + getDrugiID() + "')";
+					String drugi = "UPDATE answers SET answer_count = answer_count + 1 WHERE id = '" + getDrugiID()
+							+ "' ";
+
+					conn.setAutoCommit(false);
+					stmt1.addBatch(prvi);
+					stmt1.addBatch(drugi);
+					int[] count = stmt1.executeBatch();
+					conn.commit();
+					if (count.length != 0) {
+						JOptionPane.showMessageDialog(null, "Uspjesno");
+						frmUskoro.dispose();
+					} else {
+						JOptionPane.showMessageDialog(null, "Doslo je do greske, pokusajte ponovno");
+					}
+					stmt1.close();
+					conn.close();
+				} catch (SQLException se) {
+					// Errors JDBC
+					se.printStackTrace();
+				} catch (Exception x) {
+					// Errors za Class.forName
+					x.printStackTrace();
+				}
+			}
+
+		});
+		btnOdgovor2.setBounds(10, 120, 424, 23);
+		frmUskoro.getContentPane().add(btnOdgovor2);
+
+		if (getPostojilTreci() == 0) {
+			JButton btnOdgovor3 = new JButton(getTreciOdgovor());
+			btnOdgovor3.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					Connection conn = null;
 					try {
 						// Registruj JDBC driver
 						Class.forName("com.mysql.jdbc.Driver");
 
 						// Zapocni konekciju conn
-						conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");
-					      
-					      Statement stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-					      String prvi = "INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"+getPitanjeID()+"', '"+getUserID()+"', '"+getPrviID()+"')";
-					      String drugi = "UPDATE answers SET answer_count = answer_count + 1 WHERE id = '"+getPrviID()+"' ";
-					      
-					      conn.setAutoCommit(false);
-					      stmt1.addBatch(prvi);
-					      stmt1.addBatch(drugi);
-					      int[] count = stmt1.executeBatch();
-					      conn.commit();
-					      if(count.length != 0){
-					    	  JOptionPane.showMessageDialog(null, "Uspjesno");
-					    	  frmUskoro.dispose();
-					      }else{
-					    	  JOptionPane.showMessageDialog(null, "Doslo je do greske, pokusajte ponovno");
-					      }
+						conn = DriverManager.getConnection(
+								"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false",
+								"root", "123456");
+
+						Statement stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+								ResultSet.CONCUR_UPDATABLE);
+						String prvi = "INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"
+								+ getPitanjeID() + "', '" + getUserID() + "', '" + getTreciID() + "')";
+						String drugi = "UPDATE answers SET answer_count = answer_count + 1 WHERE id = '" + getTreciID()
+								+ "' ";
+
+						conn.setAutoCommit(false);
+						stmt1.addBatch(prvi);
+						stmt1.addBatch(drugi);
+						int[] count = stmt1.executeBatch();
+						conn.commit();
+						if (count.length != 0) {
+							JOptionPane.showMessageDialog(null, "Uspjesno");
+							frmUskoro.dispose();
+						} else {
+							JOptionPane.showMessageDialog(null, "Doslo je do greske, pokusajte ponovno");
+						}
 						stmt1.close();
 						conn.close();
 					} catch (SQLException se) {
 						// Errors JDBC
 						se.printStackTrace();
-					}
-					catch (Exception x) {
+					} catch (Exception x) {
 						// Errors za Class.forName
 						x.printStackTrace();
 					}
-					
-			      //VAKO
-			      
-			}
-		});
-		btnOdgovor1.setBounds(10, 86, 424, 23);
-		frmUskoro.getContentPane().add(btnOdgovor1);
-		
-		JButton btnOdgovor2 = new JButton(getDrugiOdgovor());
-		btnOdgovor2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				Connection conn = null;			
-				try {
-					// Registruj JDBC driver
-					Class.forName("com.mysql.jdbc.Driver");
-
-					// Zapocni konekciju conn
-					conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");
-				      
-				      Statement stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-				      String prvi = "INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"+getPitanjeID()+"', '"+getUserID()+"', '"+getDrugiID()+"')";
-				      String drugi = "UPDATE answers SET answer_count = answer_count + 1 WHERE id = '"+getDrugiID()+"' ";
-				      
-				      conn.setAutoCommit(false);
-				      stmt1.addBatch(prvi);
-				      stmt1.addBatch(drugi);
-				      int[] count = stmt1.executeBatch();
-				      conn.commit();
-				      if(count.length != 0){
-				    	  JOptionPane.showMessageDialog(null, "Uspjesno");
-				    	  frmUskoro.dispose();
-				      }else{
-				    	  JOptionPane.showMessageDialog(null, "Doslo je do greske, pokusajte ponovno");
-				      }
-					stmt1.close();
-					conn.close();
-				} catch (SQLException se) {
-					// Errors JDBC
-					se.printStackTrace();
 				}
-				catch (Exception x) {
-					// Errors za Class.forName
-					x.printStackTrace();
-				}
-			}
-			
-		});
-		btnOdgovor2.setBounds(10, 120, 424, 23);
-		frmUskoro.getContentPane().add(btnOdgovor2);
-		
-		if(getPostojilTreci() == 0){
-		JButton btnOdgovor3 = new JButton(getTreciOdgovor());
-		btnOdgovor3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				Connection conn = null;			
-				try {
-					// Registruj JDBC driver
-					Class.forName("com.mysql.jdbc.Driver");
-
-					// Zapocni konekciju conn
-					conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");
-				      
-				      Statement stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-				      String prvi = "INSERT INTO submited_answers (question_id, user_id, answer_id) VALUES('"+getPitanjeID()+"', '"+getUserID()+"', '"+getTreciID()+"')";
-				      String drugi = "UPDATE answers SET answer_count = answer_count + 1 WHERE id = '"+getTreciID()+"' ";
-				      
-				      conn.setAutoCommit(false);
-				      stmt1.addBatch(prvi);
-				      stmt1.addBatch(drugi);
-				      int[] count = stmt1.executeBatch();
-				      conn.commit();
-				      if(count.length != 0){
-				    	  JOptionPane.showMessageDialog(null, "Uspjesno");
-				    	  frmUskoro.dispose();
-				      }else{
-				    	  JOptionPane.showMessageDialog(null, "Doslo je do greske, pokusajte ponovno");
-				      }
-					stmt1.close();
-					conn.close();
-				} catch (SQLException se) {
-					// Errors JDBC
-					se.printStackTrace();
-				}
-				catch (Exception x) {
-					// Errors za Class.forName
-					x.printStackTrace();
-				}
-			}
-		});
-		frmUskoro.dispose();
-		btnOdgovor3.setBounds(10, 154, 424, 23);
-		frmUskoro.getContentPane().add(btnOdgovor3);
+			});
+			frmUskoro.dispose();
+			btnOdgovor3.setBounds(10, 154, 424, 23);
+			frmUskoro.getContentPane().add(btnOdgovor3);
 		}
-		
+
 	}
 
 	public String getPrviOdgovor() {
@@ -260,7 +268,7 @@ public class PrikaziOdgovoreIzabraneAnkete {
 	public void setPrviOdgovor(String prviOdgovor) {
 		this.prviOdgovor = prviOdgovor;
 	}
-	
+
 	public int getPrviID() {
 		return prviID;
 	}
@@ -268,7 +276,7 @@ public class PrikaziOdgovoreIzabraneAnkete {
 	public void setPrviID(int prviID) {
 		this.prviID = prviID;
 	}
-	
+
 	public int getDrugiID() {
 		return drugiID;
 	}
@@ -276,7 +284,7 @@ public class PrikaziOdgovoreIzabraneAnkete {
 	public void setDrugiID(int drugiID) {
 		this.drugiID = drugiID;
 	}
-	
+
 	public int getTreciID() {
 		return treciID;
 	}
@@ -292,7 +300,7 @@ public class PrikaziOdgovoreIzabraneAnkete {
 	public void setDrugiOdgovor(String drugiOdgovor) {
 		this.drugiOdgovor = drugiOdgovor;
 	}
-	
+
 	public int getPostojilTreci() {
 		return imalga;
 	}

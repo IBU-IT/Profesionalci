@@ -14,7 +14,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 
-
 public class PrijaviGresku {
 
 	private JFrame frmPrijaviGresku;
@@ -52,33 +51,32 @@ public class PrijaviGresku {
 		frmPrijaviGresku.setBounds(100, 100, 520, 205);
 		frmPrijaviGresku.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPrijaviGresku.getContentPane().setLayout(null);
-		
+
 		JLabel lblOpiiteProblemKoji = new JLabel("OPISITE PROBLEME KOJE IMATE :");
 		lblOpiiteProblemKoji.setFont(new Font("Gadugi", Font.BOLD, 14));
 		lblOpiiteProblemKoji.setBounds(10, 11, 360, 20);
 		frmPrijaviGresku.getContentPane().add(lblOpiiteProblemKoji);
-		
+
 		JButton btnPrijaviGreku = new JButton("PRIJAVITE GRE\u0160KU");
-		
-			btnPrijaviGreku.setBackground(SystemColor.activeCaption);
-			btnPrijaviGreku.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnPrijaviGreku.setBounds(10, 121, 484, 31);
-			frmPrijaviGresku.getContentPane().add(btnPrijaviGreku);
-			
-			
-			final JTextArea textArea = new JTextArea();
-			textArea.setBackground(Color.LIGHT_GRAY);
-			textArea.setLineWrap(true);
-			textArea.setBounds(10, 43, 484, 60);
-			frmPrijaviGresku.getContentPane().add(textArea);
-			btnPrijaviGreku.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					setTekst(textArea.getText());
-					if(textArea.getDocument().getLength() < 25 ){
-						JOptionPane.showMessageDialog(null, "Poruka mora sadrzavati minimalno 25 karaktera");
-					}else{
-						
+
+		btnPrijaviGreku.setBackground(SystemColor.activeCaption);
+		btnPrijaviGreku.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnPrijaviGreku.setBounds(10, 121, 484, 31);
+		frmPrijaviGresku.getContentPane().add(btnPrijaviGreku);
+
+		final JTextArea textArea = new JTextArea();
+		textArea.setBackground(Color.LIGHT_GRAY);
+		textArea.setLineWrap(true);
+		textArea.setBounds(10, 43, 484, 60);
+		frmPrijaviGresku.getContentPane().add(textArea);
+		btnPrijaviGreku.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				setTekst(textArea.getText());
+				if (textArea.getDocument().getLength() < 25) {
+					JOptionPane.showMessageDialog(null, "Poruka mora sadrzavati minimalno 25 karaktera");
+				} else {
+
 					Connection conn = null;
 					Statement stmt = null;
 					try {
@@ -86,18 +84,21 @@ public class PrijaviGresku {
 						Class.forName("com.mysql.jdbc.Driver");
 
 						// Zapocni konekciju conn
-						conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false", "root", "123456");
+						conn = DriverManager.getConnection(
+								"jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false",
+								"root", "123456");
 
 						// Napravi statement i izvrsi query
 						stmt = conn.createStatement();
-						
-						int gotovo = stmt.executeUpdate("INSERT INTO greske (opis_greske) VALUES('"+ getTekst() +"')");
-					
-						if (gotovo>0){
+
+						int gotovo = stmt
+								.executeUpdate("INSERT INTO greske (opis_greske) VALUES('" + getTekst() + "')");
+
+						if (gotovo > 0) {
 							JOptionPane.showMessageDialog(null, "Greska uspjesno poslana.");
 							textArea.setText("");
 							CloseFrame();
-						}else{
+						} else {
 							JOptionPane.showMessageDialog(null, "Doslo je do greške. molimo vas da pokusate ponovno.");
 						}
 						stmt.close();
@@ -105,25 +106,21 @@ public class PrijaviGresku {
 					} catch (SQLException se) {
 						// Errors JDBC
 						se.printStackTrace();
-					}
-					catch (Exception x) {
+					} catch (Exception x) {
 						// Errors za Class.forName
 						x.printStackTrace();
 					}
-					
-					}
-				}
 
-				private void CloseFrame() {
-					frmPrijaviGresku.dispose();
-					
-					
 				}
-			
-			
+			}
+
+			private void CloseFrame() {
+				frmPrijaviGresku.dispose();
+
+			}
+
 		});
-	
-	
+
 	}
 
 	public static String getTekst() {
@@ -133,5 +130,5 @@ public class PrijaviGresku {
 	public static void setTekst(String tekst) {
 		PrijaviGresku.tekst = tekst;
 	}
-	
+
 }

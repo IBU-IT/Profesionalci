@@ -19,19 +19,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 
-
 public class DodajAnketu {
 
 	private JFrame frame;
 	private JTextField textField;
-	
-	// Definisi JDBC driver name i URL baze
-		static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-		static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
 
-    // Db podaci
-		static final String USER = "root";
-		static final String PASS = "123456";
+	// Definisi JDBC driver name i URL baze
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/SurveyDB?verifyServerCertificate=false&useSSL=false";
+
+	// Db podaci
+	static final String USER = "root";
+	static final String PASS = "123456";
 
 	/**
 	 * Launch the application.
@@ -66,15 +65,15 @@ public class DodajAnketu {
 		frame.setBounds(100, 100, 520, 205);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JLabel lblUpiiteImeAnkete = new JLabel("UNESITE IME ANKETE :");
 		lblUpiiteImeAnkete.setFont(new Font("Gadugi", Font.BOLD, 14));
 		lblUpiiteImeAnkete.setBounds(10, 11, 360, 20);
 		frame.getContentPane().add(lblUpiiteImeAnkete);
-		
+
 		JButton btnNapraviAnketu = new JButton("NAPRAVI ANKETU");
 		btnNapraviAnketu.setBackground(SystemColor.activeCaption);
-	
+
 		btnNapraviAnketu.setFont(new Font("Gadugi", Font.BOLD, 16));
 		btnNapraviAnketu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -83,8 +82,8 @@ public class DodajAnketu {
 		btnNapraviAnketu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-					
-				// Spremi u varijable 
+
+				// Spremi u varijable
 				String bazaGetText = textField.getText();
 				int bazaIsClosed = 0;
 				int questionID = 0;
@@ -97,29 +96,27 @@ public class DodajAnketu {
 					// Zapocni konekciju conn
 					conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-					
-					
-					
-					stmt = conn.prepareStatement("INSERT INTO questions (question_text,is_closed) VALUES ('" + bazaGetText + "', " + bazaIsClosed +") ", Statement.RETURN_GENERATED_KEYS);
-					//int idIzBaze = Integer.parseInt(autogenColumns);
-					
+					stmt = conn.prepareStatement("INSERT INTO questions (question_text,is_closed) VALUES ('"
+							+ bazaGetText + "', " + bazaIsClosed + ") ", Statement.RETURN_GENERATED_KEYS);
+					// int idIzBaze = Integer.parseInt(autogenColumns);
+
 					int affectedRows = stmt.executeUpdate();
-					
+
 					if (affectedRows == 0) {
-			            throw new SQLException("Kreiranje pitanja bezuspješno");
-			        }
-					
+						throw new SQLException("Kreiranje pitanja bezuspješno");
+					}
+
 					try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-			            if (generatedKeys.next()) {
-			                questionID = generatedKeys.getInt(1);
-			                CloseFrame();
-			            }
-			            else {
-			                throw new SQLException("Kreira, no ID obtained.");
-			            }
-			        }
-					
-					// Zatvori resultset, statement i db konekciju i ispisi greske ako postoje 
+						if (generatedKeys.next()) {
+							questionID = generatedKeys.getInt(1);
+							CloseFrame();
+						} else {
+							throw new SQLException("Kreira, no ID obtained.");
+						}
+					}
+
+					// Zatvori resultset, statement i db konekciju i ispisi
+					// greske ako postoje
 					stmt.close();
 					conn.close();
 				} catch (SQLException se) {
@@ -139,29 +136,27 @@ public class DodajAnketu {
 							conn.close();
 					} catch (SQLException se) {
 						se.printStackTrace();
-					}// zavrsi try try
-				}// zavrsi glavni try try
-				
+					} // zavrsi try try
+				} // zavrsi glavni try try
+
 				PitanjeDodajAnketu nesto = new PitanjeDodajAnketu();
 				nesto.PDAnketu(questionID);
 			}
 
 			private void CloseFrame() {
 				frame.dispose();
-				
+
 			}
 		});
 		btnNapraviAnketu.setBounds(10, 121, 484, 31);
 		frame.getContentPane().add(btnNapraviAnketu);
-		
-		
-		
+
 		textField = new JTextField();
 		textField.setBackground(SystemColor.activeCaption);
 		textField.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		textField.setBounds(10, 43, 484, 40);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-		//dodaj anketu
+		// dodaj anketu
 	}
 }
