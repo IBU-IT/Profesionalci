@@ -2,6 +2,9 @@
 //2017
 //
 
+//I OD MENE
+//ATIF ATE ADŽO
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
