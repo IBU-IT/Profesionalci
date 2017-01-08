@@ -20,6 +20,7 @@ import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class Login {
 
@@ -73,64 +74,47 @@ public class Login {
 		frmPoolSystem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPoolSystem.getContentPane().setLayout(null);
 
-		JLabel unameText = new JLabel("Username:");
-		unameText.setFont(new Font("Gadugi", Font.BOLD, 14));
-		unameText.setBounds(84, 181, 77, 14);
-		frmPoolSystem.getContentPane().add(unameText);
-
-		JLabel pwText = new JLabel("Password:");
-		pwText.setFont(new Font("Gadugi", Font.BOLD, 14));
-		pwText.setBounds(84, 216, 77, 14);
-		frmPoolSystem.getContentPane().add(pwText);
-
 		usernameField = new JTextField();
 		usernameField.setFont(new Font("Gadugi", Font.PLAIN, 12));
-		usernameField.setForeground(SystemColor.infoText);
-		usernameField.setBackground(SystemColor.window);
-		usernameField.setBounds(171, 179, 257, 20);
+		usernameField.setOpaque(false);
+		usernameField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		usernameField.setForeground(Color.BLACK);
+		usernameField.setBackground(new Color(0, 0, 0));
+		usernameField.setBounds(149, 230, 222, 30);
 		frmPoolSystem.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
 
-		JButton loginButton = new JButton("Login");
-		loginButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-		loginButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		loginButton.setBackground(SystemColor.activeCaption);
-
-		loginButton.addMouseListener(new MouseAdapter() {
-			@SuppressWarnings("deprecation")
+		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		passwordField.setOpaque(false);
+		passwordField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		passwordField.setBounds(149, 275, 222, 30);
+		frmPoolSystem.getContentPane().add(passwordField);
+		
+		JLabel loginLabel = new JLabel("");
+		loginLabel.setBounds(391, 246, 36, 41);
+		loginLabel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				LoginUser();
-			} // zavrsi bazu
+			}
 		});
-
-		loginButton.setBounds(44, 306, 200, 29);
-		frmPoolSystem.getContentPane().add(loginButton);
-
-		JButton registerButton = new JButton("Registruj Se");
-		registerButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-		registerButton.setBackground(SystemColor.activeCaption);
-		registerButton.addMouseListener(new MouseAdapter() {
+		frmPoolSystem.getContentPane().add(loginLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				RegistracijaKorisnika r = new RegistracijaKorisnika();
 				r.RegistracijaIzLogina();
 			}
 		});
-		registerButton.setBounds(275, 306, 200, 29);
-		frmPoolSystem.getContentPane().add(registerButton);
-
-		JLabel logo = new JLabel("");
-		logo.setIcon(new ImageIcon(Login.class.getResource("/images/logo.png")));
-		logo.setBounds(52, 23, 423, 118);
-		frmPoolSystem.getContentPane().add(logo);
-
-		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		passwordField.setBounds(171, 215, 257, 20);
-		frmPoolSystem.getContentPane().add(passwordField);
+		lblNewLabel_1.setBounds(306, 317, 95, 14);
+		frmPoolSystem.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/images/ajovo.png")));
+		lblNewLabel.setBounds(0, 0, 520, 410);
+		frmPoolSystem.getContentPane().add(lblNewLabel);
 
 		passwordField.addActionListener(new ActionListener() {
 			@Override
