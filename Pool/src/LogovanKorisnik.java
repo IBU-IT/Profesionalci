@@ -11,6 +11,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class LogovanKorisnik {
 
@@ -43,6 +44,9 @@ public class LogovanKorisnik {
 	 */
 	private void initialize() {
 		frmUserPanel = new JFrame();
+		frmUserPanel.getContentPane().setBackground(Color.WHITE);
+		frmUserPanel.getContentPane().setForeground(Color.WHITE);
+		frmUserPanel.setBackground(Color.WHITE);
 		frmUserPanel.setResizable(false);
 		frmUserPanel.setTitle("User Panel");
 		frmUserPanel.setBounds(100, 100, 653, 480);
@@ -50,22 +54,23 @@ public class LogovanKorisnik {
 		frmUserPanel.getContentPane().setLayout(null);
 
 		Login drugi = new Login();
-		JLabel privaljnenKaoTekst = new JLabel("<html><font color='black'>" + drugi.getUsername() + "</font></html>");
-		privaljnenKaoTekst.setFont(new Font("Gadugi", Font.PLAIN, 20));
+		JLabel privaljnenKaoTekst = new JLabel("<html><font color='white'>" + drugi.getUsername() + "</font></html>");
+		privaljnenKaoTekst.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		privaljnenKaoTekst.setBounds(111, 252, 137, 19);
 		frmUserPanel.getContentPane().add(privaljnenKaoTekst);
 
-		JLabel prijavljenIme = new JLabel("<html><font color='black'>" + drugi.getFirstName() + "</font></html>");
+		JLabel prijavljenIme = new JLabel("<html><font color='white'>" + drugi.getFirstName() + "</font></html>");
 		prijavljenIme.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		prijavljenIme.setBounds(111, 276, 113, 19);
 		frmUserPanel.getContentPane().add(prijavljenIme);
 
-		JLabel prijavljenPrezime = new JLabel("<html><font color='black'>" + drugi.getLastName() + "</font></html>");
+		JLabel prijavljenPrezime = new JLabel("<html><font color='white'>" + drugi.getLastName() + "</font></html>");
 		prijavljenPrezime.setFont(new Font("Gadugi", Font.PLAIN, 14));
 		prijavljenPrezime.setBounds(111, 296, 113, 19);
 		frmUserPanel.getContentPane().add(prijavljenPrezime);
 		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setIcon(new ImageIcon(LogovanKorisnik.class.getResource("/images/loginuser.png")));
 		lblNewLabel.setBounds(0, 0, 652, 472);
 		frmUserPanel.getContentPane().add(lblNewLabel);
