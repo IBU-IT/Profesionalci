@@ -70,7 +70,7 @@ public class PrikaziGreskeAdmin {
 			Class.forName(DbConnection.JDBC_DRIVER);
 			conn = DriverManager.getConnection(DbConnection.DB_URL, DbConnection.USER, DbConnection.PASS);
 
-			String sqlSelect = "SELECT * FROM greske";
+			String sqlSelect = "SELECT * FROM greske ORDER BY id DESC";
 			stmt = conn.prepareStatement(sqlSelect);
 			ResultSet rs = stmt.executeQuery();
 

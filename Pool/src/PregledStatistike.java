@@ -17,7 +17,7 @@ import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class PregledStatistike {
+public class PregledStatistike{
 
 	private JFrame frame;
 	ArrayList<String> groupNames = new ArrayList<String>();
@@ -105,6 +105,9 @@ public class PregledStatistike {
 				PrikaziStatistikuIzabranog x = new PrikaziStatistikuIzabranog();
 				x.stats();
 				frame.dispose();
+				
+				//javafx.application.Application.launch(prikaziGraf.class);
+				// GRAF U IZRADI
 			}
 		});
 		btnNewButton.setBounds(10, 121, 484, 31);
@@ -117,6 +120,10 @@ public class PregledStatistike {
 
 	public void setIzabranoPitanje(String IzabranoPitanje) {
 		PregledStatistike.IzabranoPitanje = IzabranoPitanje;
+	}
+	
+	public void close(){
+		frame.dispose();
 	}
 
 }
